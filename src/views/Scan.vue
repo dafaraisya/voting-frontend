@@ -8,17 +8,20 @@
         margin-right: auto;
         width: 50%;">
         <qrcode-stream @decode="onDecode"></qrcode-stream>
+        <br>
+        <qrcode-capture @decode="onDecode" />
       </div>
   </div>
 </template>
 
 <script>
-import { QrcodeStream } from 'vue-qrcode-reader'
+import { QrcodeStream,QrcodeCapture } from 'vue-qrcode-reader'
 
 export default {
   name: 'Scan',
   components: {
-    QrcodeStream
+    QrcodeStream,
+    QrcodeCapture
   },
   data() {
       return {
