@@ -2,11 +2,11 @@
     <div>
         <Header/>
         <div class="container">
-            <vue-qr text="details.nim" :callback="test" qid="testid"></vue-qr>
+            <vue-qr :text="String(details._id)" :callback="test" qid="testid"></vue-qr>
             <p>Nama : {{ details.name }}</p>
             <p>NIM : {{ details.nim }}</p>
             <p>Email : {{ details.email }}</p>
-            <router-link :to="details._id+'/edit'">
+            <router-link :to="'../edit/'+details._id">
                 <b-button class="ml-2" href="" variant="primary">Edit</b-button>
             </router-link>
             <b-button @click="del();" class="ml-2" href="" variant="primary">Delete</b-button>
@@ -20,7 +20,7 @@ import axios from 'axios'
 import VueQr from 'vue-qr'
 
 export default {
-    name: 'ParticipantDetails',
+    name: 'DetailParticipant',
     components: {
         Header,
         VueQr
@@ -37,7 +37,7 @@ export default {
         del(){
             axios
                 .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
-                .then(() => this.$router.push("/listparticipant"))
+                .then(() => this.$router.push("/listcandidate"))
                 .catch( err => console.log(err));
         }
     },

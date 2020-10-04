@@ -4,9 +4,9 @@ import Home from '../views/Home.vue'
 import ListParticipant from '../views/admin/ListParticipant.vue'
 import CreateParticipant from '../views/admin/CreateParticipant.vue'
 import EditParticipant from '../views/admin/EditParticipant.vue'
-import ParticipantDetails from '../views/admin/ParticipantDetails.vue'
-import Generate from '../views/Generate.vue'
-import Scan from '../views/Scan.vue'
+import DetailParticipant from '../views/admin/DetailParticipant.vue'
+import Scan from '../views/voting/Scan.vue'
+import ListCandidate from '../views/voting/ListCandidate.vue'
 
 Vue.use(VueRouter)
 
@@ -35,25 +35,25 @@ const routes = [
     component: CreateParticipant
   },
   {
-    path: '/:id/edit',
+    path: '/edit/:id',
     name: 'EditParticipant',
     component: EditParticipant
   },
   {
-    path: '/:id',
-    name: 'ParticipantDetails',
-    component: ParticipantDetails
-  },
-  {
-    path: '/generate',
-    name: 'Generate',
-    component: Generate
+    path: '/details/:id',
+    name: 'DetailParticipant',
+    component: DetailParticipant
   },
   {
     path: '/scan',
     name: 'Scan',
     component: Scan
-  }
+  },
+  {
+    path: '/listcandidate',
+    name: 'ListCandidate',
+    component: ListCandidate
+  },
 ]
 
 const router = new VueRouter({

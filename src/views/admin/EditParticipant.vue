@@ -1,5 +1,5 @@
 <template>
-    <div class="edit-participant">
+    <div class="editparticipant">
         <Header/>
         <h1>Edit Participant</h1>
         <form>
