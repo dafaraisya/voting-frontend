@@ -1,23 +1,27 @@
 <template>
     <div class="create-participant">
-        <h1>Tambah Participant</h1>
-        <form>
-            <div class="form-group">
-                <label for="namaLengkap">Nama lengkap</label>
-                <input type="text" class="form-control" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataParticipant.name">
-            </div>
-            <div class="form-group">
-                <label for="nim">NIM</label>
-                <input type="text" class="form-control" id="nim" aria-describedby="namaHelp" placeholder="Masukan NIM" v-model="dataParticipant.nim">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" aria-describedby="namaHelp" placeholder="Masukan Email" v-model="dataParticipant.email">
-            </div>
-            <a @click="addData();" href="#" class="proceed-btn">
-                Tambah Data
-            </a>
-        </form>
+        <h1 class="mt-2">Tambah Participant</h1>
+        <b-container fluid>
+            <b-row>
+                <b-col lg="3"></b-col>
+                <b-col lg="6">
+                    <b-form class="text-left ml-5 mt-4 mr-5">
+                        <b-form-group label="Nama lengkap :" label-for="namaLengkap">
+                            <b-form-input type="text" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataParticipant.name"></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="NIM :" label-for="nim">
+                            <b-form-input type="text" id="nim" aria-describedby="namaHelp" placeholder="Masukan NIM" v-model="dataParticipant.nim"></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="Email :" label-for="email">
+                            <b-form-input type="text" id="email" aria-describedby="namaHelp" placeholder="Masukan Email" v-model="dataParticipant.email"></b-form-input>
+                        </b-form-group>
+                        <a @click="addData();" href="#" class="btn btn-primary" type="submit">
+                            Tambah Data
+                        </a>
+                    </b-form>
+                </b-col>
+            </b-row>
+        </b-container>
     </div>
 </template>
 

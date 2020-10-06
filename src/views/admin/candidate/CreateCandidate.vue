@@ -1,35 +1,36 @@
 <template>
-    <div class="create-participant">
-        <h1>Tambah Kandidat</h1>
-        <form>
-            <div class="form-group">
-                <label for="name">Nama lengkap</label>
-                <input type="text" class="form-control" id="name" placeholder="Masukan Nama" v-model="dataCandidate.name">
-            </div>
-            <div class="form-group">
-                <label for="number">Nomor urut</label>
-                <input type="text" class="form-control" id="number" placeholder="Masukan Nomor urut" v-model="dataCandidate.number">
-            </div>
-            <div class="form-group">
-                <label for="image">Foto</label>
-                <input type="text" class="form-control" id="image" placeholder="Masukan Image" v-model="dataCandidate.image">
-            </div>
-            <div class="form-group">
-                <label for="short">Deskripsi</label>
-                <vue-editor id="short" v-model="dataCandidate.description.short"> </vue-editor>
-            </div>
-            <div class="form-group">
-                <label for="vision">Visi</label>
-                <vue-editor id="vision" v-model="dataCandidate.description.vision"> </vue-editor>
-            </div>
-            <div class="form-group">
-                <label for="mission">Misi</label>
-                <vue-editor id="mission" v-model="dataCandidate.description.mission"> </vue-editor>
-            </div>
-            <a @click="addData();" href="#" class="proceed-btn">
-                Tambah Data
-            </a>
-        </form>
+    <div class="create-candidate">
+        <h1 class="mt-2">Tambah Kandidat</h1>
+        <b-container fluid>
+            <b-row>
+                <b-col lg="2"></b-col>
+                <b-col lg="8">
+                    <b-form class="text-left ml-5 mt-4 mr-5">
+                        <b-form-group label="Nama lengkap :" label-for="namaLengkap">
+                            <b-form-input type="text" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataCandidate.name"></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="No Urut :" label-for="number">
+                            <b-form-input type="text" id="number" aria-describedby="namaHelp" placeholder="Masukan No urut" v-model="dataCandidate.number"></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="Foto :" label-for="image">
+                            <b-form-input type="text" id="image" aria-describedby="namaHelp" placeholder="Masukan Foto" v-model="dataCandidate.image"></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="Deskripsi :" label-for="short">
+                            <vue-editor type="text" id="short" aria-describedby="namaHelp" placeholder="Masukan Deskripsi" v-model="dataCandidate.description.short"></vue-editor>
+                        </b-form-group>
+                        <b-form-group label="Visi :" label-for="vision">
+                            <vue-editor type="text" id="vision" aria-describedby="namaHelp" placeholder="Masukan Visi" v-model="dataCandidate.description.vision"></vue-editor>
+                        </b-form-group>
+                        <b-form-group label="Misi :" label-for="mission">
+                            <vue-editor type="text" id="mission" aria-describedby="namaHelp" placeholder="Masukan Misi" v-model="dataCandidate.description.mission"></vue-editor>
+                        </b-form-group>
+                        <a @click="addData();" href="#" class="btn btn-primary" type="submit">
+                            Tambah Data
+                        </a>
+                    </b-form>
+                </b-col>
+            </b-row>
+        </b-container>
     </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="listparticipants">
-    <div class="container">
-      <h1>List Participant</h1>
+    <div class="container text-left">
+      <h1 class="text-center">List Participant</h1>
       <router-link :to="{name:'CreateParticipant'}">
         <b-button variant="primary" class="mb-2">Tambah Partisipan</b-button>
       </router-link>
