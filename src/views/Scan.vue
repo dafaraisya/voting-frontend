@@ -45,10 +45,8 @@ export default {
       this.id = decodedString;
       for(let i = 0; i <= this.dataParticipants.length; i++) {
         if(this.dataParticipants[i]._id === this.id) {
-          // this.$emit("authenticated", true);
-          // this.$router.replace({ name: "ListParticipant" });
-          this.$router.push('/listcandidate');
-          // console.log("oke");
+          this.$store.commit("setAuthentication", true);
+          this.$router.replace({ name: "ListCandidateVoting" });
         } else {
           this.error = "Data tidak Ditemukan"
         }
@@ -60,7 +58,6 @@ export default {
       .get("http://localhost:3000/api/v1/participant/all")
       .then(res => (this.dataParticipants = res.data.data))
       .catch(error => console.log(error))
-
   }
 }
 </script>

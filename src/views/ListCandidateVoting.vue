@@ -1,5 +1,5 @@
 <template>
-  <div class="listcandidate">
+  <div class="listcandidatevoting">
     <Header/>
     <div class="container">
         <h1>List Candidate</h1>
@@ -18,7 +18,7 @@
                 <p>{{ candidate.description.mission }}</p>
             </b-card-text>
 
-            <b-button href="#" variant="primary">Go somewhere</b-button>
+            <b-button @click="logout" href="#" variant="primary">Pilih</b-button>
         </b-card>
     </div>
   </div>
@@ -31,14 +31,20 @@ import Header from '@/components/Header.vue'
 import axios from 'axios'
 
 export default {
-  name: 'ListCandidate',
+  name: 'ListCandidateVoting',
   components: {
     Header
   },
   data() {
-      return {
-        candidates : []
-      }
+    return {
+      candidates : []
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.commit("setAuthentication", false);
+      this.$router.replace({ name: "Scan" });
+    }
   },
   mounted() {
     axios

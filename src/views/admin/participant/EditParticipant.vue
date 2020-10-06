@@ -1,6 +1,5 @@
 <template>
-    <div class="editparticipant">
-        <Header/>
+    <div class="edit-participant">
         <h1>Edit Participant</h1>
         <form>
             <div class="form-group">
@@ -23,15 +22,10 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-
 import axios from 'axios'
 
 export default {
   name: 'EditParticipant',
-  components: {
-    Header
-  },
   data() {
       return {
         dataParticipant: {
@@ -52,7 +46,7 @@ export default {
 
         axios
             .put("http://localhost:3000/api/v1/participant/"+this.$route.params.id, data)
-            .then(() => this.$router.push("/listparticipant"))
+            .then(() => this.$router.push("/admin/participant"))
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));
       } 

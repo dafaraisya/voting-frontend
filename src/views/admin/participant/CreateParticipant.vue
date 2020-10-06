@@ -1,6 +1,5 @@
 <template>
     <div class="create-participant">
-        <Header/>
         <h1>Tambah Participant</h1>
         <form>
             <div class="form-group">
@@ -23,27 +22,21 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-
 import axios from 'axios'
 
 export default {
-  name: 'CreateParticipant',
-  components: {
-    Header
-  },
-  data() {
-      return {
+    name: 'CreateParticipant',
+    data() {
+        return {
         dataParticipant: {
             name: '',
             nim: '',
             email: ''
         }
-      }
-  },
-  methods: {
-      addData() {
-        console.log("clicked");
+        }
+    },
+    methods: {
+        addData() {
         let data = {
             'name': this.dataParticipant.name,
             'nim': this.dataParticipant.nim,
@@ -52,10 +45,10 @@ export default {
 
         axios
             .post("http://localhost:3000/api/v1/participant", data)
-            .then(() => this.$router.push("/listparticipant"))
+            .then(() => this.$router.push({name: 'ListParticipant'}))
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));
-      } 
-  }
+        } 
+    }
 }
 </script>

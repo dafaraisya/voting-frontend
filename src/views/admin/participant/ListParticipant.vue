@@ -1,9 +1,8 @@
 <template>
   <div class="listparticipants">
-    <Header/>
     <div class="container">
       <h1>List Participant</h1>
-      <router-link :to="'tambahlistparticipant'">
+      <router-link :to="{name:'CreateParticipant'}">
         <b-button variant="primary" class="mb-2">Tambah Partisipan</b-button>
       </router-link>
       <table class="table">
@@ -23,7 +22,7 @@
                 <td> {{ participant.nim }} </td>
                 <td> {{ participant.email }} </td>
                 <td>
-                  <router-link :to="'details/'+participant._id">
+                  <router-link :to="'participant/'+participant._id">
                     <b-button href="" variant="primary">Details</b-button>
                   </router-link>
                 </td>
@@ -35,16 +34,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import Header from '@/components/Header.vue'
-
 import axios from 'axios'
 
 export default {
   name: 'ListParticipant',
-  components: {
-    Header
-  },
   data() {
       return {
         participants : []

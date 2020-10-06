@@ -11,9 +11,6 @@
                     <router-link :to="'/'">
                         <b-nav-text class="mr-2">Home</b-nav-text>
                     </router-link>
-                    <router-link :to="'/listparticipant'">
-                        <b-nav-text class="mr-2">List Participant</b-nav-text>
-                    </router-link>
                 </b-navbar-nav>
                 </b-collapse>
             </div>
