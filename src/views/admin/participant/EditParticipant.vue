@@ -15,6 +15,12 @@
                         <b-form-group label="Email :" label-for="email">
                             <b-form-input type="text" id="email" aria-describedby="namaHelp" placeholder="Masukan Email" v-model="dataParticipant.email"></b-form-input>
                         </b-form-group>
+                        <b-form-group label="Sesi :" label-for="session" :v-if="sessions==0">
+                            <div v-for="(session, index) in sessions" :key="index">
+                                <input type="radio" v-bind:id="index+1" v-bind:value="index+1" v-model="dataParticipant.session.number"/>
+                                <label class="ml-2" v-bind:for="index+1">{{ index+1 }}</label>
+                            </div>
+                        </b-form-group>
                         <a @click="editData();" href="#" class="btn btn-primary" type="submit">
                             Ubah Data
                         </a>
@@ -29,37 +35,49 @@
 import axios from 'axios'
 
 export default {
-  name: 'EditParticipant',
-  data() {
-      return {
-        dataParticipant: {
-            name: '',
-            nim: '',
-            email: ''
+    name: 'EditParticipant',
+    data() {
+        return {
+            dataParticipant: {
+                name: '',
+                nim: '',
+                email: '',
+                session:{
+                    number: 0
+                }
+            },
+            sessions: [],
         }
-      }
-  },
-  methods: {
-      editData() {
-        console.log("clicked");
-        let data = {
-            'name': this.dataParticipant.name,
-            'nim': this.dataParticipant.nim,
-            'email': this.dataParticipant.email
-        };
+    },
+    methods: {
+        editData() {
+            let data = {
+                'name': this.dataParticipant.name,
+                'nim': this.dataParticipant.nim,
+                'email': this.dataParticipant.email,
+                'sessionId': this.sessions[this.dataParticipant.session.number - 1]._id,
+                'sessionNumber': this.dataParticipant.session.number,
+                'sessionMin': this.sessions[this.dataParticipant.session.number - 1].start,
+                'sessionMax': this.sessions[this.dataParticipant.session.number - 1].end,
+            };
 
-        axios
+            axios
             .put("http://localhost:3000/api/v1/participant/"+this.$route.params.id, data)
-            .then(() => this.$router.push("/admin/participant"))
+            .then(() => this.$router.push({name:'ListParticipant'}))
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));
-      } 
-  },
-  mounted() {
-    axios
-      .get('http://localhost:3000/api/v1/participant/'+this.$route.params.id)
-      .then(res => (this.dataParticipant = res.data.data))
-      .catch(error => console.log(error))
-  }
+        } 
+    },
+    created() {
+        axios
+        .get('http://localhost:3000/api/v1/session/all')
+        .then(res => (this.sessions = res.data.data))
+        .catch(error => console.log(error))
+
+        axios
+        .get('http://localhost:3000/api/v1/participant/'+this.$route.params.id)
+        .then(res => (this.dataParticipant = res.data.data))
+        .catch(error => console.log(error))
+    }
 }
 </script>

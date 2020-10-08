@@ -3,6 +3,11 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import HomeAdmin from '../views/admin/Home.vue'
+import IndexSession from '../views/admin/session/IndexSession.vue'
+import ListSession from '../views/admin/session/ListSession.vue'
+import CreateSession from '../views/admin/session/CreateSession.vue'
+import EditSession from '../views/admin/session/EditSession.vue'
+import DetailSession from '../views/admin/session/DetailSession.vue'
 import IndexParticipant from '../views/admin/participant/IndexParticipant.vue'
 import ListParticipant from '../views/admin/participant/ListParticipant.vue'
 import CreateParticipant from '../views/admin/participant/CreateParticipant.vue'
@@ -66,7 +71,7 @@ const routes = [
           },
           {
             path: ':id',
-            name: 'ParticipantDetail',
+            name: 'DetailParticipant',
             component: DetailParticipant
           },
         ]
@@ -97,7 +102,34 @@ const routes = [
             component: DetailCandidate
           },
         ]
-      }
+      },
+      {
+        path: 'session',
+        name: 'session',
+        component: IndexSession,
+        children: [
+          {
+            path: '',
+            name: 'ListSession',
+            component: ListSession,
+          },
+          {
+            path: 'add',
+            name: 'CreateSession',
+            component: CreateSession
+          },
+          {
+            path: 'edit/:id',
+            name: 'EditSession',
+            component: EditSession
+          },
+          {
+            path: ':id',
+            name: 'DetailSession',
+            component: DetailSession
+          },
+        ]
+      },
     ] 
   },
   {

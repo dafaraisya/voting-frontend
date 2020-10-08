@@ -15,20 +15,11 @@
                         <b-form-group label="Email :" label-for="email">
                             <b-form-input type="text" id="email" aria-describedby="namaHelp" placeholder="Masukan Email" v-model="dataParticipant.email"></b-form-input>
                         </b-form-group>
-                        Sesi
-                        <b-form-group label="Tanggal mulai :" label-for="email">
-                            <b-form-input type="date" id="date1" v-model="session.min.date"></b-form-input>
-                        </b-form-group>
-
-                        <b-form-group label="Jam mulai :" label-for="email">
-                            <b-form-input type="time" id="date1" v-model="session.min.time"></b-form-input>
-                        </b-form-group>
-
-                        <b-form-group label="Tanggal berakhir :" label-for="email">
-                            <b-form-input type="date" id="date1" v-model="session.max.date"></b-form-input>
-                        </b-form-group>
-                        <b-form-group label="Jam berakhir :" label-for="email">
-                            <b-form-input type="time" id="date1" v-model="session.max.time"></b-form-input>
+                        <b-form-group label="Sesi :" label-for="session" :v-if="sessions==0">
+                            <div v-for="(session, index) in sessions" :key="index">
+                                <input type="radio" v-bind:id="index+1" v-bind:value="index+1" v-model="dataParticipant.session"/>
+                                <label class="ml-2" v-bind:for="index+1">{{ index+1 }}</label>
+                            </div>
                         </b-form-group>
                         <a @click="addData();" href="#" class="btn btn-primary" type="submit">
                             Tambah Data
@@ -50,18 +41,10 @@ export default {
             dataParticipant: {
                 name: '',
                 nim: '',
-                email: ''
+                email: '',
+                session: 1,
             },
-            session: {
-                min: {
-                    date: '',
-                    time: '',
-                },
-                max: {
-                    date: '',
-                    time: '',
-                }
-            }
+            sessions: []
         }
     },
     methods: {
@@ -70,18 +53,26 @@ export default {
             'name': this.dataParticipant.name,
             'nim': this.dataParticipant.nim,
             'email': this.dataParticipant.email,
-            'sessionMin': this.session.min.date+"T"+this.session.min.time,
-            'sessionMax': this.session.max.date+"T"+this.session.max.time,
+            'sessionId': this.sessions[this.dataParticipant.session - 1]._id,
+            'sessionNumber': this.dataParticipant.session,
+            'sessionMin': this.sessions[this.dataParticipant.session - 1].start,
+            'sessionMax': this.sessions[this.dataParticipant.session - 1].end,
         };
 
         axios
             .post("http://localhost:3000/api/v1/participant", data)
-            .then((data) => { 
+            .then(() => { 
                 this.$router.push({name: 'ListParticipant'});
             })
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));
-        } 
+        }
+    },
+    created() {
+        axios
+          .get('http://localhost:3000/api/v1/session/all')
+          .then(res => (this.sessions = res.data.data))
+          .catch(error => console.log(error))
     }
 }
 </script>
