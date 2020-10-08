@@ -17,6 +17,8 @@
                         <p>Nama : {{ details.name }}</p>
                         <p>NIM : {{ details.nim }}</p>
                         <p>Email : {{ details.email }}</p>
+                        <p>Mulai : {{ details.session.min }}</p>
+                        <p>Berakhir : {{ details.session.max }}</p>
                     </b-card-text>
                 </b-card>
             </div>

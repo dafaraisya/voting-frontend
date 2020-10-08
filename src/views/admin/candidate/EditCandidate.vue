@@ -13,8 +13,8 @@
                             <b-form-input type="text" id="number" aria-describedby="namaHelp" placeholder="Masukan No urut" v-model="dataCandidate.number"></b-form-input>
                         </b-form-group>
                         <b-form-group label="Foto :" label-for="image">
-                            <b-form-file id="file" ref="file" v-on:change="handleFileUpload()"></b-form-file>
-                            <b-form-input type="text" id="image" aria-describedby="namaHelp" placeholder="Masukan Foto" v-model="dataCandidate.image"></b-form-input>
+                            <b-form-file id="file" ref="file" v-on:change="handleFileUpload()" placeholder="upload gambar disini"></b-form-file>
+                            <!-- <b-form-input type="text" id="image" aria-describedby="namaHelp" placeholder="Masukan Foto" v-model="dataCandidate.image"></b-form-input> -->
                         </b-form-group>
                         <b-form-group label="Deskripsi :" label-for="short">
                             <vue-editor type="text" id="short" aria-describedby="namaHelp" placeholder="Masukan Deskripsi" v-model="dataCandidate.description.short"></vue-editor>
@@ -57,9 +57,9 @@ export default {
             formData.append('name', this.dataCandidate.name);
             formData.append('number', this.dataCandidate.number);
             formData.append('image', this.dataCandidate.image);
-            formData.append('shortDescription', this.dataCandidate.shortDescription);
-            formData.append('visionDescription', this.dataCandidate.visionDescription);
-            formData.append('missionDescription', this.dataCandidate.missionDescription);
+            formData.append('shortDescription', this.dataCandidate.description.short);
+            formData.append('visionDescription', this.dataCandidate.description.vision);
+            formData.append('missionDescription', this.dataCandidate.description.mission);
 
             axios.put("http://localhost:3000/api/v1/candidate/"+this.$route.params.id, formData,
                 {
@@ -67,8 +67,8 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
                 }
-            ).then(function(){
-                console.log('SUCCESS!!');
+            ).then(() => {
+                this.$router.push("/admin/candidate")
             })
             .catch(function(){
                 console.log('FAILURE!!');

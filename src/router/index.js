@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+// Admin
 import HomeAdmin from '../views/admin/Home.vue'
 import IndexParticipant from '../views/admin/participant/IndexParticipant.vue'
 import ListParticipant from '../views/admin/participant/ListParticipant.vue'
@@ -13,9 +14,12 @@ import ListCandidate from '../views/admin/candidate/ListCandidate.vue'
 import CreateCandidate from '../views/admin/candidate/CreateCandidate.vue'
 import EditCandidate from '../views/admin/candidate/EditCandidate.vue'
 import DetailCandidate from '../views/admin/candidate/DetailCandidate.vue'
+// Voting
 import Generate from '../views/Generate.vue'
-import Scan from '../views/Scan.vue'
-import ListCandidateVoting from '../views/ListCandidateVoting.vue'
+import HomeVote from '../views/vote/Home.vue'
+import Scan from '../views/vote/Scan.vue'
+import Voting from '../views/vote/Voting.vue'
+import Announcement from '../views/vote/Announcement.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex);
@@ -106,21 +110,33 @@ const routes = [
     component: Generate
   },
   {
-    path: '/scan',
-    name: 'Scan',
-    component: Scan
-  },
-  {
-    path: '/listcandidate',
-    name: 'ListCandidateVoting',
-    component: ListCandidateVoting,
-    beforeEnter: (to, from, next) => {
-      if(store.state.authenticated == false) {
-          next({ name: 'Scan'});
-      } else {
-          next();
+    path: '/vote',
+    name: 'vote',
+    component: HomeVote,
+    children: [
+      {
+        path: 'scan',
+        name: 'Scan',
+        component: Scan
+      },
+      {
+        path: 'voting/:id',
+        name: 'Voting',
+        component: Voting,
+        beforeEnter: (to, from, next) => {
+          if(store.state.authenticated == false) {
+              next({ name: 'Scan'});
+          } else {
+              next();
+          }
+        }
+      },
+      {
+        path: 'announcement',
+        name: 'Announcement',
+        component: Announcement
       }
-    }
+    ] 
   }
 ]
 

@@ -22,7 +22,7 @@
                 <td> {{ participant.nim }} </td>
                 <td> {{ participant.email }} </td>
                 <td>
-                  <router-link :to="'participant/'+participant._id">
+                  <router-link :to="{name:'ParticipantDetail',params : {id:participant._id}}">
                     <b-button href="" variant="primary">Details</b-button>
                   </router-link>
                 </td>

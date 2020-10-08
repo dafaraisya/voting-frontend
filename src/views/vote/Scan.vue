@@ -1,8 +1,7 @@
 <template>
   <div class="scan">
-      <Header/>
       <h2>Scan qr Code anda disini</h2>
-      <p>{{ error }}</p>
+      <h2>{{ error }}</h2>
       <div style=
       "display: block;
         margin-left: auto;
@@ -11,21 +10,19 @@
         max-width: 1000px;">
         <qrcode-stream @decode="onDecode"></qrcode-stream>
         <br> <h2>atau</h2>
+        <h2>{{ error }}</h2>
         <qrcode-capture @decode="onDecode" />
       </div>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-
 import axios from 'axios'
 import { QrcodeStream,QrcodeCapture } from 'vue-qrcode-reader'
 
 export default {
   name: 'Scan',
   components: {
-    Header,
     QrcodeStream,
     QrcodeCapture
   },
@@ -45,10 +42,16 @@ export default {
       this.id = decodedString;
       for(let i = 0; i <= this.dataParticipants.length; i++) {
         if(this.dataParticipants[i]._id === this.id) {
-          this.$store.commit("setAuthentication", true);
-          this.$router.replace({ name: "ListCandidateVoting" });
+          var thisSession = JSON.parse(JSON.stringify(this.dataParticipants[i]));
+          if(Object.prototype.hasOwnProperty.call(thisSession, 'voting')) {
+            this.error = "sudah mengisi"
+            break;
+          } else {
+            this.$store.commit("setAuthentication", true);
+            this.$router.replace({ name: "Voting", params : {id:this.dataParticipants[i]._id} });
+          }
         } else {
-          this.error = "Data tidak Ditemukan"
+          this.error = "Qr Code Salah"
         }
       }
     }

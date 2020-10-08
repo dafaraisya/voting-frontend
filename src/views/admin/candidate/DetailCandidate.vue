@@ -37,7 +37,7 @@ export default {
         del(){
             axios
                 .delete("http://localhost:3000/api/v1/candidate/"+this.$route.params.id)
-                .then(() => this.$router.push({name: "ListParticipant"}))
+                .then(() => this.$router.push({name: "ListCandidate"}))
                 .catch( err => console.log(err));
         }
     },

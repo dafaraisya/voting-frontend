@@ -20,7 +20,7 @@
                 <td scope="row">{{ index+1 }}</td>
                 <td> {{ candidate.name }} </td>
                 <td> {{ candidate.number }} </td>
-                <td> {{ candidate.description.short }} </td>
+                <td v-html="candidate.description.short"></td>
                 <td>
                   <router-link :to="{name:'DetailCandidate', params: {id: candidate._id}}">
                     <b-button href="" variant="primary">Detail</b-button>

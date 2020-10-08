@@ -12,8 +12,9 @@
                         <b-form-group label="No Urut :" label-for="number">
                             <b-form-input type="text" id="number" aria-describedby="namaHelp" placeholder="Masukan No urut" v-model="dataCandidate.number"></b-form-input>
                         </b-form-group>
-                        <b-form-group label="Foto :" label-for="image">
-                            <b-form-input type="text" id="image" aria-describedby="namaHelp" placeholder="Masukan Foto" v-model="dataCandidate.image"></b-form-input>
+                        <b-form-group label="Foto :" label-for="file">
+                            <b-form-file id="file" ref="file" v-on:change="handleFileUpload()" v-model="dataCandidate.image"></b-form-file>
+                            <!-- <b-form-input type="text" id="image" aria-describedby="namaHelp" placeholder="Masukan Foto" v-model="dataCandidate.image"></b-form-input> -->
                         </b-form-group>
                         <b-form-group label="Deskripsi :" label-for="short">
                             <vue-editor type="text" id="short" aria-describedby="namaHelp" placeholder="Masukan Deskripsi" v-model="dataCandidate.description.short"></vue-editor>
@@ -62,12 +63,13 @@ export default {
 
         axios
             .post("http://localhost:3000/api/v1/candidate", data)
-            .then((res) => {
-                console.log("result: "+JSON.stringify(res.data));
-                //this.$router.push({name: 'ListCandidate'})
-            })
+            .then(() => this.$router.push({name: 'ListCandidate'}))
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));
+        },
+        
+        handleFileUpload(){
+            this.dataCandidate.image = this.$refs.file.files[0];
         } 
     }
 }

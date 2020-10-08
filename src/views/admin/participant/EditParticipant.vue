@@ -15,6 +15,21 @@
                         <b-form-group label="Email :" label-for="email">
                             <b-form-input type="text" id="email" aria-describedby="namaHelp" placeholder="Masukan Email" v-model="dataParticipant.email"></b-form-input>
                         </b-form-group>
+                        Sesi
+                        <b-form-group label="Tanggal mulai :" label-for="email">
+                            <b-form-input type="date" id="date1" v-model="session.min.date"></b-form-input>
+                        </b-form-group>
+
+                        <b-form-group label="Jam mulai :" label-for="email">
+                            <b-form-input type="time" id="date1" v-model="session.min.time"></b-form-input>
+                        </b-form-group>
+
+                        <b-form-group label="Tanggal berakhir :" label-for="email">
+                            <b-form-input type="date" id="date1" v-model="session.max.date"></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="Jam berakhir :" label-for="email">
+                            <b-form-input type="time" id="date1" v-model="session.max.time"></b-form-input>
+                        </b-form-group>
                         <a @click="editData();" href="#" class="btn btn-primary" type="submit">
                             Ubah Data
                         </a>
@@ -36,6 +51,16 @@ export default {
             name: '',
             nim: '',
             email: ''
+        },
+        session: {
+            min: {
+                date: '',
+                time: '',
+            },
+            max: {
+                date: '',
+                time: '',
+            }
         }
       }
   },
@@ -45,7 +70,9 @@ export default {
         let data = {
             'name': this.dataParticipant.name,
             'nim': this.dataParticipant.nim,
-            'email': this.dataParticipant.email
+            'email': this.dataParticipant.email,
+            'sessionMin': this.session.min.date+"T"+this.session.min.time,
+            'sessionMax': this.session.max.date+"T"+this.session.max.time,
         };
 
         axios
