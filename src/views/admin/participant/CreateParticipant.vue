@@ -15,6 +15,21 @@
                         <b-form-group label="Email :" label-for="email">
                             <b-form-input type="text" id="email" aria-describedby="namaHelp" placeholder="Masukan Email" v-model="dataParticipant.email"></b-form-input>
                         </b-form-group>
+                        Sesi
+                        <b-form-group label="Tanggal mulai :" label-for="email">
+                            <b-form-input type="date" id="date1" v-model="session.min.date"></b-form-input>
+                        </b-form-group>
+
+                        <b-form-group label="Jam mulai :" label-for="email">
+                            <b-form-input type="time" id="date1" v-model="session.min.time"></b-form-input>
+                        </b-form-group>
+
+                        <b-form-group label="Tanggal berakhir :" label-for="email">
+                            <b-form-input type="date" id="date1" v-model="session.max.date"></b-form-input>
+                        </b-form-group>
+                        <b-form-group label="Jam berakhir :" label-for="email">
+                            <b-form-input type="time" id="date1" v-model="session.max.time"></b-form-input>
+                        </b-form-group>
                         <a @click="addData();" href="#" class="btn btn-primary" type="submit">
                             Tambah Data
                         </a>
@@ -32,11 +47,21 @@ export default {
     name: 'CreateParticipant',
     data() {
         return {
-        dataParticipant: {
-            name: '',
-            nim: '',
-            email: ''
-        }
+            dataParticipant: {
+                name: '',
+                nim: '',
+                email: ''
+            },
+            session: {
+                min: {
+                    date: '',
+                    time: '',
+                },
+                max: {
+                    date: '',
+                    time: '',
+                }
+            }
         }
     },
     methods: {
@@ -44,12 +69,16 @@ export default {
         let data = {
             'name': this.dataParticipant.name,
             'nim': this.dataParticipant.nim,
-            'email': this.dataParticipant.email
+            'email': this.dataParticipant.email,
+            'sessionMin': this.session.min.date+"T"+this.session.min.time,
+            'sessionMax': this.session.max.date+"T"+this.session.max.time,
         };
 
         axios
             .post("http://localhost:3000/api/v1/participant", data)
-            .then(() => this.$router.push({name: 'ListParticipant'}))
+            .then((data) => { 
+                this.$router.push({name: 'ListParticipant'});
+            })
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));
         } 
