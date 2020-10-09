@@ -22,8 +22,8 @@
                 <td> {{ participant.nim }} </td>
                 <td> {{ participant.email }} </td>
                 <td>
-                  <router-link :to="{name:'ParticipantDetail',params : {id:participant._id}}">
-                    <b-button href="" variant="primary">Details</b-button>
+                  <router-link :to="{name:'DetailParticipant',params:{id:participant._id}}">
+                    <b-button href="" variant="primary">Detail</b-button>
                   </router-link>
                 </td>
             </tr>    
