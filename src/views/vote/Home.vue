@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <Header/>
+  <div class="home-voting">
     <router-view/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/Header.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    Header
-  }
+  name: 'Home'
 }
 </script>
+<style scoped>
+.home-voting {
+    background-image: url('./../../assets/background-ugm.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 657px;
+}
+</style>
+

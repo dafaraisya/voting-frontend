@@ -1,6 +1,8 @@
 <template>
   <div class="voting">
     <div class="container text-left">
+        <img src="" alt="">
+        <h1 class="text-white tittle">PEMIRA HIMATIPA 2020</h1>
         <h4 class="mt-5 mb-5">Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar calon dibawah ini</h4>
         
         <b-card v-for="candidate in candidates" :key="candidate._id"
@@ -20,7 +22,7 @@
             <h4>Misi : </h4>
             <p v-html="candidate.description.mission"></p>
           </b-card-text>
-          <b-button @click="vote(candidate._id)" href="#" variant="primary">Pilih</b-button>
+          <b-button @click="vote(candidate._id, candidate.name)" href="#" variant="primary">Pilih</b-button>
         </b-card>
     </div>
   </div>
@@ -39,26 +41,28 @@ export default {
     }
   },
   methods: {
-    vote(id_candidate) {
-      let data = {
-        'id_participant' : this.participant._id,
-        'id_candidate' : id_candidate
-      }
-      axios
-          .put("http://localhost:3000/api/v1/candidate/count", {
-            "id" : id_candidate
-          })
-          .then(() => (
-            this.$store.commit("setAuthentication", false)
-          ))
-          .catch( err => console.log(err));
+    vote(id_candidate, name_candidate) {
+      if(confirm("Yakin Anda akan memilih "+name_candidate)) {
+        let data = {
+          'id_participant' : this.participant._id,
+          'id_candidate' : id_candidate
+        }
+        axios
+            .put("http://localhost:3000/api/v1/candidate/count", {
+              "id" : id_candidate
+            })
+            .then(() => (
+              this.$store.commit("setAuthentication", false)
+            ))
+            .catch( err => console.log(err));
 
-      axios
-          .put("http://localhost:3000/api/v1/participant/vote", data)
-          .then(() => (
-            this.$router.push({ name: "Scan" })
-          ))
-          .catch( err => console.log(err));
+        axios
+            .put("http://localhost:3000/api/v1/participant/vote", data)
+            .then(() => (
+              this.$router.push({ name: "Scan" })
+            ))
+            .catch( err => console.log(err));
+      }
     }
   },
   mounted() {
