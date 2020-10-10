@@ -1,7 +1,7 @@
 <template>
   <div class="scan">
       <img src="" alt="">
-      <h1 class="text-white tittle">PEMIRA HIMATIPA 2020</h1>
+      <h1 class="text-white tittle">PEMIRA HIMATIPA UGM 2020</h1>
       <div class="alert text-center">
         <b-alert md="3" v-model="showError" variant="danger" dismissible>
           <h5>{{ error }}</h5>
@@ -52,6 +52,7 @@ export default {
   },
   methods:{
     onDecode (decodedString) {
+      console.log(decodedString);
       this.id = decodedString;
       for(let i = 0; i <= this.dataParticipants.length; i++) {
         // cek id partisipan ada atau tidak

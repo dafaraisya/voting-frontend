@@ -1,10 +1,9 @@
 <template>
-    <div class="edit-session">
-        <h1>Edit Sesi</h1>
-        <b-container fluid>
-            <b-row>
-                <b-col lg="3"></b-col>
-                <b-col lg="6">
+    <b-container>
+        <b-row>
+            <b-col lg="8">
+                <div class="container bg-white mt-2 p-3 shadow-sm rounded">
+                    <h1>Edit Sesi</h1>
                     <b-form class="text-left ml-5 mt-4 mr-5">
                         <b-form-group label="Sesi ke :" label-for="session_number">
                             <b-form-input type="number" id="session_number" v-model="dataSession.number"></b-form-input>
@@ -22,13 +21,14 @@
                             <b-form-input type="time" id="ended_time" v-model="dataSession.end.time"></b-form-input>
                         </b-form-group>
                         <a @click="editData();" href="#" class="btn btn-primary" type="submit">
-                            Ubah Data
+                            <i class="far fa-save text-white"></i>
+                            Simpan
                         </a>
                     </b-form>
-                </b-col>
-            </b-row>
-        </b-container>
-    </div>
+                </div>
+        </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>

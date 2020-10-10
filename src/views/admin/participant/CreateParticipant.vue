@@ -1,10 +1,9 @@
 <template>
-    <div class="create-participant">
-        <h1 class="mt-2">Tambah Participant</h1>
-        <b-container fluid>
-            <b-row>
-                <b-col lg="3"></b-col>
-                <b-col lg="6">
+    <b-container>
+        <b-row>
+            <b-col lg="8">
+                <b-container class="bg-white p-3 mt-3 shadow-sm rounded">
+                <h1 class="mt-2">Buat Peserta</h1>
                     <b-form class="text-left ml-5 mt-4 mr-5">
                         <b-form-group label="Nama lengkap :" label-for="namaLengkap">
                             <b-form-input type="text" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataParticipant.name"></b-form-input>
@@ -22,17 +21,19 @@
                             </div>
                         </b-form-group>
                         <a @click="addData();" href="#" class="btn btn-primary" type="submit">
-                            Tambah Data
+                            <i class="far fa-save text-white"></i>
+                            Simpan
                         </a>
                     </b-form>
-                </b-col>
-            </b-row>
-        </b-container>
-    </div>
+                </b-container>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default {
     name: 'CreateParticipant',
     data() {
@@ -57,6 +58,7 @@ export default {
             'sessionMin': this.sessions[this.dataParticipant.session - 1].start,
             'sessionMax': this.sessions[this.dataParticipant.session - 1].end,
         };
+
         axios
             .post("http://localhost:3000/api/v1/participant", data)
             .then(() => { 

@@ -1,33 +1,34 @@
 <template>
-    <div>
-        <div class="container">
-            <div id="qrcode-card">
-                <b-card
-                    img-alt="Image"
-                    img-top
-                    tag="article"
-                    style="max-width: 20rem;
-                            display: block;
-                            margin-left: auto;
-                            margin-right: auto;"
-                    class="mb-2 mt-2"
-                >
-                    <vue-qr :text="String(detail._id)" :callback="test" qid="testid"></vue-qr>
-                    <b-card-text>
-                        <p>Nama : {{ detail.name }}</p>
-                        <p>NIM : {{ detail.nim }}</p>
-                        <p>Email : {{ detail.email }}</p>
-                        <p>Session : {{ detail.session.number }}</p>
-                    </b-card-text>
-                </b-card>
-            </div>
-            <b-button @click="download(detail.name)" class="ml-2" href="" variant="primary">Download</b-button>
-            <router-link :to="'edit/'+detail._id">
-                <b-button class="ml-2" href="" variant="primary">Edit</b-button>
-            </router-link>
-            <b-button @click="del();" class="ml-2" href="" variant="primary">Delete</b-button>
-        </div>
-    </div>
+    <b-container>
+        <b-row>
+            <b-col lg="6">
+                <div class="container bg-white mt-2 p-3 shadow-sm rounded">
+                    <div id="pemira-card" class="p-3 bg-white" style="border: 2px inset #21bf73">
+                        <h2>Kartu Pemilihan<br/>PEMIRA 2020</h2>
+                        <vue-qr v-bind:text="detail._id"></vue-qr><br/>
+                        <b>Nama</b><br/> {{ detail.name }}<br/>
+                        <b>NIM</b><br/> {{ detail.nim }}<br/>
+                        <b>Email</b><br/> {{ detail.email }}<br/>
+                        <b>Sesi</b><br/> {{ detail.session.number }}<br/>
+                    </div><br/>
+                    <b-button @click="download('Kartu Pemilihan Pemira 2020_'+detail.name+'_'+detail.nim)" class="ml-2" href="" variant="primary">
+                        <i class="fas fa-file-download"></i>
+                        Unduh
+                    </b-button>
+                    <router-link :to="{name:'EditParticipant', params:{id:detail._id}}">
+                        <b-button class="ml-2" href="" variant="primary">
+                            <i class="far fa-edit text-white"></i>
+                            Ubah
+                        </b-button>
+                    </router-link>
+                    <b-button @click="del();" class="ml-2" href="" variant="primary">
+                        <i class="far fa-trash-alt text-white"></i>
+                        Hapus
+                    </b-button>
+                </div>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 <script>
 import axios from 'axios'
@@ -44,14 +45,12 @@ export default {
             detail: {
                 session: {
                     number: 0,
-                }
+                },
+                logoSrc: ""
             },
         }
     },
     methods:{
-        test(dataUrl,id){
-            console.log(dataUrl, id)
-        },
         del(){
             axios
                 .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
@@ -59,7 +58,7 @@ export default {
                 .catch( err => console.log(err));
         },
         download(cardName) {
-            htmlToImage.toPng(document.getElementById('qrcode-card')) 
+            htmlToImage.toPng(document.getElementById('pemira-card')) 
             .then(function (dataUrl) {
                 var link = document.createElement('a');
                 link.download = cardName;

@@ -1,31 +1,56 @@
+<style>
+.header {
+    background-color: #21bf73;
+    color: #ffffff;
+}
+.text-bold {
+    font-weight: bold;
+}
+.text-normal {
+    font-weight: normal;
+}
+.inline {
+    display: inline;
+}
+</style>
 <template>
-    <div class="home" id="app">
-        <b-navbar toggleable="sm" type="light" variant="light">
-            <div class="container">
-                <b-navbar-toggle target="nav-text-collapse"></b-navbar-toggle>
-
-                <b-navbar-brand>Sistem Voting</b-navbar-brand>
-
-                <b-collapse id="nav-text-collapse" is-nav>
-                <b-navbar-nav>
-                    <router-link :to="{name: 'ListSession'}">
-                        <b-nav-text class="mr-2">Sesi</b-nav-text>
-                    </router-link>
-                    <router-link :to="{name: 'ListParticipant'}">
-                        <b-nav-text class="mr-2">Partisipan</b-nav-text>
-                    </router-link>
-                    <router-link :to="{name: 'ListCandidate'}">
-                        <b-nav-text class="mr-2">Kandidat</b-nav-text>
-                    </router-link>
-                </b-navbar-nav>
-                </b-collapse>
-            </div>
-        </b-navbar>
-    </div>
+    <b-container>
+    <b-navbar class="header bg-secondary rounded-lg">
+        <b-navbar-brand class="text-white text-bold">{{ location }}</b-navbar-brand>
+        <b-collapse id="nav-text-collapse" is-nav>
+        <b-navbar-nav>
+        </b-navbar-nav>
+        </b-collapse>
+    </b-navbar>
+    </b-container>
 </template>
 
 <script>
 export default {
-    name : 'Header'
+    name : 'Header',
+    data() {
+        return {
+            textBold: 'text-bold',
+            location: '',
+        }
+    },
+    methods: {
+        setLocation() {
+            if(window.location.href.includes("session"))
+                this.location = "Sesi";
+            else if(window.location.href.includes("participant"))
+                this.location = "Peserta";
+            else
+                this.location = "Kandidat";
+        }
+    },
+    watch:{
+        $route (){           
+            this.setLocation();
+        }
+    }, 
+    created() {
+        this.setLocation();
+    }
 }
 </script>

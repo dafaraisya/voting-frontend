@@ -2,11 +2,11 @@
   <div class="voting">
     <div class="container text-left">
         <img src="" alt="">
-        <h1 class="text-white tittle">PEMIRA HIMATIPA 2020</h1>
+        <h1 class="text-white tittle">PEMIRA HIMATIPA UGM 2020</h1>
         <h4 class="mt-5 mb-5">Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar calon dibawah ini</h4>
         
         <b-card v-for="candidate in candidates" :key="candidate._id"
-            :img-src="candidate.image"
+            :img-src="getImage(candidate.image)"
             img-alt="Card image" 
             img-left 
             class="mb-3"
@@ -63,6 +63,9 @@ export default {
             ))
             .catch( err => console.log(err));
       }
+    },
+    getImage(url) {
+      return '../../' + url.split('/')[6]+'/' + url.split('/')[7]
     }
   },
   mounted() {

@@ -147,7 +147,7 @@ const routes = [
     component: HomeVote,
     children: [
       {
-        path: 'scan',
+        path: '',
         name: 'Scan',
         component: Scan
       },

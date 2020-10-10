@@ -1,10 +1,8 @@
 <template>
-    <div class="edit-participant">
-        <h1>Edit Participant</h1>
-        <b-container fluid>
-            <b-row>
-                <b-col lg="3"></b-col>
-                <b-col lg="6">
+    <b-container>
+        <b-row>
+            <b-col lg="8">
+                <div class="container bg-white mt-2 p-3 shadow-sm rounded">
                     <b-form class="text-left ml-5 mt-4 mr-5">
                         <b-form-group label="Nama lengkap :" label-for="namaLengkap">
                             <b-form-input type="text" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataParticipant.name"></b-form-input>
@@ -22,17 +20,19 @@
                             </div>
                         </b-form-group>
                         <a @click="editData();" href="#" class="btn btn-primary" type="submit">
-                            Ubah Data
+                            <i class="far fa-save text-white"></i>
+                            Simpan
                         </a>
                     </b-form>
-                </b-col>
-            </b-row>
-        </b-container>
-    </div>
+                </div>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default {
     name: 'EditParticipant',
     data() {
@@ -59,6 +59,7 @@ export default {
                 'sessionMin': this.sessions[this.dataParticipant.session.number - 1].start,
                 'sessionMax': this.sessions[this.dataParticipant.session.number - 1].end,
             };
+
             axios
             .put("http://localhost:3000/api/v1/participant/"+this.$route.params.id, data)
             .then(() => this.$router.push({name:'ListParticipant'}))
@@ -71,6 +72,7 @@ export default {
         .get('http://localhost:3000/api/v1/session/all')
         .then(res => (this.sessions = res.data.data))
         .catch(error => console.log(error))
+
         axios
         .get('http://localhost:3000/api/v1/participant/'+this.$route.params.id)
         .then(res => (this.dataParticipant = res.data.data))
