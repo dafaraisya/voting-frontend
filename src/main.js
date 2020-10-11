@@ -7,9 +7,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import Vue2Editor from "vue2-editor";
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+import VueParticles from 'vue-particles'
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 Vue.use(Vue2Editor);
+Vue.use(VueParticles);
 Vue.config.productionTip = false
 
 new Vue({

@@ -19,10 +19,13 @@ import ListCandidate from '../views/admin/candidate/ListCandidate.vue'
 import CreateCandidate from '../views/admin/candidate/CreateCandidate.vue'
 import EditCandidate from '../views/admin/candidate/EditCandidate.vue'
 import DetailCandidate from '../views/admin/candidate/DetailCandidate.vue'
-// Voting
+// Voting                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              .vue'
 import Generate from '../views/Generate.vue'
 import HomeVote from '../views/vote/Home.vue'
 import Scan from '../views/vote/Scan.vue'
+import Upload from '../views/vote/Upload.vue'
+import Welcome from '../views/vote/Welcome.vue'
+import Method from '../views/vote/Method.vue'
 import Voting from '../views/vote/Voting.vue'
 import Announcement from '../views/vote/Announcement.vue'
 
@@ -148,8 +151,23 @@ const routes = [
     children: [
       {
         path: '',
+        name: 'Welcome',
+        component: Welcome
+      },
+      {
+        path: 'method',
+        name: 'Method',
+        component: Method
+      },
+      {
+        path: 'scan',
         name: 'Scan',
         component: Scan
+      },
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: Upload
       },
       {
         path: 'voting/:id',

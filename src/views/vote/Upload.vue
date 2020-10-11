@@ -1,19 +1,20 @@
 <template>
   <div class="scan">
       <img src="" alt="">
-      <h1 class="text-white tittle">Scan kartu</h1>
+      <h1 class="text-white tittle">Unggah kartu</h1>
       <div class="alert text-center">
         <b-alert md="3" v-model="showError" variant="danger" dismissible>
           <h5>{{ error }}</h5>
         </b-alert>
       </div>
 
+
       <div class="scanner-card">
         <b-row>
           <b-col lg="3"/>
           <b-col lg="6">
             <b-container class="bg-white p-3 rounded-sm shadow-sm">
-              <qrcode-stream @decode="onDecode"></qrcode-stream>
+              <qrcode-capture @decode="onDecode"/>
             </b-container>
           </b-col>
         </b-row>
@@ -23,12 +24,12 @@
 
 <script>
 import axios from 'axios'
-import { QrcodeStream } from 'vue-qrcode-reader'
+import { QrcodeCapture } from 'vue-qrcode-reader'
 
 export default {
   name: 'Scan',
   components: {
-    QrcodeStream
+    QrcodeCapture
   },
   data() {
     return {
@@ -44,7 +45,6 @@ export default {
   },
   methods:{
     onDecode (decodedString) {
-      console.log(decodedString);
       this.id = decodedString;
       for(let i = 0; i <= this.dataParticipants.length; i++) {
         // cek id partisipan ada atau tidak

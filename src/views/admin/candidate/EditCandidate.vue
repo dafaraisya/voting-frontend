@@ -2,6 +2,7 @@
     <b-container>
         <b-row>
             <b-col lg="8">
+                <div class="container bg-white mt-2 p-3 shadow-sm rounded">
                 <b-form class="text-left ml-5 mt-4 mr-5">
                     <b-form-group label="Nama lengkap :" label-for="namaLengkap">
                         <b-form-input type="text" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataCandidate.name"></b-form-input>
@@ -11,7 +12,6 @@
                     </b-form-group>
                     <b-form-group label="Foto :" label-for="image">
                         <b-form-file id="file" ref="file" v-on:change="handleFileUpload()"></b-form-file>
-                        <b-form-input type="text" id="image" aria-describedby="namaHelp" placeholder="Masukan Foto" v-model="dataCandidate.image"></b-form-input>
                     </b-form-group>
                     <b-form-group label="Deskripsi :" label-for="short">
                         <vue-editor type="text" id="short" aria-describedby="namaHelp" placeholder="Masukan Deskripsi" v-model="dataCandidate.description.short"></vue-editor>
@@ -26,6 +26,7 @@
                         Ubah Data
                     </a>
                 </b-form>
+                </div>
             </b-col>
         </b-row>
     </b-container>

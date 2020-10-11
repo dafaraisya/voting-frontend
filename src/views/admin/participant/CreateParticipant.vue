@@ -3,7 +3,7 @@
         <b-row>
             <b-col lg="8">
                 <b-container class="bg-white p-3 mt-3 shadow-sm rounded">
-                <h1 class="mt-2">Buat Peserta</h1>
+                <h1 class="mt-2">Tambah Peserta</h1>
                     <b-form class="text-left ml-5 mt-4 mr-5">
                         <b-form-group label="Nama lengkap :" label-for="namaLengkap">
                             <b-form-input type="text" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataParticipant.name"></b-form-input>

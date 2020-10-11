@@ -15,13 +15,15 @@
 </style>
 <template>
     <b-container>
-    <b-navbar class="header bg-secondary rounded-lg">
-        <b-navbar-brand class="text-white text-bold">{{ location }}</b-navbar-brand>
-        <b-collapse id="nav-text-collapse" is-nav>
-        <b-navbar-nav>
-        </b-navbar-nav>
-        </b-collapse>
-    </b-navbar>
+        <b-navbar class="header bg-secondary rounded-lg">
+            <b-navbar-brand class="text-white text-bold">{{ location }}</b-navbar-brand>
+            <b-collapse id="nav-text-collapse" is-nav>
+            </b-collapse>
+
+            <i class="fas fa-arrow-left mr-2"></i>
+            Keluar
+        </b-navbar>
+        
     </b-container>
 </template>
 
