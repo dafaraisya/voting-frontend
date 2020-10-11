@@ -3,7 +3,12 @@
     <div class="container">
       <img src="" alt="">
       <h1 class="text-white tittle">HASIL PEROLEHAN PERHITUNGAN SUARA</h1>
-      <h5 class="text-left mt-5">Perolehan Suara Tiap Calon</h5>
+      <notification v-if="$route.query.success === true" messageType="success" >
+        <div class="alert text-center">
+          <b-alert variant="success" show dismissible>Vote Anda Berhasil Dikirim</b-alert>
+        </div>
+      </notification>
+      <h5 class="text-left text-white mt-5">Perolehan Suara Tiap Calon</h5>
       <hr>
       <div class="mb-3" v-for="candidate in candidates" :key="candidate._id">
         <b-card :title="candidate.name" class="card">
@@ -53,7 +58,6 @@ export default {
 </script>
 <style scoped>
 .tittle, h1 {
-    margin-top: 20px;
     font-weight: bold;
 }
 .card {

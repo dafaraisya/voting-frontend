@@ -3,27 +3,28 @@
     <div class="container text-left">
         <img src="" alt="">
         <h1 class="text-white tittle">PEMIRA HIMATIPA UGM 2020</h1>
-        <h4 class="mt-5 mb-5">Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar calon dibawah ini</h4>
-        
-        <b-card v-for="candidate in candidates" :key="candidate._id"
-            :img-src="getImage(candidate.image)"
-            img-alt="Card image" 
-            img-left 
-            class="mb-3"
-        >
-          <b-card-text>
-            <h4>No urut : {{candidate.number}}</h4>
-            <h4>Nama : </h4>
-            <p>{{candidate.name}}</p>
-            <h4>Deskripsi : </h4>
-            <p v-html="candidate.description.short"></p>
-            <h4>Visi : </h4>
-            <p v-html="candidate.description.vision"></p>
-            <h4>Misi : </h4>
-            <p v-html="candidate.description.mission"></p>
-          </b-card-text>
-          <b-button @click="vote(candidate._id, candidate.name)" href="#" variant="primary">Pilih</b-button>
-        </b-card>
+        <h4 class="text-white mt-1 mb-5">Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar calon dibawah ini</h4>
+        <b-row>
+          <b-col lg="4" class="mb-5 text-center" v-for="candidate in candidates" :key="candidate._id">
+              <b-container class="bg-white p-0 rounded-sm shadow">
+                <img class="img-profile" v-bind:src="getImage(candidate.image)"/>
+                <b-container class="mt-2 pb-2">
+                  <b> {{ candidate.name }} </b> <br/>
+                  {{ candidate.number }} <br/>
+                  <router-link :to="{name:'DetailCandidateVoting', params: {id: candidate._id}}">
+                    <b-button class="mt-2" variant="primary">
+                      <i class="fas fa-info-circle text-white"></i>
+                      Detail
+                    </b-button>
+                  </router-link>
+                  <b-button @click="vote(candidate._id, candidate.name)" class="mt-2 ml-2" variant="success">
+                    <i class="fas fa-check-circle text-white"></i>
+                    Pilih
+                  </b-button>
+                </b-container>
+              </b-container>
+          </b-col>
+        </b-row>
     </div>
   </div>
 </template>
@@ -48,20 +49,12 @@ export default {
           'id_candidate' : id_candidate
         }
         axios
-            .put("http://localhost:3000/api/v1/candidate/count", {
-              "id" : id_candidate
-            })
-            .then(() => (
-              this.$store.commit("setAuthentication", false)
-            ))
-            .catch( err => console.log(err));
-
-        axios
-            .put("http://localhost:3000/api/v1/participant/vote", data)
-            .then(() => (
-              this.$router.push({ name: "Scan" })
-            ))
-            .catch( err => console.log(err));
+          .put("http://localhost:3000/api/v1/participant/vote", data)
+          .then(() => {
+            this.$store.commit("setAuthentication", false);
+            this.$router.push({ name: "Announcement",query: {'success': true}});
+          })
+          .catch( err => console.log(err));
       }
     },
     getImage(url) {
@@ -81,3 +74,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.tittle, h1 {
+    margin-top: -70px;
+    font-weight: bold;
+}
+</style>

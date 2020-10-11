@@ -1,27 +1,32 @@
 <template>
+<div class="lala">
   <div class="home-voting">
     <vue-particles
-        color="#dedede"
-        :particleOpacity="0.5"
-        :particlesNumber="100"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#dedede"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="2"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
-      >
-      </vue-particles>
-    <div class="container" style="position:absolute; top:calc(50% - 250px); left:calc(50% - 500px);width:1000px; height:500px;">
-      <router-view/>
+      style="position: fixed"
+      color="#dedede"
+      :particleOpacity="0.5"
+      :particlesNumber="100"
+      shapeType="circle"
+      :particleSize="4"
+      linesColor="#dedede"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="150"
+      :moveSpeed="2"
+      :hoverEffect="true"
+      hoverMode="grab"
+      :clickEffect="true"
+      clickMode="push"
+    >
+    </vue-particles>
+    <div class="container voting-page">
+      <transition name="slide-fade" mode="out-in">
+        <router-view/>
+      </transition>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -31,6 +36,14 @@ export default {
 }
 </script>
 <style scoped>
+/* html, body
+{
+  height: 100%;
+} */
+html {
+  min-height: 100% !important;
+  height: 100%;
+}
 .home-voting {
     background: linear-gradient(
             to right,
@@ -44,6 +57,30 @@ export default {
     background-size: cover;
     background-position: center;
     min-height: 700px;
+}
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+}
+.voting-page {
+    position:absolute;
+    top:calc(50% - 250px); 
+    height:500px; 
+}
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  .voting-page {
+    left:calc(50% - 500px);
+    width:1000px; 
+  }
+}
+@media only screen and (max-width: 767px) {
+  .voting-page {
+    left:calc(50% - 240px);
+    width:480px;
+  }
 }
 </style>
 

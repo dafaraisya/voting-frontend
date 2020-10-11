@@ -27,6 +27,7 @@ import Upload from '../views/vote/Upload.vue'
 import Welcome from '../views/vote/Welcome.vue'
 import Method from '../views/vote/Method.vue'
 import Voting from '../views/vote/Voting.vue'
+import DetailCandidateVoting from '../views/vote/Detail.vue'
 import Announcement from '../views/vote/Announcement.vue'
 
 Vue.use(VueRouter)
@@ -173,6 +174,18 @@ const routes = [
         path: 'voting/:id',
         name: 'Voting',
         component: Voting,
+        beforeEnter: (to, from, next) => {
+          if(store.state.authenticated == false) {
+              next({ name: 'Scan'});
+          } else {
+              next();
+          }
+        }
+      },
+      {
+        path: 'detailcandidate/:id',
+        name: 'DetailCandidateVoting',
+        component: DetailCandidateVoting,
         beforeEnter: (to, from, next) => {
           if(store.state.authenticated == false) {
               next({ name: 'Scan'});

@@ -1,5 +1,5 @@
 <template>
-  <div class="scan">
+  <div class="upload page">
       <img src="" alt="">
       <h1 class="text-white tittle">Unggah kartu</h1>
       <div class="alert text-center">
@@ -7,7 +7,6 @@
           <h5>{{ error }}</h5>
         </b-alert>
       </div>
-
 
       <div class="scanner-card">
         <b-row>
@@ -33,7 +32,7 @@ export default {
   },
   data() {
     return {
-      dataParticipants : {
+      dataParticipant : {
         name: '',
         nim: '',
         email: ''
@@ -46,35 +45,38 @@ export default {
   methods:{
     onDecode (decodedString) {
       this.id = decodedString;
-      for(let i = 0; i <= this.dataParticipants.length; i++) {
-        // cek id partisipan ada atau tidak
-        if(this.dataParticipants[i]._id === this.id) {
-          // cek apakah sudah pernah ngisi
-          var thisSession = JSON.parse(JSON.stringify(this.dataParticipants[i]));
-          if(Object.prototype.hasOwnProperty.call(thisSession, 'voting')) {
-            this.error = "Maaf Anda Sudah Melakukan Pemilihan";
-            this.showError = true;
-            break;
-          } else {
-            // cek sesi 
-            const today = new Date();
-            const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+('0' + today.getDate()).slice(-2);
-            const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-            const dateTime = date +'T'+ time + '.000Z';
-            if(this.dataParticipants[i].session.min < dateTime && this.dataParticipants[i].session.max > dateTime) {
-              this.$store.commit("setAuthentication", true);
-              this.$router.replace({ name: "Voting", params : {id:this.dataParticipants[i]._id} });
-              break;
-            } else {
-              this.error = "Maaf Saat ini Bukan Sesi Anda"
-              this.showError = true;
-            }
-            break;
-            
-          }
-        } else {
-          this.error = "Maaf Qr Code yang Anda Masukkan Salah"
+      axios
+        .get("http://localhost:3000/api/v1/participant/"+this.id)
+        .then(res => {
+          this.dataParticipant = res.data.data;
+          this.check();
+        })
+        .catch(err => {console.log(err)});
+    },
+    check() {
+      // cek data partisipan ada enggak
+      if(this.dataParticipant == null) {
+        this.error = "Maaf Qr Code yang Anda Masukkan Salah";
+        this.showError = true;
+      } else {
+        // cek apakah sudah vote apa belum
+        var dataParticipantString = JSON.parse(JSON.stringify(this.dataParticipant));
+        if(Object.prototype.hasOwnProperty.call(dataParticipantString, 'voting')) {
+          this.error = "Maaf Anda Sudah Melakukan Pemilihan";
           this.showError = true;
+        } else {
+          // cek apakah sedang sesinya atau enggak
+          const today = new Date();
+          const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+('0' + today.getDate()).slice(-2);
+          const time = ('0' + today.getHours()).slice(-2) + ":" + today.getMinutes() + ":" + today.getSeconds();
+          const dateTime = date +'T'+ time + '.000Z';
+          if(this.dataParticipant.session.min < dateTime && this.dataParticipant.session.max > dateTime) {
+            this.$store.commit("setAuthentication", true);
+            this.$router.replace({ name: "Voting", params : {id:this.dataParticipant._id} });
+          } else {
+            this.error = "Maaf Saat ini Bukan Sesi Anda"
+            this.showError = true;
+          }
         }
       }
     }
@@ -102,7 +104,7 @@ export default {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 600px;
+    max-width: 500px;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1920px){
