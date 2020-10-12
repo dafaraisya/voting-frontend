@@ -42,8 +42,12 @@ export default {
                 this.location = "Sesi";
             else if(window.location.href.includes("participant"))
                 this.location = "Peserta";
-            else
+            else if(window.location.href.includes("candidate"))
                 this.location = "Kandidat";
+            else if(window.location.href.includes("setting")) 
+                this.location = "Pengaturan";
+            else
+                this.location = "Beranda"
         }
     },
     watch:{

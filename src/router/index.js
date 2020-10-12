@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 // Admin
 import HomeAdmin from '../views/admin/Home.vue'
+import DashboardMain from '../views/admin/dashboard/DashboardMain.vue'
 import IndexSession from '../views/admin/session/IndexSession.vue'
 import ListSession from '../views/admin/session/ListSession.vue'
 import CreateSession from '../views/admin/session/CreateSession.vue'
@@ -19,8 +20,10 @@ import ListCandidate from '../views/admin/candidate/ListCandidate.vue'
 import CreateCandidate from '../views/admin/candidate/CreateCandidate.vue'
 import EditCandidate from '../views/admin/candidate/EditCandidate.vue'
 import DetailCandidate from '../views/admin/candidate/DetailCandidate.vue'
-// Voting                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              .vue'
-import Generate from '../views/Generate.vue'
+import IndexSetting from '../views/admin/setting/IndexSetting.vue'
+import EditSetting from '../views/admin/setting/EditSetting.vue'
+import DetailSetting from '../views/admin/setting/DetailSetting.vue'
+// Voting                                   
 import HomeVote from '../views/vote/Home.vue'
 import Scan from '../views/vote/Scan.vue'
 import Upload from '../views/vote/Upload.vue'
@@ -57,6 +60,11 @@ const routes = [
     name: 'admin',
     component: HomeAdmin,
     children: [
+      {
+        path: '',
+        name: 'DashboardMain',
+        component: DashboardMain
+      },
       {
         path: 'participant',
         name: 'participant',
@@ -138,12 +146,24 @@ const routes = [
           },
         ]
       },
+      {
+        path: 'setting',
+        name: 'Setting',
+        component: IndexSetting,
+        children: [
+          {
+            path: '',
+            name: 'DetailSetting',
+            component: DetailSetting,
+          },
+          {
+            path: 'edit',
+            name: 'EditSetting',
+            component: EditSetting
+          }
+        ]
+      }
     ] 
-  },
-  {
-    path: '/generate',
-    name: 'Generate',
-    component: Generate
   },
   {
     path: '/vote',

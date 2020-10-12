@@ -1,32 +1,44 @@
 <template>
     <div class="wrapper">
-      <nav id="sidebar">
-          <div class="sidebar-header">
-              <h3>PEMIRA HIMATIPA UGM 2020 </h3>
-          </div>
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>PEMIRA HIMATIPA UGM 2020 </h3>
+            </div>
 
-          <ul class="list-unstyled components text-white">
-              <li @click="selectedItem=0" v-bind:class="[selectedItem == 0 ? 'active' : '']">
-                <router-link class="text-white" :to="{name: 'ListSession'}">
-                    <div class="inline"><i class="far fa-calendar-alt" ></i></div>
-                    <b-nav-text class="mr-4 ml-2">Sesi</b-nav-text>
-                </router-link>
-              </li>
-              <li @click="selectedItem=1" v-bind:class="[selectedItem == 1 ? 'active' : '']">
-                <router-link class="text-white" :to="{name: 'ListParticipant'}">
-                    <div class="inline"><i class="fas fa-user-circle" ></i></div>
-                    <b-nav-text class="mr-4 ml-2">Peserta</b-nav-text>
-                </router-link>
-              </li>
-              <li @click="selectedItem=2" v-bind:class="[selectedItem == 2 ? 'active' : '']">
-                <router-link class="text-white" :to="{name: 'ListCandidate'}">
-                    <div class="inline"><i class="far fa-user-circle" ></i></div>
-                    <b-nav-text class="mr-4 ml-2">Kandidat</b-nav-text>
-                </router-link>
-              </li>
-          </ul>
-      </nav>
-  </div>
+            <ul class="list-unstyled components text-white">
+                <li @click="selectedItem=0" v-bind:class="[selectedItem == 0 ? 'active' : '']">
+                    <router-link class="text-white" :to="{name: 'DashboardMain'}">
+                        <div class="inline"><i class="fas fa-home"></i></div>
+                        <b-nav-text class="mr-4 ml-2">Beranda</b-nav-text>
+                    </router-link>
+                </li>
+                <li @click="selectedItem=1" v-bind:class="[selectedItem == 1 ? 'active' : '']">
+                    <router-link class="text-white" :to="{name: 'ListSession'}">
+                        <div class="inline"><i class="far fa-calendar-alt" ></i></div>
+                        <b-nav-text class="mr-4 ml-2">Sesi</b-nav-text>
+                    </router-link>
+                </li>
+                <li @click="selectedItem=2" v-bind:class="[selectedItem == 2 ? 'active' : '']">
+                    <router-link class="text-white" :to="{name: 'ListParticipant'}">
+                        <div class="inline"><i class="fas fa-users"></i></div>
+                        <b-nav-text class="mr-4 ml-2">Peserta</b-nav-text>
+                    </router-link>
+                </li>
+                <li @click="selectedItem=3" v-bind:class="[selectedItem == 3 ? 'active' : '']">
+                    <router-link class="text-white" :to="{name: 'ListCandidate'}">
+                        <div class="inline"><i class="fas fa-user-alt"></i></div>
+                        <b-nav-text class="mr-4 ml-2">Kandidat</b-nav-text>
+                    </router-link>
+                </li>
+                <li @click="selectedItem=4" v-bind:class="[selectedItem == 4 ? 'active' : '']">
+                    <router-link class="text-white" :to="{name: 'DetailSetting'}">
+                        <div class="inline"><i class="fas fa-cogs"></i></div>
+                        <b-nav-text class="mr-4 ml-2">Pengaturan</b-nav-text>
+                    </router-link>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </template>
 
 <script>
@@ -39,20 +51,19 @@ export default {
             scrollY: 0,
         }
     },
-    methods: {
-      handleScroll() {
-        this.scrollY = scrollY;
-      }
-    },
     created() {
-      if(window.location.href.includes("session"))
-        this.selectedItem = 0;
-      else if(window.location.href.includes("participant"))
-        this.selectedItem = 1;
-      else
-        this.selectedItem = 2;
+        if(window.location.href.includes("session"))
+            this.selectedItem = 1;
+        else if(window.location.href.includes("participant"))
+            this.selectedItem = 2;
+        else if(window.location.href.includes("candidate"))
+            this.selectedItem = 3;
+        else if(window.location.href.includes("setting"))
+            this.selectedItem = 4;
+        else
+            this.selectedItem = 0;
 
-      window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll);
     }
 }
 </script>

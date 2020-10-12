@@ -11,7 +11,7 @@
                         <b-form-input type="text" id="number" aria-describedby="namaHelp" placeholder="Masukan No urut" v-model="dataCandidate.number"></b-form-input>
                     </b-form-group>
                     <b-form-group label="Foto :" label-for="image">
-                        <b-form-file id="file" ref="file" v-on:change="handleFileUpload()"></b-form-file>
+                        <input id="file" ref="file" type="file" v-on:change="handleFileUpload()"/>
                     </b-form-group>
                     <b-form-group label="Deskripsi :" label-for="short">
                         <vue-editor type="text" id="short" aria-describedby="namaHelp" placeholder="Masukan Deskripsi" v-model="dataCandidate.description.short"></vue-editor>
@@ -22,9 +22,10 @@
                     <b-form-group label="Misi :" label-for="mission">
                         <vue-editor type="text" id="mission" aria-describedby="namaHelp" placeholder="Masukan Misi" v-model="dataCandidate.description.mission"></vue-editor>
                     </b-form-group>
-                    <a @click="editData();" href="#" class="btn btn-primary" type="submit">
-                        Ubah Data
-                    </a>
+                    <button @click="editData();" class="btn btn-primary" type="submit">
+                        <i class="far fa-save text-white"></i>
+                        Simpan
+                    </button>
                 </b-form>
                 </div>
             </b-col>
@@ -53,22 +54,23 @@ export default {
 
             formData.append('name', this.dataCandidate.name);
             formData.append('number', this.dataCandidate.number);
+            formData.append('shortDescription', this.dataCandidate.description.short);
+            formData.append('visionDescription', this.dataCandidate.description.vision);
+            formData.append('missionDescription', this.dataCandidate.description.mission);
             formData.append('image', this.dataCandidate.image);
-            formData.append('shortDescription', this.dataCandidate.shortDescription);
-            formData.append('visionDescription', this.dataCandidate.visionDescription);
-            formData.append('missionDescription', this.dataCandidate.missionDescription);
 
             axios.put("http://localhost:3000/api/v1/candidate/"+this.$route.params.id, formData,
                 {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 }
             ).then(function(){
-                console.log('SUCCESS!!');
+                console.log('success');
+                this.$router.push({name:'ListParticipant'});
             })
             .catch(function(){
-                console.log('FAILURE!!');
+                console.log('error');
             });
         }, 
         handleFileUpload(){

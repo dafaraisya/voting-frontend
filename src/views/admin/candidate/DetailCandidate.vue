@@ -58,7 +58,7 @@ export default {
                 .catch( err => console.log(err));
         },
         getImage(url) {
-            return '../../' + url.split('/')[6]+'/' + url.split('/')[7]
+            return '../../images/'+url;
         }
     },
     created() {

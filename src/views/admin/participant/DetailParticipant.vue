@@ -11,6 +11,10 @@
                         <b>Email</b><br/> {{ detail.email }}<br/>
                         <b>Sesi</b><br/> {{ detail.session.number }}<br/>
                     </div><br/>
+                    <b-button @click="send(detail.email, detail.name, detail.nim)" class="ml-2" href="" variant="primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Kirim
+                    </b-button>
                     <b-button @click="download('Kartu Pemilihan Pemira 2020_'+detail.name+'_'+detail.nim)" class="ml-2" href="" variant="primary">
                         <i class="fas fa-file-download"></i>
                         Unduh
@@ -56,6 +60,22 @@ export default {
                 .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
                 .then(() => this.$router.push({name:'ListParticipant'}))
                 .catch( err => console.log(err));
+        },
+        send(to, name, nim) {
+            htmlToImage.toPng(document.getElementById('pemira-card')) 
+            .then(function (image) {
+                const data = {
+                    to: to,
+                    name: name,
+                    nim: nim,
+                    image: image,
+                }
+                
+                axios
+                    .post("http://localhost:3000/api/v1/mail/", data)
+                    .then(() => this.$router.push({name:'ListParticipant'}))
+                    .catch( err => console.log(err));
+            });
         },
         download(cardName) {
             htmlToImage.toPng(document.getElementById('pemira-card')) 
