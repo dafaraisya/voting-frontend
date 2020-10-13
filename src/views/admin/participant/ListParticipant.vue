@@ -31,16 +31,6 @@
                 Detail
               </b-button>
             </router-link>
-            <router-link class="ml-2" :to="{name:'EditParticipant',params:{id:participant._id}}">           
-              <b-button variant="primary">
-                <i class="far fa-edit text-white"></i>
-                Ubah
-              </b-button>
-            </router-link>
-            <b-button class="ml-2" @click="del(participant._id)" variant="primary">
-              <i class="far fa-trash-alt text-white"></i>
-              Hapus
-            </b-button>
           </div>
       </div>
   </div>

@@ -36,6 +36,7 @@
 </template>
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import VueQr from 'vue-qr'
 import htmlToImage from 'html-to-image'
 
@@ -56,10 +57,28 @@ export default {
     },
     methods:{
         del(){
-            axios
-                .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
-                .then(() => this.$router.push({name:'ListParticipant'}))
-                .catch( err => console.log(err));
+            Swal.fire({
+                title: 'Apakah anda yakin menghapus peserta ini?',
+                showDenyButton: true,
+                confirmButtonText: `Ya`,
+                denyButtonText: `Tidak`,
+            }).then((result) => {
+                if (result.isConfirmed) {            
+                    axios
+                        .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Peserta berhasil dihapus',
+                                showConfirmButton: true
+                            }).then(()=>{
+                                this.$router.push({name: 'ListParticipant'});
+                            })
+                        })
+                        .catch( err => console.log(err));
+                    Swal.fire('Saved!', '', 'success')
+                } 
+            })
         },
         send(to, name, nim) {
             htmlToImage.toPng(document.getElementById('pemira-card')) 

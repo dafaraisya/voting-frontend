@@ -2,8 +2,7 @@
     <b-container>
         <b-row>
             <b-col lg="8">
-                <div class="container bg-white mt-2 p-3 shadow-sm rounded">
-                <b-form class="text-left ml-5 mt-4 mr-5">
+                <div class="container bg-white mt-2 p-3 text-left shadow-sm rounded">
                     <b-form-group label="Nama lengkap :" label-for="namaLengkap">
                         <b-form-input type="text" id="namaLengkap" aria-describedby="namaHelp" placeholder="Masukan Nama" v-model="dataCandidate.name"></b-form-input>
                     </b-form-group>
@@ -11,6 +10,7 @@
                         <b-form-input type="text" id="number" aria-describedby="namaHelp" placeholder="Masukan No urut" v-model="dataCandidate.number"></b-form-input>
                     </b-form-group>
                     <b-form-group label="Foto :" label-for="image">
+                        <img class="img-profile img-profile-circle" v-bind:src="getImage(dataCandidate.image)"/><br/><br/>
                         <input id="file" ref="file" type="file" v-on:change="handleFileUpload()"/>
                     </b-form-group>
                     <b-form-group label="Deskripsi :" label-for="short">
@@ -22,11 +22,10 @@
                     <b-form-group label="Misi :" label-for="mission">
                         <vue-editor type="text" id="mission" aria-describedby="namaHelp" placeholder="Masukan Misi" v-model="dataCandidate.description.mission"></vue-editor>
                     </b-form-group>
-                    <button @click="editData();" class="btn btn-primary" type="submit">
+                    <button @click="editData();" class="btn btn-primary">
                         <i class="far fa-save text-white"></i>
                         Simpan
                     </button>
-                </b-form>
                 </div>
             </b-col>
         </b-row>
@@ -35,6 +34,7 @@
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'EditCandidate',
@@ -59,22 +59,39 @@ export default {
             formData.append('missionDescription', this.dataCandidate.description.mission);
             formData.append('image', this.dataCandidate.image);
 
-            axios.put("http://localhost:3000/api/v1/candidate/"+this.$route.params.id, formData,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }
-            ).then(function(){
-                console.log('success');
-                this.$router.push({name:'ListParticipant'});
+            Swal.fire({
+                    title: 'Apakah anda yakin mengubah data kandidat ini?',
+                    showDenyButton: true,
+                    confirmButtonText: `Ya`,
+                    denyButtonText: `Tidak`,
+                }).then((result) => {
+                    if (result.isConfirmed) {            
+                        axios
+                            .put("http://localhost:3000/api/v1/candidate/"+this.$route.params.id, formData,
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            })
+                            .then(() => {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data kandidat berhasil diperbarui',
+                                    showConfirmButton: true
+                                }).then(()=>{
+                                    this.$router.push({name: 'ListCandidate'});
+                                })
+                            })
+                            //eslint-disable-next-line no-console
+                            .catch( err => console.log(err));
+                    } 
             })
-            .catch(function(){
-                console.log('error');
-            });
         }, 
         handleFileUpload(){
             this.dataCandidate.image = this.$refs.file.files[0];
+        },
+        getImage(url) {
+            return '../../images/'+url;
         }
     },
     mounted() {

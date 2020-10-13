@@ -1,30 +1,35 @@
 <template>
-    <div class="mt-4 text-left">
-        <div class="container bg-white p-3 rounded-sm shadow">
-            <h1> Sesi {{ detail.number }} </h1>
-            <div class="mt-3">
-                <i class="far fa-clock"></i> 
-                {{ getDateTime(new Date(detail.start)) }} - {{ getDateTime(new Date(detail.end)) }} 
-            </div>
-            <div> 
-                <i class="fas fa-user"></i> {{ detail.total_participant }} peserta </div>
-            <div class="mt-3">
-            </div>    
-            <router-link :to="{name:'EditSession', params:{id:detail._id}}">
-                <b-button class="ml-2" href="" variant="primary">
-                    <i class="far fa-edit text-white"></i>
-                    Ubah
-                </b-button>
-            </router-link>
-            <b-button @click="del();" class="ml-2" href="" variant="primary">
-                <i class="far fa-trash-alt text-white"></i>
-                Hapus
-            </b-button>
-        </div>
-    </div>
+    <b-container>
+        <b-row>
+            <b-col lg="12">
+                <div class="container text-left bg-white p-3 rounded-sm shadow">
+                    <h1> Sesi {{ detail.number }} </h1>
+                    <div class="mt-3">
+                        <i class="far fa-clock"></i> 
+                        {{ getDateTime(new Date(detail.start)) }} - {{ getDateTime(new Date(detail.end)) }} 
+                    </div>
+                    <div> 
+                        <i class="fas fa-user"></i> {{ detail.total_participant }} peserta </div>
+                    <div class="mt-3">
+                    </div>    
+                    <router-link :to="{name:'EditSession', params:{id:detail._id}}">
+                        <b-button class="ml-2" href="" variant="primary">
+                            <i class="far fa-edit text-white"></i>
+                            Ubah
+                        </b-button>
+                    </router-link>
+                    <b-button @click="del();" class="ml-2" href="" variant="primary">
+                        <i class="far fa-trash-alt text-white"></i>
+                        Hapus
+                    </b-button>
+                </div>
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'SessionDetail',
@@ -35,10 +40,28 @@ export default {
     },
     methods:{
         del(){
-            axios
-                .delete("http://localhost:3000/api/v1/session/"+this.$route.params.id)
-                .then(() => this.$router.push({name: 'ListSession'}))
-                .catch( err => console.log(err));
+            Swal.fire({
+                title: 'Apakah anda yakin menghapus sesi ini?',
+                showDenyButton: true,
+                confirmButtonText: `Ya`,
+                denyButtonText: `Tidak`,
+            }).then((result) => {
+                if (result.isConfirmed) {            
+                    axios
+                        .delete("http://localhost:3000/api/v1/session/"+this.$route.params.id)
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Sesi berhasil dihapus',
+                                showConfirmButton: true
+                            }).then(()=>{
+                                this.$router.push({name: 'ListSession'});
+                            })
+                        })
+                        .catch( err => console.log(err));
+                    Swal.fire('Saved!', '', 'success')
+                } 
+            })
         },
         getDateTime(date) {
             date.setHours(date.getHours() - 7);

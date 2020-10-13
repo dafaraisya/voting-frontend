@@ -36,6 +36,7 @@
 </template>
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'CandidateDetail',
@@ -52,10 +53,28 @@ export default {
     },
     methods:{
         del(){
-            axios
-                .delete("http://localhost:3000/api/v1/candidate/"+this.$route.params.id)
-                .then(() => this.$router.push({name: "ListCandidate"}))
-                .catch( err => console.log(err));
+            Swal.fire({
+                title: 'Apakah anda yakin menghapus kandidat ini?',
+                showDenyButton: true,
+                confirmButtonText: `Ya`,
+                denyButtonText: `Tidak`,
+            }).then((result) => {
+                if (result.isConfirmed) {            
+                    axios
+                        .delete("http://localhost:3000/api/v1/candidate/"+this.$route.params.id)
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Kandidat berhasil dihapus',
+                                showConfirmButton: true
+                            }).then(()=>{
+                                this.$router.push({name: 'ListCandidate'});
+                            })
+                        })
+                        .catch( err => console.log(err));
+                    Swal.fire('Saved!', '', 'success')
+                } 
+            })
         },
         getImage(url) {
             return '../../images/'+url;

@@ -39,6 +39,7 @@
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'EditSetting',
@@ -70,11 +71,28 @@ export default {
                 'emailPassword': this.dataSetting.email.password,
             };
 
-            axios
-                .put("http://localhost:3000/api/v1/setting/"+this.dataSetting.id, data)
-                .then(() => this.$router.push("/admin/setting"))
-                //eslint-disable-next-line no-console
-                .catch( err => console.log(err));
+                Swal.fire({
+                        title: 'Apakah anda yakin mengubah data pengaturan?',
+                        showDenyButton: true,
+                        confirmButtonText: `Ya`,
+                        denyButtonText: `Tidak`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {    
+                            axios
+                            .put("http://localhost:3000/api/v1/setting/"+this.dataSetting.id, data)
+                            .then(() => {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Pengaturan berhasil diperbarui',
+                                    showConfirmButton: true
+                                }).then(()=>{
+                                    this.$router.push("/admin/setting")
+                                })
+                            })
+                            //eslint-disable-next-line no-console
+                            .catch( err => console.log(err));
+                        } 
+                })
             } 
     },
     created() {
