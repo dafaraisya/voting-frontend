@@ -32,6 +32,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
+import swal from 'sweetalert';
 
 export default {
   name: 'Voting',
@@ -43,19 +44,38 @@ export default {
   },
   methods: {
     vote(id_candidate, name_candidate) {
-      if(confirm("Yakin Anda akan memilih "+name_candidate)) {
-        let data = {
-          'id_participant' : this.participant._id,
-          'id_candidate' : id_candidate
+      swal({
+        title: "Anda Yakin Memilih "+name_candidate+" ?",
+        buttons: true,
+      })
+      .then((confirm) => {
+        if(confirm) {
+          let data = {
+            'id_participant' : this.participant._id,
+            'id_candidate' : id_candidate
+          }
+          axios
+            .put("http://localhost:3000/api/v1/participant/vote", data)
+            .then(() => {
+              this.$store.commit("setAuthentication", false);
+              this.$router.push({ name: "Announcement",query: {'success': true}});
+            })
+            .catch( err => console.log(err));
         }
-        axios
-          .put("http://localhost:3000/api/v1/participant/vote", data)
-          .then(() => {
-            this.$store.commit("setAuthentication", false);
-            this.$router.push({ name: "Announcement",query: {'success': true}});
-          })
-          .catch( err => console.log(err));
-      }
+      });
+      // if(confirm("Yakin Anda akan memilih "+name_candidate)) {
+      //   let data = {
+      //     'id_participant' : this.participant._id,
+      //     'id_candidate' : id_candidate
+      //   }
+      //   axios
+      //     .put("http://localhost:3000/api/v1/participant/vote", data)
+      //     .then(() => {
+      //       this.$store.commit("setAuthentication", false);
+      //       this.$router.push({ name: "Announcement",query: {'success': true}});
+      //     })
+      //     .catch( err => console.log(err));
+      // }
     },
     getImage(url) {
       return '../../' + url.split('/')[6]+'/' + url.split('/')[7]
