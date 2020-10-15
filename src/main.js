@@ -12,7 +12,7 @@ import VueParticles from 'vue-particles'
 Vue.use(BootstrapVue);
 Vue.use(Vue2Editor);
 Vue.use(VueParticles);
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,

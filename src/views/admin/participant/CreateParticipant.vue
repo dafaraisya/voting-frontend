@@ -33,6 +33,7 @@
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'CreateParticipant',
@@ -61,8 +62,14 @@ export default {
 
         axios
             .post("http://localhost:3000/api/v1/participant", data)
-            .then(() => { 
-                this.$router.push({name: 'ListParticipant'});
+            .then(() => {
+                        Swal.fire({
+                    icon: 'success',
+                    title: 'Peserta berhasil ditambahkan',
+                    showConfirmButton: true
+                }).then(()=>{
+                    this.$router.push({name: 'ListParticipant'});
+                })
             })
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));
@@ -70,9 +77,9 @@ export default {
     },
     created() {
         axios
-          .get('http://localhost:3000/api/v1/session/all')
-          .then(res => (this.sessions = res.data.data))
-          .catch(error => console.log(error))
+        .get('http://localhost:3000/api/v1/session/all')
+        .then(res => (this.sessions = res.data.data))
+        .catch(error => console.log(error))
     }
 }
 </script>

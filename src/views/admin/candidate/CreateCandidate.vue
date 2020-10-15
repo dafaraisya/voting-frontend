@@ -33,6 +33,7 @@
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'CreateCandidate',
@@ -59,9 +60,15 @@ export default {
 
         axios
             .post("http://localhost:3000/api/v1/candidate", data)
-            .then((res) => {
-                console.log("result: "+JSON.stringify(res.data));
-                //this.$router.push({name: 'ListCandidate'})
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Kandidat berhasil ditambahkan',
+                    showConfirmButton: true
+                }).then(()=>{
+                    this.$router.push({name: 'ListCandidate'});
+                })
+        
             })
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));

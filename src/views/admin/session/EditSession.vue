@@ -33,11 +33,12 @@
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
-  name: 'EditSession',
-  data() {
-      return {
+    name: 'EditSession',
+    data() {
+        return {
         dataSession: {
             number: 0,
             start: {
@@ -50,28 +51,44 @@ export default {
             },
             total_participant: 0,
         }
-      }
-  },
-  methods: {
-      editData() {
-        let data = {
-            'number': this.dataSession.number,
-            'start': this.dataSession.start.date + "T" + this.dataSession.start.time + "Z",
-            'end': this.dataSession.end.date + "T" + this.dataSession.end.time + "Z"
-        };
+        }
+    },
+    methods: {
+        editData() {
+            let data = {
+                'number': this.dataSession.number,
+                'start': this.dataSession.start.date + "T" + this.dataSession.start.time + "Z",
+                'end': this.dataSession.end.date + "T" + this.dataSession.end.time + "Z"
+            };
 
-
+            Swal.fire({
+                    title: 'Apakah anda yakin mengubah sesi ini?',
+                    showDenyButton: true,
+                    confirmButtonText: `Ya`,
+                    denyButtonText: `Tidak`,
+                }).then((result) => {
+                    if (result.isConfirmed) {            
+                        axios
+                            .put("http://localhost:3000/api/v1/session/"+this.$route.params.id, data)
+                            .then(() => {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Sesi berhasil diperbarui',
+                                    showConfirmButton: true
+                                }).then(()=>{
+                                    this.$router.push({name: 'ListSession'});
+                                })
+                            })
+                            //eslint-disable-next-line no-console
+                            .catch( err => console.log(err));
+                    } 
+            })
+        } 
+    },
+    created() {
         axios
-            .put("http://localhost:3000/api/v1/session/"+this.$route.params.id, data)
-            .then(() => this.$router.push("/admin/session"))
-            //eslint-disable-next-line no-console
-            .catch( err => console.log(err));
-      } 
-  },
-  created() {
-    axios
-      .get('http://localhost:3000/api/v1/session/'+this.$route.params.id)
-      .then((res) => {
+        .get('http://localhost:3000/api/v1/session/'+this.$route.params.id)
+        .then((res) => {
             const session = res.data.data;
             this.dataSession.number = session.number;
             this.dataSession.start.date = session.start.slice(0,10);
@@ -79,8 +96,8 @@ export default {
             this.dataSession.end.date = session.end.slice(0,10);
             this.dataSession.end.time = session.end.slice(11,16);
             this.dataSession.total_participant = session.total_participant;
-          })
-      .catch(error => console.log(error))
-  }
+            })
+        .catch(error => console.log(error))
+    }
 }
 </script>

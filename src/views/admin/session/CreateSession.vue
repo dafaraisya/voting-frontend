@@ -33,6 +33,7 @@
 
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default {
     name: 'CreateSession',
@@ -61,7 +62,13 @@ export default {
         axios
             .post("http://localhost:3000/api/v1/session", data)
             .then(() => { 
-                this.$router.push({name: 'ListSession'});
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Sesi berhasil ditambahkan',
+                    showConfirmButton: true
+                }).then(()=>{
+                    this.$router.push({name: 'ListSession'});
+                })
             })
             //eslint-disable-next-line no-console
             .catch( err => console.log(err));

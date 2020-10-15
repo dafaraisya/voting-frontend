@@ -2,26 +2,25 @@
     <b-container>
         <b-row>
             <b-col lg="12">
-                <div class="container text-left bg-white p-3 rounded-sm shadow">
-                    <h1> Sesi {{ detail.number }} </h1>
-                    <div class="mt-3">
-                        <i class="far fa-clock"></i> 
-                        {{ getDateTime(new Date(detail.start)) }} - {{ getDateTime(new Date(detail.end)) }} 
-                    </div>
-                    <div> 
-                        <i class="fas fa-user"></i> {{ detail.total_participant }} peserta </div>
-                    <div class="mt-3">
-                    </div>    
-                    <router-link :to="{name:'EditSession', params:{id:detail._id}}">
-                        <b-button class="ml-2" href="" variant="primary">
+                <div class="container bg-white p-4 text-left rounded-sm shadow">
+                    <h3> Pengumuman </h3>
+                    <p> {{ getDateTime(new Date(detail.announcement)) }}</p><br/>
+                    <h3> Kredensial </h3>
+                    <b> Username </b>
+                    <p> {{ detail.authentication.username }} </p>
+                    <b> Password </b>
+                    <p> {{ detail.authentication.password }} </p><br/>
+                    <h3> Email </h3>
+                    <b> Email </b>
+                    <p> {{ detail.email.email }} </p>
+                    <b> Password </b>
+                    <p> {{ detail.email.password }} </p><br/>
+                    <router-link :to="{name:'EditSetting'}">
+                        <b-button variant="primary">
                             <i class="far fa-edit text-white"></i>
                             Ubah
                         </b-button>
                     </router-link>
-                    <b-button @click="del();" class="ml-2" href="" variant="primary">
-                        <i class="far fa-trash-alt text-white"></i>
-                        Hapus
-                    </b-button>
                 </div>
             </b-col>
         </b-row>
@@ -29,40 +28,15 @@
 </template>
 <script>
 import axios from 'axios'
-import Swal from 'sweetalert2'
 
 export default {
-    name: 'SessionDetail',
+    name: 'SettingDetail',
     data() {
         return {
             detail: []
         }
     },
     methods:{
-        del(){
-            Swal.fire({
-                title: 'Apakah anda yakin menghapus sesi ini?',
-                showDenyButton: true,
-                confirmButtonText: `Ya`,
-                denyButtonText: `Tidak`,
-            }).then((result) => {
-                if (result.isConfirmed) {            
-                    axios
-                        .delete("http://localhost:3000/api/v1/session/"+this.$route.params.id)
-                        .then(() => {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Sesi berhasil dihapus',
-                                showConfirmButton: true
-                            }).then(()=>{
-                                this.$router.push({name: 'ListSession'});
-                            })
-                        })
-                        .catch( err => console.log(err));
-                    Swal.fire('Saved!', '', 'success')
-                } 
-            })
-        },
         getDateTime(date) {
             date.setHours(date.getHours() - 7);
 
@@ -110,8 +84,8 @@ export default {
     },
     mounted() {
         axios
-            .get("http://localhost:3000/api/v1/session/"+this.$route.params.id)
-            .then(res => (this.detail = res.data.data))
+            .get("http://localhost:3000/api/v1/setting/all")
+            .then(res => (this.detail = res.data.data[0]))
             .catch(err => console.log(err));
     }
 }

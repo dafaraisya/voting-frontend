@@ -11,6 +11,10 @@
                         <b>Email</b><br/> {{ detail.email }}<br/>
                         <b>Sesi</b><br/> {{ detail.session.number }}<br/>
                     </div><br/>
+                    <b-button @click="send(detail.email, detail.name, detail.nim)" class="ml-2" href="" variant="primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Kirim
+                    </b-button>
                     <b-button @click="download('Kartu Pemilihan Pemira 2020_'+detail.name+'_'+detail.nim)" class="ml-2" href="" variant="primary">
                         <i class="fas fa-file-download"></i>
                         Unduh
@@ -32,6 +36,7 @@
 </template>
 <script>
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import VueQr from 'vue-qr'
 import htmlToImage from 'html-to-image'
 
@@ -52,10 +57,44 @@ export default {
     },
     methods:{
         del(){
-            axios
-                .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
-                .then(() => this.$router.push({name:'ListParticipant'}))
-                .catch( err => console.log(err));
+            Swal.fire({
+                title: 'Apakah anda yakin menghapus peserta ini?',
+                showDenyButton: true,
+                confirmButtonText: `Ya`,
+                denyButtonText: `Tidak`,
+            }).then((result) => {
+                if (result.isConfirmed) {            
+                    axios
+                        .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
+                        .then(() => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Peserta berhasil dihapus',
+                                showConfirmButton: true
+                            }).then(()=>{
+                                this.$router.push({name: 'ListParticipant'});
+                            })
+                        })
+                        .catch( err => console.log(err));
+                    Swal.fire('Saved!', '', 'success')
+                } 
+            })
+        },
+        send(to, name, nim) {
+            htmlToImage.toPng(document.getElementById('pemira-card')) 
+            .then(function (image) {
+                const data = {
+                    to: to,
+                    name: name,
+                    nim: nim,
+                    image: image,
+                }
+                
+                axios
+                    .post("http://localhost:3000/api/v1/mail/", data)
+                    .then(() => this.$router.push({name:'ListParticipant'}))
+                    .catch( err => console.log(err));
+            });
         },
         download(cardName) {
             htmlToImage.toPng(document.getElementById('pemira-card')) 
