@@ -1,5 +1,5 @@
 <template>
-    <div v-if="time">
+    <div v-if="show">
         <b-row>
             <b-col lg=2></b-col>
             <b-col lg=8>
@@ -26,7 +26,7 @@
 export default {
     data() {
         return {
-            time : true,
+            show : true,
             displayDays : 0,
             displayHours : 0,
             displayMinutes : 0,
@@ -53,6 +53,7 @@ export default {
                 this.hour,
                 this.minute
             );
+            
         }
     },
     methods: {
@@ -61,13 +62,12 @@ export default {
 
                 // ambil data sekarang
                 const now = new Date();
-                
                 const distance = this.end.getTime() - now.getTime();
 
                 // console.log(now.getTime());
                 if(distance < 0) {
                     clearInterval(timer);
-                    this.time = false;
+                    this.show = false;
                     return;
                 }
                 const days = Math.floor(distance / this._days);

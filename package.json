@@ -14,12 +14,8 @@
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "html-to-image": "^0.1.1",
-<<<<<<< HEAD
-    "moment": "^2.29.1",
     "sweetalert": "^2.1.2",
-=======
     "sweetalert2": "^10.5.1",
->>>>>>> 94137e6dfbfc78ed06281c16e83b0261af9f3316
     "vue": "^2.6.12",
     "vue-chartjs": "^3.5.1",
     "vue-html2pdf": "^1.8.0",
