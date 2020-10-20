@@ -1,7 +1,7 @@
 <template>
   <div class="page"> 
     <div v-if="loading">
-      <transition name="slide-fade" mode="out-in">
+      <transition name="fade">
         <Loader/>
       </transition>
     </div>
@@ -70,5 +70,12 @@ export default {
   h1 {
     font-size: 35px;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
