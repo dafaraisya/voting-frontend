@@ -1,32 +1,32 @@
 <template>
-<div class="lala">
-  <div class="home-voting">
-    <vue-particles
-      style="position: fixed"
-      color="#dedede"
-      :particleOpacity="0.5"
-      :particlesNumber="100"
-      shapeType="circle"
-      :particleSize="4"
-      linesColor="#dedede"
-      :linesWidth="1"
-      :lineLinked="true"
-      :lineOpacity="0.4"
-      :linesDistance="150"
-      :moveSpeed="2"
-      :hoverEffect="true"
-      hoverMode="grab"
-      :clickEffect="true"
-      clickMode="push"
-    >
-    </vue-particles>
+  <div>
+    <div class="home-voting">
+      <vue-particles
+        style="position: fixed"
+        color="#dedede"
+        :particleOpacity="0.5"
+        :particlesNumber="100"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#dedede"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="2"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+      >
+      </vue-particles>
+    </div>
     <div class="container voting-page">
       <transition name="slide-fade" mode="out-in">
         <router-view/>
       </transition>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -56,7 +56,11 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 700px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 #particles-js {
     position: fixed;

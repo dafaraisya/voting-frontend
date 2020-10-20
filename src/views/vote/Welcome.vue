@@ -1,18 +1,46 @@
 <template>
-  <div class="page">   
+  <div class="page"> 
+    <div v-if="loading">
+      <transition name="slide-fade" mode="out-in">
+        <Loader/>
+      </transition>
+    </div>
+    <div v-else>
       <h1 class="text-white" style="padding-top:150px;">
         Selamat datang di<br/>PEMIRA HIMATIPA UGM 2020
       </h1>
       <router-link :to="{name:'Method'}">
         <b-button class="btn mt-5">Masuk</b-button>
       </router-link>
+    </div>
   </div>
 </template>
 
 <script>
-
+import Loader from '@/components/Loader'
 export default {
   name: 'Welcome',
+  components: {
+    Loader
+  },
+  data() {
+    return {
+      loading : true
+    }
+  },
+  mounted() {
+    this.load();
+  },
+  methods: {
+    load() {
+      let stateCheck = setInterval(() => {
+        if (document.readyState === 'complete') {
+          this.loading = false;
+          clearInterval(stateCheck);
+        }
+      }, 1000);
+    }
+  }
 }
 </script>
 <style scoped>

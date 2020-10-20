@@ -1,5 +1,5 @@
 <template>
-  <div class="method page p-5">   
+  <div class="method page">   
       <h1 class="text-white">
         Pilih metode masuk
       </h1>
