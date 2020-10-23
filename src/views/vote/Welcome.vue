@@ -1,7 +1,7 @@
 <template>
   <div class="page"> 
     <div class="sub-page" >
-      <h1 class="text-white" style="padding-top:150px;">
+      <h1 class="text-white" style="padding-top:80px;">
         Selamat datang di<br/>PEMIRA HIMATIPA UGM 2020
       </h1>
       <router-link :to="{name:'Method'}">
@@ -16,18 +16,18 @@
           Timeline
         </b-button>
       </a>
-      <router-link :to="{name:'Method'}">
+      <a href="#announcement" v-smooth-scroll="{duration:1000}">
         <b-button class="btn mt-5 ml-3">
           <i class="fas fa-bullhorn"></i>
           Pengumuman
         </b-button>
-      </router-link>
+      </a>
     </div>
-    <div class="sub-page" id="timeline" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
-      <Timeline/> 
+    <div class="sub-page" id="timeline">
+      <Timeline data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200"/> 
     </div>
-    <div class="sub-page" id="announcement" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
-      <Announcement/> 
+    <div class="sub-page" id="announcement">
+      <Announcement data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200"/> 
     </div>
   </div>
 </template>
@@ -54,11 +54,27 @@ export default {
 
 .page {
   height: 100%;
+  width: 100%;
 }
 
 .sub-page {
   min-height:100%;
   width:100%;
+  padding-top:50px;
+}
+
+#announcement {
+  background: linear-gradient(
+            to right,
+          rgba(0, 0, 0, 0.8),
+          rgba(40, 40, 40, 0.8),
+          rgba(80, 80, 80, 0.8)
+        ),
+  url('./../../assets/background-teknologi-pertanian.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .btn {

@@ -10,7 +10,7 @@
       <video autoplay muted loop id="video-bg">
         <source src="@/assets/video himatipa.mp4" type="video/mp4">
       </video>
-      <div class="container voting-page" style="min-height:100%">
+      <div class="container-router">
         <transition name="fade" mode="out-in" >
           <router-view/>
         </transition>
@@ -45,8 +45,8 @@ export default {
         }
       }, 1000);
     }
-  }
 }
+  }
 </script>
 <style scoped>
 /* html, body
@@ -60,12 +60,12 @@ html {
 
 .home-voting {
   background-color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 #video-bg {
   position: absolute;
@@ -75,17 +75,10 @@ html {
   min-height: 100%;
   z-index: -2;
 }
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-}
-.voting-page {
-    position:absolute;
-    top:calc(50% - 250px); 
-    height:500px; 
+.container-router {
+  height:100%;  
+  width:100%;
+  position:absolute;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1920px){
   .voting-page {

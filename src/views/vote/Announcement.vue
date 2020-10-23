@@ -34,7 +34,7 @@
     </div>
     <!-- countdown -->
     <div v-else class="row mt-5">
-      <div class="col">
+      <div class="col countdown">
         <Countdown
           :year="year"
           :month="month"
@@ -150,3 +150,8 @@ export default {
   }
 };
 </script>
+<style>
+.countdown {
+  margin-top: 50px;
+}
+</style>

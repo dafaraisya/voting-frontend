@@ -11,10 +11,10 @@
                         <b-col>{{ displaySeconds }}</b-col> 
                     </b-row>
                     <b-row>
-                        <b-col>Days</b-col>
-                        <b-col>Hours</b-col>
-                        <b-col>Minutes</b-col>
-                        <b-col>Seconds</b-col>
+                        <b-col>Hari</b-col>
+                        <b-col>Jam</b-col>
+                        <b-col>Menit</b-col>
+                        <b-col>Detik</b-col>
                     </b-row>
                 </b-card>
             </b-col>

@@ -1,14 +1,14 @@
 <template>
     <div>
         <h2>Timeline</h2>
-        <div class="timeline">
+        <div class="timeline mt-4">
             <div v-for="event in timeline" :key="event._id" class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
                 <div class="col-10 col-md-5 order-3 order-md-1 timeline-content">
                     <h3 class="text-light">{{ event.name }}</h3>
                     <p>{{ event.time }}</p>
                 </div>
                 <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
-                    <i class="far fa-calendar-alt text-primary"></i>
+                    <img src="@/assets/alarm.png"/>
                 </div>
                 <div class="col-10 col-md-5 order-1 order-md-3 py-3 timeline-date">
                 
@@ -105,10 +105,10 @@ export default {
 } 
 .timeline h3{
     font-weight: lighter;
-    background: rgb(100,100, 100);
+    background: rgb(50,50, 50);
 }
 .timeline p, .timeline time {
-    color: rgb(100,100, 100)
+    color: rgb(50,50, 50)
 }
 .timeline::before {
     content: "";
@@ -117,27 +117,27 @@ export default {
     top: 0;
     left: 50%;
     width: 0;
-    border-left: 2px dashed rgb(100,100, 100);
+    border-left: 2px dashed rgb(50,50, 50);
     height: 100%;
     z-index: 1;
     transform: translateX(-50%);
 }
 .timeline-content {
-    border: 1px solid rgb(100,100, 100);
+    border: 1px solid rgb(50,50, 50);
     position: relative;
     border-radius: 0 0 10px 10px;
     box-shadow: 0px 3px 25px 0px rgba(10, 55, 90, 0.2)
 }
 .timeline-nodes:nth-child(odd) h3,
 .timeline-nodes:nth-child(odd) p {
-    text-align: right;
+    text-align: center;
 }
 .timeline-nodes:nth-child(odd) .timeline-date {
-    text-align: left;
+    text-align: center;
 }
  
 .timeline-nodes:nth-child(even) .timeline-date {
-    text-align: right;
+    text-align: center;
 }
 .timeline-nodes:nth-child(odd) .timeline-content::after {
     content: "";
@@ -145,7 +145,7 @@ export default {
     top: 5%;
     left: 100%;
     width: 0;
-    border-left: 10px solid rgb(100,100, 100);
+    border-left: 10px solid rgb(50,50, 50);
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 }
@@ -155,7 +155,7 @@ export default {
     top: 5%;
     right: 100%;
     width: 0;
-    border-right: 10px solid rgb(100,100, 100);
+    border-right: 10px solid rgb(50,50, 50);
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 }
@@ -167,7 +167,7 @@ export default {
     content: "";
     width: 80px;
     height: 80px;
-    border: 2px dashed rgb(100,100, 100);
+    border: 2px dashed rgb(50,50, 50);
     border-radius: 50%;
     display: block;
     position: absolute;
@@ -180,13 +180,15 @@ export default {
 .timeline-image img {
     position: relative;
     z-index: 100;
+    width: 30px;
+    height: 30px;
 }
 /*small device style*/
 
 @media (max-width: 767px) {
     .timeline-nodes:nth-child(odd) h3,
     .timeline-nodes:nth-child(odd) p {
-    text-align: left
+    text-align: center
 }
 .timeline-nodes:nth-child(even) {
     flex-direction: row;
@@ -198,7 +200,7 @@ export default {
     top: 0;
     left: 4%;
     width: 0;
-    border-left: 2px dashed rgb(100,100, 100);
+    border-left: 2px dashed rgb(50,50, 50);
     height: 100%;
     z-index: 1;
     transform: translateX(-50%);
@@ -223,7 +225,7 @@ export default {
     right: 100%;
     width: 0;
     border-left: 0;
-    border-right: 10px solid rgb(100,100, 100);
+    border-right: 10px solid rgb(50,50, 50);
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 }
@@ -233,12 +235,12 @@ export default {
     top: 5%;
     right: 100%;
     width: 0;
-    border-right: 10px solid rgb(100,100, 100);
+    border-right: 10px solid rgb(50,50, 50);
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 }
 .timeline-nodes:nth-child(even) .timeline-date {
-    text-align: left;
+    text-align: center;
 }
 .timeline-image::before {
     width: 65px;
