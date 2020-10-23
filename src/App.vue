@@ -3,7 +3,14 @@
     <router-view/>
   </div>
 </template>
-
+<script>
+export default {
+  title: 'PEMIRA HIMATIPA UGM 2020',
+  metaInfo: {
+    title: 'PEMIRA HIMATIPA UGM 2020'
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
