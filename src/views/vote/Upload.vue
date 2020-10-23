@@ -1,5 +1,5 @@
 <template>
-  <div class="upload page">
+  <div class="upload page pt-5">
       <img src="" alt="">
       <h1 class="text-white tittle">Unggah kartu</h1>
       <div class="alert text-center">

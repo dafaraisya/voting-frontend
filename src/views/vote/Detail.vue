@@ -52,7 +52,7 @@ export default {
     },
     methods:{
         getImage(url) {
-            return '../../' + url.split('/')[6]+'/' + url.split('/')[7]
+            return '../../images/'+url;
         }
     },
     created() {

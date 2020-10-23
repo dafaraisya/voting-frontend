@@ -7,7 +7,7 @@
         <b-row>
           <b-col lg="4" class="mb-5 text-center" v-for="candidate in candidates" :key="candidate._id">
               <b-container class="bg-white p-0 rounded-sm shadow">
-                <img class="img-profile" v-bind:src="getImage(candidate.image)"/>
+                <img class="img-profile w-100" v-bind:src="getImage(candidate.image)"/>
                 <b-container class="mt-2 pb-2">
                   <b> {{ candidate.name }} </b> <br/>
                   {{ candidate.number }} <br/>
@@ -78,7 +78,7 @@ export default {
       // }
     },
     getImage(url) {
-      return '../../' + url.split('/')[6]+'/' + url.split('/')[7]
+      return '../../images/'+url;
     }
   },
   mounted() {

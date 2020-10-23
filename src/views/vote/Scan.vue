@@ -1,5 +1,5 @@
 <template>
-  <div class="scan page">
+  <div class="scan page pt-5">
       <img src="" alt="">
       <h1 class="text-white tittle">Scan kartu</h1>
       <div class="alert text-center">

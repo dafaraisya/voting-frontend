@@ -1,45 +1,46 @@
 <template>
   <div class="page"> 
-    <div v-if="loading">
-      <transition name="fade">
-        <Loader/>
-      </transition>
-    </div>
-    <div v-else>
+    <div class="sub-page" >
       <h1 class="text-white" style="padding-top:150px;">
         Selamat datang di<br/>PEMIRA HIMATIPA UGM 2020
       </h1>
       <router-link :to="{name:'Method'}">
-        <b-button class="btn mt-5">Masuk</b-button>
+        <b-button class="btn mt-5">
+          <i class="fas fa-vote-yea"></i> 
+            Vote
+          </b-button>
       </router-link>
+      <a href="#timeline" v-smooth-scroll="{duration:1000}">
+        <b-button class="btn mt-5 ml-3">
+          <i class="far fa-calendar-alt" ></i>
+          Timeline
+        </b-button>
+      </a>
+      <router-link :to="{name:'Method'}">
+        <b-button class="btn mt-5 ml-3">
+          <i class="fas fa-bullhorn"></i>
+          Pengumuman
+        </b-button>
+      </router-link>
+    </div>
+    <div class="sub-page" id="timeline" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+      <Timeline/> 
+    </div>
+    <div class="sub-page" id="announcement" data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200">
+      <Announcement/> 
     </div>
   </div>
 </template>
 
 <script>
-import Loader from '@/components/Loader'
+import Timeline from '@/components/Timeline.vue'
+import Announcement from './Announcement.vue'
+
 export default {
   name: 'Welcome',
   components: {
-    Loader
-  },
-  data() {
-    return {
-      loading : true
-    }
-  },
-  mounted() {
-    this.load();
-  },
-  methods: {
-    load() {
-      let stateCheck = setInterval(() => {
-        if (document.readyState === 'complete') {
-          this.loading = false;
-          clearInterval(stateCheck);
-        }
-      }, 1000);
-    }
+    Timeline,
+    Announcement
   }
 }
 </script>
@@ -48,6 +49,16 @@ export default {
 
 * {
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+.page {
+  height: 100%;
+}
+
+.sub-page {
+  min-height:100%;
+  width:100%;
 }
 
 .btn {
@@ -72,10 +83,4 @@ export default {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
 </style>

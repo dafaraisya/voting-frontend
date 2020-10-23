@@ -1,38 +1,51 @@
 <template>
   <div>
-    <div class="home-voting">
-      <vue-particles
-        style="position: fixed"
-        color="#dedede"
-        :particleOpacity="0.5"
-        :particlesNumber="100"
-        shapeType="circle"
-        :particleSize="4"
-        linesColor="#dedede"
-        :linesWidth="1"
-        :lineLinked="true"
-        :lineOpacity="0.4"
-        :linesDistance="150"
-        :moveSpeed="2"
-        :hoverEffect="true"
-        hoverMode="grab"
-        :clickEffect="true"
-        clickMode="push"
-      >
-      </vue-particles>
-    </div>
-    <div class="container voting-page">
-      <transition name="slide-fade" mode="out-in">
-        <router-view/>
+    <div v-if="loading">
+      <transition name="fade">
+        <Loader/>
       </transition>
+    </div>
+    <div v-else>
+      <div class="home-voting"/>
+      <video autoplay muted loop id="video-bg">
+        <source src="@/assets/video himatipa.mp4" type="video/mp4">
+      </video>
+      <div class="container voting-page" style="min-height:100%">
+        <transition name="fade" mode="out-in" >
+          <router-view/>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Loader from '@/components/Loader'
+
 // @ is an alias to /src
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    Loader
+  },
+  data() {
+    return {
+      loading : true
+    }
+  },
+  mounted() {
+    this.load();
+  },
+  methods: {
+    load() {
+      let stateCheck = setInterval(() => {
+        if (document.readyState === 'complete') {
+          this.loading = false;
+          clearInterval(stateCheck);
+        }
+      }, 1000);
+    }
+  }
 }
 </script>
 <style scoped>
@@ -44,23 +57,23 @@ html {
   min-height: 100% !important;
   height: 100%;
 }
+
 .home-voting {
-    background: linear-gradient(
-            to right,
-          rgba(0, 0, 0, 0.8),
-          rgba(40, 40, 40, 0.8),
-          rgba(80, 80, 80, 0.8)
-        ),
-    url('./../../assets/background-ugm.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    z-index: -1;
+}
+#video-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2;
 }
 #particles-js {
     position: fixed;
@@ -86,5 +99,15 @@ html {
     width:480px;
   }
 }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  .typed {
+    margin-left:190px;
+  }
 </style>
 

@@ -1,11 +1,12 @@
 <template>
-  <div class="method page">   
+  <div class="method page pt-5">   
       <h1 class="text-white">
         Pilih metode masuk
       </h1>
       <router-link :to="{name:'Upload'}">
         <b-button class="btn mt-5">
           <h4>
+            <i class="fas fa-upload"></i>
             Unggah kartu
           </h4>
         </b-button>
@@ -13,6 +14,7 @@
       <router-link :to="{name:'Scan'}">
         <b-button class="btn mt-5">
           <h4>
+            <i class="fas fa-camera"></i>
             Scan kartu
           </h4>
         </b-button>
