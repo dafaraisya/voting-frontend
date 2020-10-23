@@ -77,7 +77,7 @@ export default {
             })
         },
         getImage(url) {
-            return '../../images/'+url;
+            return '../../'+url;
         }
     },
     created() {

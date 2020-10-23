@@ -108,14 +108,14 @@ a, a:hover, a:focus {
 
 #sidebar {
     /* don't forget to add all the previously mentioned styles here too */
-    background: #7386D5;
+    background: #555;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #6d7fcc;
+    background: #444;
 }
 
 #sidebar ul p {
@@ -129,18 +129,18 @@ a, a:hover, a:focus {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #ddd;
+    color: #454545;
+    background: #aaa;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: #454545;
 }
 ul ul a {
-    font-size: 0.9em !important;
+    font-size: 0.9em !important;    
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #454545;
     color: white;
 }
 .text-bold {

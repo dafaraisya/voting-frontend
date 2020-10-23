@@ -11,7 +11,7 @@
 <template>
   <div class="container text-left mt-4">
       <b-row>
-          <b-col lg="4" v-for="candidate in candidates" :key="candidate._id">
+          <b-col class="mb-4" lg="4" v-for="candidate in candidates" :key="candidate._id">
               <b-container class="bg-white p-0 rounded-sm shadow">
                 <img class="img-profile" v-bind:src="getImage(candidate.image)"/>
                 <b-container class="mt-2 pb-2">
@@ -26,7 +26,7 @@
                 </b-container>
               </b-container>
           </b-col>
-          <b-col lg="4">
+          <b-col class="mb-4" lg="4">
             <router-link :to="{name:'CreateCandidate'}">
               <b-container class="bg-secondary p-0 rounded-sm shadow blank text-white text-center">
                   <i class="far fa-plus-square fa-2x mb-2" style="margin-top:100px;"></i><br/>
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     getImage(url) {
-      return '../../images/'+url;
+      return '../../'+url;
     }
   },
   mounted() {

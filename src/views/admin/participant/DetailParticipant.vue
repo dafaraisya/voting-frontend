@@ -64,6 +64,7 @@ export default {
                 denyButtonText: `Tidak`,
             }).then((result) => {
                 if (result.isConfirmed) {            
+                    alert(this.$route.params.id)
                     axios
                         .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
                         .then(() => {
@@ -76,7 +77,6 @@ export default {
                             })
                         })
                         .catch( err => console.log(err));
-                    Swal.fire('Saved!', '', 'success')
                 } 
             })
         },

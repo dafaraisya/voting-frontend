@@ -94,6 +94,11 @@ export default {
     margin-top: 20px;
     font-weight: bold;
 }
+
+.page {
+  margin-top:100px;
+}
+
 .scanner-card {
     display: block;
     margin-left: auto;

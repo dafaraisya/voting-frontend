@@ -1,5 +1,5 @@
 <template>
-  <div class="method page pt-5">   
+  <div class="method page">   
       <h1 class="text-white">
         Pilih metode masuk
       </h1>
@@ -48,5 +48,9 @@ h1 {
 .btn:hover {
   background-color: rgb(255,255,255);
   color: rgb(0,0,0)
+}
+
+.page {
+  padding-top: 180px;
 }
 </style>

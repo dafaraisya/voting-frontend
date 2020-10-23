@@ -10,8 +10,10 @@
                         <b-form-input type="text" id="number" aria-describedby="namaHelp" placeholder="Masukan No urut" v-model="dataCandidate.number"></b-form-input>
                     </b-form-group>
                     <b-form-group label="Foto :" label-for="image">
-                        <img class="img-profile img-profile-circle" v-bind:src="getImage(dataCandidate.image)"/><br/><br/>
-                        <input id="file" ref="file" type="file" v-on:change="handleFileUpload()"/>
+                        <input id="image" ref="image" type="file" v-on:change="handleFileUpload(1)"/>
+                    </b-form-group>
+                        <b-form-group label="CV :" label-for="cv">
+                        <input id="cv" ref="cv" type="file" v-on:change="handleFileUpload(2)"/>
                     </b-form-group>
                     <b-form-group label="Deskripsi :" label-for="short">
                         <vue-editor type="text" id="short" aria-describedby="namaHelp" placeholder="Masukan Deskripsi" v-model="dataCandidate.description.short"></vue-editor>
@@ -44,35 +46,30 @@ export default {
             name: '',
             number: '',
             image: '',
+            cv: '',
             description: {},
         },
     }
   },
   methods: {
         editData() {
-            let formData = new FormData();
-
-            formData.append('name', this.dataCandidate.name);
-            formData.append('number', this.dataCandidate.number);
-            formData.append('shortDescription', this.dataCandidate.description.short);
-            formData.append('visionDescription', this.dataCandidate.description.vision);
-            formData.append('missionDescription', this.dataCandidate.description.mission);
-            formData.append('image', this.dataCandidate.image);
+            let formData = {
+                name:this.dataCandidate.name,
+                number:this.dataCandidate.number,
+                shortDescription:this.dataCandidate.description.short,
+                visionDescription:this.dataCandidate.description.vision,
+                missionDescription:this.dataCandidate.description.mission,
+            };
 
             Swal.fire({
-                    title: 'Apakah anda yakin mengubah data kandidat ini?',
+                    title: 'Apakah anda yakin mengubah data kandidat?',
                     showDenyButton: true,
                     confirmButtonText: `Ya`,
                     denyButtonText: `Tidak`,
                 }).then((result) => {
                     if (result.isConfirmed) {            
                         axios
-                            .put("http://localhost:3000/api/v1/candidate/"+this.$route.params.id, formData,
-                            {
-                                headers: {
-                                    'Content-Type': 'multipart/form-data'
-                                }
-                            })
+                            .put("http://localhost:3000/api/v1/candidate/"+this.$route.params.id, formData)
                             .then(() => {
                                 Swal.fire({
                                     icon: 'success',
@@ -87,11 +84,48 @@ export default {
                     } 
             })
         }, 
-        handleFileUpload(){
-            this.dataCandidate.image = this.$refs.file.files[0];
+        handleFileUpload(type){
+            let formData = new FormData();
+
+            if(type==1) {
+                formData.append('type', 'image');
+                formData.append('file', this.$refs.image.files[0]);
+            } else {
+                formData.append('type', 'cv');
+                formData.append('file', this.$refs.cv.files[0]);
+            }
+
+            Swal.fire({
+                    title: 'Apakah anda yakin mengubah data kandidat ini?',
+                    showDenyButton: true,
+                    confirmButtonText: `Ya`,
+                    denyButtonText: `Tidak`,
+                }).then((result) => {
+                    if (result.isConfirmed) {            
+                        axios
+                            .put("http://localhost:3000/api/v1/candidate/"+this.$route.params.id+"/upload", formData,
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            })
+                            .then(() => {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Data kandidat berhasil diperbarui',
+                                    showConfirmButton: true
+                                }).then(()=>{
+                                    
+                                })
+                            })
+                            //eslint-disable-next-line no-console
+                            .catch( err => console.log(err));
+                    } 
+            })
         },
         getImage(url) {
-            return '../../images/'+url;
+            console.log()
+            return 'http://localhost:8080/images/'+url;
         }
     },
     mounted() {
