@@ -32,6 +32,7 @@ import Method from '../views/vote/Method.vue'
 import Voting from '../views/vote/Voting.vue'
 import DetailCandidateVoting from '../views/vote/Detail.vue'
 import Announcement from '../views/vote/Announcement.vue'
+import Error from '../views/vote/Error.vue'
 
 Vue.use(VueRouter)
 Vue.use(Vuex);
@@ -218,6 +219,11 @@ const routes = [
         path: 'announcement',
         name: 'Announcement',
         component: Announcement
+      },
+      {
+        path: 'error/:error',
+        name: 'Error',
+        component: Error 
       }
     ] 
   }

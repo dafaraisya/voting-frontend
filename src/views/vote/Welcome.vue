@@ -38,18 +38,21 @@
     <div class="sub-page" id="announcement">
       <Announcement data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200"/> 
     </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Timeline from '@/components/Timeline.vue'
 import Announcement from './Announcement.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'Welcome',
   components: {
     Timeline,
-    Announcement
+    Announcement,
+    Footer
   },
   created() {
     document.title = 'PEMIRA HIMATIPA UGM 2020';

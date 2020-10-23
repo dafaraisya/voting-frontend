@@ -1,6 +1,9 @@
 <template>
   <div class="voting">
     <div class="container text-left">
+        <notification v-if="$route.query.success === true" messageType="success" :key="$route.query.time">
+          {{ notification() }}
+        </notification>
         <img src="" alt="">
         <h1 class="text-white tittle">PEMIRA HIMATIPA UGM 2020</h1>
         <h4 class="text-white mt-1 mb-5">Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar calon dibawah ini</h4>
@@ -32,7 +35,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
-import swal from 'sweetalert';
+import swal from 'sweetalert'
 
 export default {
   name: 'Voting',
@@ -63,22 +66,16 @@ export default {
             .catch( err => console.log(err));
         }
       });
-      // if(confirm("Yakin Anda akan memilih "+name_candidate)) {
-      //   let data = {
-      //     'id_participant' : this.participant._id,
-      //     'id_candidate' : id_candidate
-      //   }
-      //   axios
-      //     .put("http://localhost:3000/api/v1/participant/vote", data)
-      //     .then(() => {
-      //       this.$store.commit("setAuthentication", false);
-      //       this.$router.push({ name: "Announcement",query: {'success': true}});
-      //     })
-      //     .catch( err => console.log(err));
-      // }
     },
     getImage(url) {
       return '../../images/'+url;
+    },
+    notification() {
+      swal({
+        icon: 'success',
+        title: 'Selamat datang di PEMIRA HIMATIPA UGM 2020',
+        showConfirmButton: true
+      });
     }
   },
   mounted() {
@@ -96,7 +93,7 @@ export default {
 </script>
 <style scoped>
 .tittle, h1 {
-    margin-top: -70px;
+    margin-top: 50px;
     font-weight: bold;
 }
 </style>

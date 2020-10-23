@@ -2,11 +2,6 @@
   <div class="scan page pt-5">
       <img src="" alt="">
       <h1 class="text-white tittle">Scan kartu</h1>
-      <div class="alert text-center">
-        <b-alert md="3" v-model="showError" variant="danger" dismissible>
-          <h5>{{ error }}</h5>
-        </b-alert>
-      </div>
 
       <div class="scanner-card">
         <b-row>
@@ -42,8 +37,6 @@ export default {
         email: ''
       },
       id : '',
-      error : '',
-      showError : false,
       loading : false
     }
   },
@@ -72,14 +65,12 @@ export default {
     check() {
       // cek data partisipan ada enggak
       if(this.dataParticipant == null) {
-        this.error = "Maaf Qr Code yang Anda Masukkan Salah";
-        this.showError = true;
+        this.$router.push({ name: "Error", params: {error : 'failed-not-found'}});
       } else {
         // cek apakah sudah vote apa belum
         var dataParticipantString = JSON.parse(JSON.stringify(this.dataParticipant));
         if(Object.prototype.hasOwnProperty.call(dataParticipantString, 'voting')) {
-          this.error = "Maaf Anda Sudah Melakukan Pemilihan";
-          this.showError = true;
+          this.$router.push({ name: "Error", params: {error : 'failed-already-vote'}});
         } else {
           // cek apakah sedang sesinya atau enggak
           const today = new Date();
@@ -88,10 +79,9 @@ export default {
           const dateTime = date +'T'+ time + '.000Z';
           if(this.dataParticipant.session.min < dateTime && this.dataParticipant.session.max > dateTime) {
             this.$store.commit("setAuthentication", true);
-            this.$router.replace({ name: "Voting", params : {id:this.dataParticipant._id} });
+            this.$router.replace({ name: "Voting", params : {id:this.dataParticipant._id}, query: {'success': true} });
           } else {
-            this.error = "Maaf Saat ini Bukan Sesi Anda"
-            this.showError = true;
+            this.$router.push({ name: "Error", params: {error : 'failed-not-your-session'}});
           }
         }
       }
