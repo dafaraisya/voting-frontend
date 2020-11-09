@@ -51,6 +51,6 @@ h1 {
 }
 
 .page {
-  padding-top: 180px;
+  padding-top: 100px;
 }
 </style>

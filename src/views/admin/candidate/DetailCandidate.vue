@@ -19,6 +19,12 @@
                     <div v-html="detail.description.vision"/>
                     <b>Misi</b>
                     <div v-html="detail.description.mission"/><br/>
+                    <a v-bind:href="'http://localhost:8080/'+this.$route.params.id+'.pdf'">
+                        <b-button class="ml-2" href="" variant="primary">
+                            <i class="far fa-file-alt text-white"></i>
+                            CV
+                        </b-button>
+                    </a>
                     <router-link :to="'edit/'+detail._id">
                         <b-button class="ml-2" href="" variant="primary">
                             <i class="far fa-edit text-white"></i>

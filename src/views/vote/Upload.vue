@@ -1,9 +1,8 @@
 <template>
-  <div class="upload page pt-5">
+  <div class="upload page pt-4">
       <img src="" alt="">
       <h1 class="text-white tittle">Unggah kartu</h1>
-
-      <div class="scanner-card">
+      <div class="scanner-card mt-5">
         <b-row>
           <b-col lg="3"/>
           <b-col lg="6">
@@ -19,6 +18,7 @@
 <script>
 import axios from 'axios'
 import { QrcodeCapture } from 'vue-qrcode-reader'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'Scan',
@@ -58,12 +58,20 @@ export default {
         } else {
           // cek apakah sedang sesinya atau enggak
           const today = new Date();
-          const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+('0' + today.getDate()).slice(-2);
-          const time = ('0' + today.getHours()).slice(-2) + ":" + today.getMinutes() + ":" + today.getSeconds();
-          const dateTime = date +'T'+ time + '.000Z';
-          if(this.dataParticipant.session.min < dateTime && this.dataParticipant.session.max > dateTime) {
-            this.$store.commit("setAuthentication", true);
-            this.$router.replace({ name: "Voting", params : {id:this.dataParticipant._id}, query: {'success': true} });
+          var start = new Date(this.dataParticipant.session.min)
+          start.setHours(start.getHours() - 7)
+          var end = new Date(this.dataParticipant.session.max)
+          end.setHours(end.getHours() - 7)
+          if(start < today && end > today) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Autentikasi berhasil',
+                text: 'Selamat datang ' + this.dataParticipant.name,
+                showConfirmButton: true
+            }).then(()=>{
+              this.$store.commit("setAuthentication", true);
+              this.$router.replace({ name: "Voting", params : {id:this.dataParticipant._id}, query: {'success': true} });
+            })
           } else {
             this.$router.push({ name: "Error", params: {error : 'failed-not-your-session'}});
           }

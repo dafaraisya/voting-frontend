@@ -20,8 +20,10 @@
             <b-collapse id="nav-text-collapse" is-nav>
             </b-collapse>
 
-            <i class="fas fa-arrow-left mr-2"></i>
-            Keluar
+            <a class="text-white" href="" @click="logout()">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Keluar
+            </a>
         </b-navbar>
         
     </b-container>
@@ -48,6 +50,10 @@ export default {
                 this.location = "Pengaturan";
             else
                 this.location = "Beranda"
+        },
+        logout() {
+            this.$store.commit("setAuthentication", false);
+            this.$router.push('../login');
         }
     },
     watch:{

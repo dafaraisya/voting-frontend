@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 // Admin
 import HomeAdmin from '../views/admin/Home.vue'
 import DashboardMain from '../views/admin/dashboard/DashboardMain.vue'
+import LoginAdmin from '../views/admin/dashboard/Login.vue'
 import IndexSession from '../views/admin/session/IndexSession.vue'
 import ListSession from '../views/admin/session/ListSession.vue'
 import CreateSession from '../views/admin/session/CreateSession.vue'
@@ -57,9 +58,21 @@ const routes = [
     component: Home
   },
   {
+    path: '/login',
+    name: 'login',
+    component: LoginAdmin
+  },
+  {
     path: '/admin',
     name: 'admin',
     component: HomeAdmin,
+    beforeEnter: (to, from, next) => {
+      if(store.state.authenticated == false) {
+          next({ name: 'login'});
+      } else {
+          next();
+      }
+    },
     children: [
       {
         path: '',
@@ -197,7 +210,7 @@ const routes = [
         component: Voting,
         beforeEnter: (to, from, next) => {
           if(store.state.authenticated == false) {
-              next({ name: 'Scan'});
+              next({ name: 'Welcome'});
           } else {
               next();
           }
@@ -209,7 +222,7 @@ const routes = [
         component: DetailCandidateVoting,
         beforeEnter: (to, from, next) => {
           if(store.state.authenticated == false) {
-              next({ name: 'Scan'});
+              next({ name: 'Welcome'});
           } else {
               next();
           }
@@ -234,4 +247,3 @@ export const router = new VueRouter({
   mode: 'history'
 })
 
-// export default router

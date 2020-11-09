@@ -1,9 +1,6 @@
 <template>
   <div class="voting">
     <div class="container text-left">
-        <notification v-if="$route.query.success === true" messageType="success" :key="$route.query.time">
-          {{ notification() }}
-        </notification>
         <img src="" alt="">
         <h1 class="text-white tittle">PEMIRA HIMATIPA UGM 2020</h1>
         <h4 class="text-white mt-1 mb-5">Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar calon dibawah ini</h4>
@@ -35,7 +32,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'Voting',
@@ -47,12 +44,13 @@ export default {
   },
   methods: {
     vote(id_candidate, name_candidate) {
-      swal({
+      new Swal({
         title: "Anda Yakin Memilih "+name_candidate+" ?",
+        showDenyButton: true,
         buttons: true,
       })
-      .then((confirm) => {
-        if(confirm) {
+      .then((result) => {
+        if(result.isConfirmed) {
           let data = {
             'id_participant' : this.participant._id,
             'id_candidate' : id_candidate
@@ -60,23 +58,22 @@ export default {
           axios
             .put("http://localhost:3000/api/v1/participant/vote", data)
             .then(() => {
-              this.$store.commit("setAuthentication", false);
-              this.$router.push({ name: "Announcement",query: {'success': true}});
+              Swal.fire({
+                  icon: 'success',
+                  title: 'Pilihan anda berhasil dikirim',
+                  showConfirmButton: true
+              }).then(()=>{
+                this.$store.commit("setAuthentication", false);
+                this.$router.push({ name: "Announcement",query: {'success': true}});
+              })
             })
             .catch( err => console.log(err));
         }
       });
     },
     getImage(url) {
-      return '../../images/'+url;
+      return '../../'+url;
     },
-    notification() {
-      swal({
-        icon: 'success',
-        title: 'Selamat datang di PEMIRA HIMATIPA UGM 2020',
-        showConfirmButton: true
-      });
-    }
   },
   mounted() {
     axios

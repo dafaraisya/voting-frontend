@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="mt-5">
         <h2>Timeline</h2>
-        <div class="timeline mt-4">
+        <div class="timeline">
             <div v-for="event in timeline" :key="event._id" class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
                 <div class="col-10 col-md-5 order-3 order-md-1 timeline-content">
                     <h3 class="text-light">{{ event.name }}</h3>

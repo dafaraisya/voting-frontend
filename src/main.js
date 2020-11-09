@@ -12,12 +12,14 @@ import  VueTypedJs  from 'vue-typed-js'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import vueSmoothScroll from 'vue2-smooth-scroll'
+import HighchartsVue from 'highcharts-vue'
 
 Vue.use(BootstrapVue);
 Vue.use(Vue2Editor);
 Vue.use(VueParticles);
 Vue.use(VueTypedJs);
-Vue.use(vueSmoothScroll)
+Vue.use(vueSmoothScroll);
+Vue.use(HighchartsVue);
 
 Vue.config.productionTip = false;
 

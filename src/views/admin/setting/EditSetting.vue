@@ -27,6 +27,11 @@
                         <b-form-input id="email_password" v-model="dataSetting.email.password"></b-form-input>
                     </b-form-group>
                     <br/>
+                    <h3> Prosedur </h3>
+                    <b-form-group label-for="procedure">
+                        <input id="procedure" ref="procedure" type="file" v-on:change="handleFileUpload()"/>
+                    </b-form-group>
+                    <br/>
                     <b-button variant="primary" @click="editData()">
                         <i class="far fa-save text-white"></i>
                         Simpan
@@ -93,7 +98,40 @@ export default {
                             .catch( err => console.log(err));
                         } 
                 })
-            } 
+            },
+        handleFileUpload(){
+            let formData = new FormData();
+
+            formData.append('file', this.$refs.procedure.files[0]);
+            
+            Swal.fire({
+                    title: 'Apakah anda yakin mengubah file prosedur?',
+                    showDenyButton: true,
+                    confirmButtonText: `Ya`,
+                    denyButtonText: `Tidak`,
+                }).then((result) => {
+                    if (result.isConfirmed) {            
+                        axios
+                            .put("http://localhost:3000/api/v1/setting/upload-procedure", formData,
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            })
+                            .then(() => {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Prosedur berhasil diperbarui',
+                                    showConfirmButton: true
+                                }).then(()=>{
+                                    
+                                })
+                            })
+                            //eslint-disable-next-line no-console
+                            .catch( err => console.log(err));
+                    } 
+            })
+        }, 
     },
     created() {
     axios

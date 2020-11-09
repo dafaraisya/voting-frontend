@@ -3,8 +3,9 @@
         <b-row>
             <b-col lg="6">
                 <div class="container bg-white mt-2 p-3 shadow-sm rounded">
-                    <div id="pemira-card" class="p-3 bg-white" style="border: 2px inset #21bf73">
-                        <h2>Kartu Pemilihan<br/>PEMIRA 2020</h2>
+                    <div id="pemira-card" class="p-3 bg-white" style="border: 2px inset #aaa">
+                        <img src="@/assets/logo himatipa.png" style="height:50px; width:50px;"/>
+                        <h2 class="text-bold">Kartu Pemilihan<br/>PEMIRA 2020</h2>
                         <vue-qr v-bind:text="detail._id"></vue-qr><br/>
                         <b>Nama</b><br/> {{ detail.name }}<br/>
                         <b>NIM</b><br/> {{ detail.nim }}<br/>
@@ -64,7 +65,6 @@ export default {
                 denyButtonText: `Tidak`,
             }).then((result) => {
                 if (result.isConfirmed) {            
-                    alert(this.$route.params.id)
                     axios
                         .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
                         .then(() => {
@@ -81,6 +81,14 @@ export default {
             })
         },
         send(to, name, nim) {
+            Swal.fire({
+                title: 'Loading',
+                text: 'Sedang mengirimkan email...',
+                showConfirmButton: false,
+                closeOnClickOutside: false,
+                allowOutsideClick: false
+            })
+
             htmlToImage.toPng(document.getElementById('pemira-card')) 
             .then(function (image) {
                 const data = {
@@ -92,7 +100,15 @@ export default {
                 
                 axios
                     .post("http://localhost:3000/api/v1/mail/", data)
-                    .then(() => this.$router.push({name:'ListParticipant'}))
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Email berhasil dikirim',
+                            showConfirmButton: true
+                        }).then(()=>{
+                            
+                        })
+                    })
                     .catch( err => console.log(err));
             });
         },

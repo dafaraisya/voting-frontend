@@ -12,7 +12,7 @@
                     <b-form-group label="Foto :" label-for="image">
                         <input id="image" ref="image" type="file" v-on:change="handleFileUpload(1)"/>
                     </b-form-group>
-                        <b-form-group label="CV :" label-for="cv">
+                    <b-form-group label="CV :" label-for="cv">
                         <input id="cv" ref="cv" type="file" v-on:change="handleFileUpload(2)"/>
                     </b-form-group>
                     <b-form-group label="Deskripsi :" label-for="short">

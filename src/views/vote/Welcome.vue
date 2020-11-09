@@ -1,7 +1,8 @@
 <template>
-  <div class="page"> 
-    <div class="sub-page" >
-      <h1 class="text-white" style="padding-top:200px;">
+  <div class="page">
+    <NavBar/>
+    <div class="sub-page" id="home">
+      <h1 class="text-white" style="padding-top:100px;">
         PEMIRA HIMATIPA UGM 2020
       </h1>
       <div class="inner">
@@ -18,18 +19,6 @@
               Vote
             </b-button>
         </router-link>
-        <a href="#timeline" v-smooth-scroll="{duration:1000}">
-          <b-button class="btn mt-5 ml-3">
-            <i class="far fa-calendar-alt" ></i>
-            Timeline
-          </b-button>
-        </a>
-        <a href="#announcement" v-smooth-scroll="{duration:1000}">
-          <b-button class="btn mt-5 ml-3">
-            <i class="fas fa-bullhorn"></i>
-            Pengumuman
-          </b-button>
-        </a>
       </b-container>
     </div>
     <div class="sub-page" id="timeline">
@@ -43,6 +32,7 @@
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue'
 import Timeline from '@/components/Timeline.vue'
 import Announcement from './Announcement.vue'
 import Footer from '@/components/Footer.vue'
@@ -50,6 +40,7 @@ import Footer from '@/components/Footer.vue'
 export default {
   name: 'Welcome',
   components: {
+    NavBar,
     Timeline,
     Announcement,
     Footer

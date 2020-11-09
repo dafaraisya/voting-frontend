@@ -3,7 +3,7 @@
       <img src="" alt="">
       <h1 class="text-white tittle">Scan kartu</h1>
 
-      <div class="scanner-card">
+      <div class="scanner-card mt-5">
         <b-row>
           <b-col lg="3"/>
           <b-col lg="6">
@@ -23,6 +23,7 @@
 <script>
 import axios from 'axios'
 import { QrcodeStream } from 'vue-qrcode-reader'
+import Swal from 'sweetalert2'
 
 export default {
   name: 'Scan',
@@ -78,8 +79,15 @@ export default {
           const time = ('0' + today.getHours()).slice(-2) + ":" + today.getMinutes() + ":" + today.getSeconds();
           const dateTime = date +'T'+ time + '.000Z';
           if(this.dataParticipant.session.min < dateTime && this.dataParticipant.session.max > dateTime) {
-            this.$store.commit("setAuthentication", true);
-            this.$router.replace({ name: "Voting", params : {id:this.dataParticipant._id}, query: {'success': true} });
+            Swal.fire({
+                icon: 'success',
+                title: 'Autentikasi berhasil',
+                text: 'Selamat datang ' + this.dataParticipant.name,
+                showConfirmButton: true
+            }).then(()=>{
+              this.$store.commit("setAuthentication", true);
+              this.$router.replace({ name: "Voting", params : {id:this.dataParticipant._id}, query: {'success': true} });
+            })
           } else {
             this.$router.push({ name: "Error", params: {error : 'failed-not-your-session'}});
           }
@@ -99,6 +107,11 @@ export default {
 .tittle, h1 {
     font-weight: bold;
 }
+
+.page {
+  margin-top:100px;
+}
+
 .scanner-card {
     display: block;
     margin-left: auto;

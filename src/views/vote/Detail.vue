@@ -8,23 +8,41 @@
             <b-row>
                 <b-col lg="1"></b-col>
                 <b-col lg="10">
-                    <div class="bg-white p-3 rounded-sm shadow mb-5">
-                        <h3>{{ detail.name }}</h3>
-                        <img class="img-profile img-profile-circle" v-bind:src="getImage(detail.image)"/><br/><br/>
-                        <b>Nomor urut </b><br/>{{ detail.number }}<br/>
-                        <b>Deskripsi</b>
-                        <div v-html="detail.description.short"/>
-                        <b>Visi</b>
-                        <div v-html="detail.description.vision"/>
-                        <b>Misi</b>
-                        <div v-html="detail.description.mission"/><br/>
-                            <b-button @click="klik=true" class="ml-2" href="" variant="primary">
-                                <i class="fas fa-arrow-left text-white"></i>
-                                Kembali
-                            </b-button>
-                        <router-link v-if="klik" :to="this.$router.go(-1)">
-                        </router-link>
+                    <div class="sub-detail-black p-5 mb-4 rounded shadow-sm">
+                        <b-row>
+                            <b-col lg="3">
+                                <img class="img-profile img-profile-circle" v-bind:src="getImage(detail.image)"/>
+                            </b-col>
+                            <b-col lg="9" class="text-left pt-4 pl-5">
+                                <h3>{{ detail.name }}</h3>
+                                <b>Nomor urut  {{ detail.number }} </b><br/>
+                                <a class="mt-3" style="display:block;" target="_blank" v-bind:href="'http://localhost:8080/'+this.$route.params.id+'.pdf'">
+                                    <b-button href="" variant="success">
+                                        <i class="far fa-file-alt text-white"></i>
+                                        CV
+                                    </b-button>
+                                </a><br/>
+                            </b-col>
+                        </b-row>
                     </div>
+                    <div class="sub-detail bg-white p-5 mb-5 text-left rounded shadow-sm">
+                        <h2>Deskripsi</h2>
+                        <div v-html="detail.description.short"/>
+                    </div>
+                    <div class="sub-detail bg-white p-5 mb-5 text-left rounded shadow-sm">
+                        <h2>Visi</h2>
+                        <div v-html="detail.description.vision"/>
+                    </div>
+                    <div class="sub-detail bg-white p-5 mb-5 text-left rounded shadow-sm">
+                        <h2>Misi</h2>
+                        <div v-html="detail.description.mission"/>
+                    </div>
+                    <b-button @click="klik=true" class="mt-2 mb-3 ml-2" href="" variant="primary">
+                        <i class="fas fa-arrow-left text-white"></i>
+                        Kembali
+                    </b-button>
+                    <router-link v-if="klik" :to="this.$router.go(-1)">
+                    </router-link>
                 </b-col>
             </b-row>
             </div>
@@ -52,7 +70,7 @@ export default {
     },
     methods:{
         getImage(url) {
-            return '../../images/'+url;
+            return '../../'+url;
         }
     },
     created() {
@@ -71,6 +89,9 @@ export default {
     margin-top: -70px;
     font-weight: bold;
 }
+.page {
+    margin-top: 80px;
+}
 .img-profile-circle {
     height: 200px;
     width: 200px;
@@ -87,5 +108,14 @@ export default {
 .slide-fade-leave-to {
   transform: translateY(-100%);
   opacity: 0;
+}
+.sub-detail-black {
+    background: rgba(0,0,0,0.8);
+    color: white;
+}
+.sub-detail-white {
+    text-align:center;
+    background: rgba(200,200,200,0.8);
+    color: black;
 }
 </style>
