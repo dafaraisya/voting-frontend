@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 // Admin
 import HomeAdmin from '../views/admin/Home.vue'
 import DashboardMain from '../views/admin/dashboard/DashboardMain.vue'
@@ -52,11 +51,6 @@ export const store = new Vuex.Store(
 );
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
   {
     path: '/login',
     name: 'login',
@@ -180,7 +174,7 @@ const routes = [
     ] 
   },
   {
-    path: '/vote',
+    path: '/',
     name: 'vote',
     component: HomeVote,
     children: [
@@ -244,6 +238,6 @@ const routes = [
 
 export const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'history',
 })
 

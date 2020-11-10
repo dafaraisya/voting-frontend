@@ -2,7 +2,7 @@
   <div class="page">
     <NavBar/>
     <div class="sub-page" id="home">
-      <h1 class="text-white" style="padding-top:100px;">
+      <h1 class="text-white" style="padding-top:160px;">
         PEMIRA HIMATIPA UGM 2020
       </h1>
       <div class="inner">

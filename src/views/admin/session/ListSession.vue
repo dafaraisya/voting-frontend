@@ -7,7 +7,7 @@
       </b-button>
     </router-link>
       <div class="bg-white mb-3 p-3 rounded-sm shadow" v-for="session in sessions" :key="session._id">
-          <h1> Sesi {{ session.number }} </h1>
+          <div><h1> Sesi {{ session.number }} </h1></div>
           <div class="mt-3">
               <i class="far fa-clock"></i> 
               {{ getDateTime(new Date(session.start)) }} - {{ getDateTime(new Date(session.end)) }} 
@@ -25,7 +25,6 @@
       </div>
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 

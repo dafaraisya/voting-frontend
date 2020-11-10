@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loading">
+    <div v-if="loading" style="margin-top:30px;">
       <transition name="fade">
         <Loader/>
       </transition>
