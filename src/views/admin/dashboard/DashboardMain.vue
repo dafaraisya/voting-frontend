@@ -58,7 +58,7 @@ export default {
     methods:{
         getOutline() {
             axios
-                .get("http://localhost:3000/api/v1/outline")
+                .get("http://5.181.217.29:3000/api/v1/outline")
                 .then(res => (this.outline = res.data.data))
                 .catch(err => console.log(err));
         }

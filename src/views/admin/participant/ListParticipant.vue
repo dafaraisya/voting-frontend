@@ -49,7 +49,7 @@ export default {
   methods: {
     del(id){
       axios
-          .delete("http://localhost:3000/api/v1/participant/"+id)
+          .delete("http://5.181.217.29:3000/api/v1/participant/"+id)
           .then(() => location.reload())
           .catch( err => console.log(err));
     },
@@ -100,7 +100,7 @@ export default {
   },
   mounted() {
     axios
-      .get('http://localhost:3000/api/v1/participant/all')
+      .get('http://5.181.217.29:3000/api/v1/participant/all')
       .then(res => (this.participants = res.data.data))
       .catch(error => console.log(error))
   }

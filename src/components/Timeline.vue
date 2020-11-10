@@ -24,8 +24,6 @@ import axios from 'axios'
 export default {
     data() {
       return {
-        ip: 'http://5.181.217.29/',
-        //ip: 'http://localhost/',
         timeline: []
       }
   },
@@ -75,7 +73,7 @@ export default {
     },
     mounted() {
     axios
-        .get(this.ip + 'api/v1/session/all')
+        .get('http://5.181.217.29:3000/api/v1/session/all')
         .then(res => {
             res.data.data.forEach((event)=>{
                 this.timeline.push({
