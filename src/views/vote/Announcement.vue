@@ -155,7 +155,11 @@ export default {
           this.hour,
           this.minute
       );
-      const now = new Date();
+      var jakartaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Jakarta"});
+      console.log('Jakarta time: '+ (new Date(jakartaTime)).toISOString())
+
+      const now = (new Date(jakartaTime));
+
       const distance = end.getTime() - now.getTime();
       if(distance < 0) {
         this.timeUp = true;
@@ -180,7 +184,10 @@ export default {
     },
     count() {
       setInterval(()=>{
-        var now = new Date();
+        var jakartaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Jakarta"});
+
+        var now = new Date(jakartaTime);
+
         var endCount = new Date(this.announcement);
         endCount.setHours(endCount.getHours() - 7);
         

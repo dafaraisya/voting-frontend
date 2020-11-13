@@ -7,8 +7,8 @@
       </b-button>
     </router-link>
       <div class="bg-white mb-3 p-3 rounded-sm shadow" v-for="session in sessions" :key="session._id">
-          <div><h1> Sesi {{ session.number }} </h1></div>
-          <div class="mt-3">
+          <div>
+              <b style="font-size:26px;">Sesi {{ session.number }}</b><br/>
               <i class="far fa-clock"></i> 
               {{ getDateTime(new Date(session.start)) }} - {{ getDateTime(new Date(session.end)) }} 
           </div>
