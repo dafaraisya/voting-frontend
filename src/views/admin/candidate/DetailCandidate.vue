@@ -1,10 +1,3 @@
-<style>
-.img-profile-circle {
-    height: 200px;
-    width: 200px;
-    border-radius: 100px;
-}
-</style>
 <template>
     <b-container>
         <b-row>
@@ -94,3 +87,10 @@ export default {
     }
 }
 </script>
+<style>
+.img-profile-circle {
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+</style>
