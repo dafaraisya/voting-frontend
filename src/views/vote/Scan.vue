@@ -74,7 +74,11 @@ export default {
           this.$router.push({ name: "Error", params: {error : 'failed-already-vote'}});
         } else {
           // cek apakah sedang sesinya atau enggak
-          const today = new Date();
+          var jakartaTime = new Date().toLocaleString("en-US", {
+            timeZone: "Asia/Jakarta",
+          });
+
+          var today = new Date(jakartaTime);
           const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+('0' + today.getDate()).slice(-2);
           const time = ('0' + today.getHours()).slice(-2) + ":" + today.getMinutes() + ":" + today.getSeconds();
           const dateTime = date +'T'+ time + '.000Z';
