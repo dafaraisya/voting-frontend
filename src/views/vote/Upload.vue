@@ -74,7 +74,6 @@ export default {
           });
 
           var today = new Date(jakartaTime);
-          const today = new Date();
           var start = new Date(this.dataParticipant.session.min);
           start.setHours(start.getHours() - 7);
           var end = new Date(this.dataParticipant.session.max);
