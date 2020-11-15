@@ -3,7 +3,7 @@
         <b-row>
             <b-col lg="8">
                 <b-container class="bg-white p-3 mt-3 shadow-sm rounded">
-                    <h1 class="mt-2">Buat sesi</h1>
+                    <b style="font-size:26px;">Buat sesi</b><br/>
                     <b-form class="text-left ml-5 mt-4 mr-5">
                         <b-form-group label="Sesi ke :" label-for="session_number">
                             <b-form-input type="number" id="session_number" v-model="session.number"></b-form-input>
