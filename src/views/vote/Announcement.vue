@@ -66,7 +66,7 @@ export default {
           type: 'bar',
         },
         title: {
-          text: 'Hasil Perhtungan Suara PEMIRA HIMATIPA UGM 2020'
+          text: 'Hasil Perhitungan Suara PEMIRA HIMATIPA UGM 2020'
         },
         xAxis: {
           categories: ['oke', 'oke2', 'oke3'],
