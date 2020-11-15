@@ -16,7 +16,7 @@
                     <b> Password </b>
                     <p> {{ detail.email.password }} </p><br/>
                     <h3> Prosedur </h3>
-                    <a v-bind:href="'http://5.181.217.29:8080/procedure.pdf'" class="btn btn-primary">
+                    <a v-bind:href="'http://pemira.himatipaugm.com/procedure.pdf'" class="btn btn-primary">
                         <i class="far fa-file-alt text-white"></i>
                         Buka
                     </a><br/><br/>
