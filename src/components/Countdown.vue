@@ -59,7 +59,6 @@ export default {
     showRemaining() {
       const timer = setInterval(() => {
         var now = new Date();
-        now.setUTCHours(8)
 
         // ambil data sekarang
         const distance = this.end.getTime() - now.getTime();

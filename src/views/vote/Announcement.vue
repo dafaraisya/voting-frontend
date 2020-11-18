@@ -156,11 +156,8 @@ export default {
           this.minute
       );
 
-      end.setUtcHours(8);
-
       const now = new Date();
-      now.setUTCHours(8);
-
+      
       const distance = end.getTime() - now.getTime();
       if(distance < 0) {
         this.timeUp = true;
