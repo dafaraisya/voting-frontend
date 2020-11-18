@@ -155,10 +155,11 @@ export default {
           this.hour,
           this.minute
       );
-      var jakartaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Jakarta"});
-      console.log('Jakarta time: '+ (new Date(jakartaTime)).toISOString())
 
-      const now = (new Date(jakartaTime));
+      end.setUtcHours(8);
+
+      const now = new Date();
+      now.setUTCHours(8);
 
       const distance = end.getTime() - now.getTime();
       if(distance < 0) {

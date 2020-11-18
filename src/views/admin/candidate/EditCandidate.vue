@@ -125,7 +125,7 @@ export default {
         },
         getImage(url) {
             console.log()
-            return 'http://5.181.217.29:8080/images/'+url;
+            return 'http://pemira.himatipaugm.com/images/'+url;
         }
     },
     mounted() {

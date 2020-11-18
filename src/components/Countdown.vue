@@ -58,11 +58,8 @@ export default {
   methods: {
     showRemaining() {
       const timer = setInterval(() => {
-        var jakartaTime = new Date().toLocaleString("en-US", {
-          timeZone: "Asia/Jakarta",
-        });
-
-        var now = new Date(jakartaTime);
+        var now = new Date();
+        now.setUTCHours(8)
 
         // ambil data sekarang
         const distance = this.end.getTime() - now.getTime();
