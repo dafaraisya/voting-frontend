@@ -79,7 +79,7 @@ export default {
     },
     del(id) {
       axios
-        .delete("http://localhost:3000/api/v1/participant/" + id)
+        .delete("http://52.152.228.107:3000/api/v1/participant/" + id)
         .then(() => location.reload())
         .catch((err) => console.log(err));
     },
@@ -178,7 +178,7 @@ export default {
   mounted() {
     axios
       .get(
-        "http://localhost:3000/api/v1/participant/page/" +
+        "http://52.152.228.107:3000/api/v1/participant/page/" +
           this.$route.params.page
       )
       .then((res) => {

@@ -89,7 +89,7 @@ export default {
     },
     mounted() {
         axios
-            .get("http://localhost:3000/api/v1/setting/all")
+            .get("http://52.152.228.107:3000/api/v1/setting/all")
             .then(res => (this.detail = res.data.data[0]))
             .catch(err => console.log(err));
     }

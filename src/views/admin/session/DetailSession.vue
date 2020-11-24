@@ -54,7 +54,7 @@ export default {
         if (result.isConfirmed) {
           axios
             .delete(
-              "http://localhost:3000/api/v1/session/" + this.$route.params.id
+              "http://52.152.228.107:3000/api/v1/session/" + this.$route.params.id
             )
             .then(() => {
               Swal.fire({
@@ -164,7 +164,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/api/v1/session/" + this.$route.params.id)
+      .get("http://52.152.228.107:3000/api/v1/session/" + this.$route.params.id)
       .then((res) => (this.detail = res.data.data))
       .catch((err) => console.log(err));
   },

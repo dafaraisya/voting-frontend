@@ -43,7 +43,7 @@ export default {
         that.id = await qr.decodeFromImage(e.target.result);
         alert(that.id);
         axios
-          .get("http://localhost:3000/api/v1/participant/" + that.id)
+          .get("http://52.152.228.107:3000/api/v1/participant/" + that.id)
           .then((res) => {
             that.dataParticipant = res.data.data;
             that.check();
@@ -106,7 +106,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/api/v1/participant/all")
+      .get("http://52.152.228.107:3000/api/v1/participant/all")
       .then((res) => (this.dataParticipants = res.data.data))
       .catch((error) => console.log(error));
     /*var base64 = "";

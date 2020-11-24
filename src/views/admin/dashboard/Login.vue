@@ -43,7 +43,7 @@ export default {
   methods: {
     login() {
       axios
-          .post("http://localhost:3000/api/v1/login", this.authentication)
+          .post("http://52.152.228.107:3000/api/v1/login", this.authentication)
           .then((response) => {
             if(response.data.message == 'success') {
               Swal.fire({
