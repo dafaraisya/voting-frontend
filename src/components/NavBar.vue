@@ -111,7 +111,6 @@ nav ul {
   padding: 0;
   text-align: right;
   margin: 0;
-  padding-right: 40px;
   transition: 1s;
 }
 
@@ -172,7 +171,6 @@ nav ul li a:hover {
 }
 
 .menu-icon {
-  line-height: 60px;
   width: 100%;
   background: #000;
   text-align: right;

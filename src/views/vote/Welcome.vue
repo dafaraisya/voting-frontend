@@ -6,7 +6,7 @@
         class="container h-100 text-white"
       >
         <b-row class="row h-100 justify-content-center align-items-center">
-          <b-col class="col-12">
+          <b-col lg="12">
             <h1>PEMIRA FMIPA UNS 2020</h1>
             <div class="inner">
               <span>
@@ -101,8 +101,7 @@ b-button {
   font-weight: bold;
   overflow: hidden;
   display: inline-block;
-  min-width: 600px;
-  left: calc(50% - 300px);
+  left: calc(50% - 150px);
 }
 .inner span {
   animation: animate 6s ease infinite;
@@ -189,6 +188,7 @@ b-button {
   }
   .inner {
     font-size: 35px;
+    left: calc(50% - 100px);
   }
   #home {
     padding-top: 160px;
@@ -196,5 +196,6 @@ b-button {
   #home h1 {
     margin-top: 30px;
   }
+  
 }
 </style>

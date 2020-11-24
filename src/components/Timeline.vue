@@ -13,15 +13,15 @@
         </b-col>
         <b-col lg="9">
           <div>
-            <b>Pembukaan: </b>
+            <b>Pembukaan: </b><br />
             {{ getTime(event.start) + ", " + getDay(event.start) }}
           </div>
           <div>
-            <b>Penutupan: </b>
+            <b>Penutupan: </b><br />
             {{ getTime(event.end) + ", " + getDay(event.end) }}
           </div>
           <div>
-            <b>Jumlah peserta: </b>
+            <b>Jumlah peserta: </b><br />
             {{ event.participant + " orang" }}
           </div>
         </b-col>
@@ -126,12 +126,18 @@ export default {
 .session {
   max-width: 700px;
 }
-.session .name{
-    font-size: 32px;
+.session .name {
+  font-size: 32px;
+}
+.session br {
+  display: none;
 }
 @media only screen and (max-width: 767px) {
   .session {
-    max-width: 400px;
+    max-width: 320px;
+  }
+  .session br {
+    display: block;
   }
 }
 </style>
