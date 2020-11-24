@@ -62,7 +62,7 @@ const routes = [
     component: HomeAdmin,
     beforeEnter: (to, from, next) => {
       if(store.state.authenticated == false) {
-          next({ name: 'login'});
+          next()//next({ name: 'login'});
       } else {
           next();
       }
@@ -79,7 +79,7 @@ const routes = [
         component: IndexParticipant,
         children: [
           {
-            path: '',
+            path: ':page',
             name: 'ListParticipant',
             component: ListParticipant,
           },

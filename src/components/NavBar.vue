@@ -1,40 +1,65 @@
 <template>
-  <nav v-bind:class="[scrollPosition > 50 ? 'black' : '']">
-    <div class="menu-icon">
-      <i class="fa fa-bars fa-2x"></i>
-    </div>
-    <div class="logo">
-      <img class="rounded-circle" src="@/assets/logo himatipa.png" alt="" />
-    </div>
-    <div class="menu">
+  <div>
+    <nav v-bind:class="[scrollPosition > 50 ? 'black' : '']">
+      <div @click="toggle()" class="menu-icon">
+        <i class="fa fa-bars fa-2x"></i>
+      </div>
+      <div class="logo">
+        <img class="rounded-circle" src="@/assets/logo kpr.png" alt="" />
+      </div>
+      <div class="menu">
+        <ul>
+          <li>
+            <a href="#home" v-smooth-scroll="{ duration: 1000 }">
+              <i class="fas fa-home"></i>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#timeline" v-smooth-scroll="{ duration: 1000 }">
+              <i class="far fa-calendar-alt"></i>
+              Timeline
+            </a>
+          </li>
+          <li>
+            <a href="#announcement" v-smooth-scroll="{ duration: 1000 }">
+              <i class="fas fa-bullhorn"></i>
+              Pengumuman
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="menu-min" v-if="show" style="z-index: 9999999999">
       <ul>
         <li>
-          <a href="#home" v-smooth-scroll="{ duration: 1000 }">
+          <a href="#home" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
             <i class="fas fa-home"></i>
             Home
           </a>
         </li>
         <li>
-          <a href="#timeline" v-smooth-scroll="{ duration: 1000 }">
+          <a href="#timeline" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
             <i class="far fa-calendar-alt"></i>
             Timeline
           </a>
         </li>
         <li>
-          <a href="#announcement" v-smooth-scroll="{ duration: 1000 }">
+          <a href="#announcement" @click="toggle()" v-smooth-scroll="{ duration: 1000 }">
             <i class="fas fa-bullhorn"></i>
             Pengumuman
           </a>
         </li>
       </ul>
     </div>
-  </nav>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
       scrollPosition: null,
+      show: false,
     };
   },
 
@@ -42,6 +67,9 @@ export default {
     updateScroll() {
       this.scrollPosition = window.scrollY;
     },
+    toggle() {
+      this.show = !this.show;
+    }
   },
 
   mounted() {
@@ -71,7 +99,7 @@ nav {
   top: 0;
   width: 100%;
   line-height: 60px;
-  z-index: 99999999;
+  z-index: 99999;
 }
 
 nav ul {
@@ -88,7 +116,7 @@ nav ul {
 }
 
 nav.black ul {
-  background: rgba(20,20,20,0.98);
+  background: rgba(20, 20, 20, 0.98);
 }
 
 nav ul li {
@@ -103,6 +131,41 @@ nav ul li a {
 }
 
 nav ul li a:hover {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.menu-min {
+  color:white;
+  text-decoration: none;
+  background: rgb(0,0,0);
+  width: 100%;
+  height: 100%;
+  position:fixed;
+  top: 80px;
+  display: none;
+  transition: 1s;
+}
+
+.menu-min ul {
+  line-height: 60px;
+  list-style: none;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+  padding-right: 40px;
+  transition: 1s;
+}
+
+.menu-min.black ul {
+  background: rgba(20, 20, 20, 0.98);
+}
+
+.menu-min ul li a {
   text-decoration: none;
   color: #fff;
   font-size: 16px;
@@ -148,6 +211,10 @@ nav ul li a:hover {
   }
 
   .menu-icon {
+    display: block;
+  }
+
+  .menu-min {
     display: block;
   }
 }

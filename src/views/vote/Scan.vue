@@ -56,7 +56,7 @@ export default {
     onDecode (decodedString) {
       this.id = decodedString;
       axios
-        .get("http://5.181.217.29:3000/api/v1/participant/"+this.id)
+        .get("http://localhost:3000/api/v1/participant/"+this.id)
         .then(res => {
           this.dataParticipant = res.data.data;
           this.check();
@@ -74,11 +74,7 @@ export default {
           this.$router.push({ name: "Error", params: {error : 'failed-already-vote'}});
         } else {
           // cek apakah sedang sesinya atau enggak
-          var jakartaTime = new Date().toLocaleString("en-US", {
-            timeZone: "Asia/Jakarta",
-          });
-
-          var today = new Date(jakartaTime);
+          var today = new Date();
           const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+('0' + today.getDate()).slice(-2);
           const time = ('0' + today.getHours()).slice(-2) + ":" + today.getMinutes() + ":" + today.getSeconds();
           const dateTime = date +'T'+ time + '.000Z';
@@ -101,7 +97,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://5.181.217.29:3000/api/v1/participant/all")
+      .get("http://localhost:3000/api/v1/participant/all")
       .then(res => (this.dataParticipants = res.data.data))
       .catch(error => console.log(error))
   }

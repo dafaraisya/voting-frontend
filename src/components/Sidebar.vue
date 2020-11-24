@@ -2,7 +2,7 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>PEMIRA HIMATIPA UGM 2020 </h3>
+                <h3>PEMIRA FMIPA UNS 2020 </h3>
             </div>
 
             <ul class="list-unstyled components text-white">
@@ -19,7 +19,7 @@
                     </router-link>
                 </li>
                 <li @click="selectedItem=2" v-bind:class="[selectedItem == 2 ? 'active' : '']">
-                    <router-link class="text-white" :to="{name: 'ListParticipant'}">
+                    <router-link class="text-white" :to="{name: 'ListParticipant', params:{page: 1}}">
                         <div class="inline"><i class="fas fa-users"></i></div>
                         <b-nav-text class="mr-4 ml-2">Peserta</b-nav-text>
                     </router-link>

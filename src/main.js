@@ -20,6 +20,7 @@ Vue.use(VueParticles);
 Vue.use(VueTypedJs);
 Vue.use(vueSmoothScroll);
 Vue.use(HighchartsVue);
+Vue.use(require('vue-moment'));
 
 Vue.config.productionTip = false;
 

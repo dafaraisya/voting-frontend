@@ -66,7 +66,7 @@ export default {
           type: 'bar',
         },
         title: {
-          text: 'Hasil Perhitungan Suara PEMIRA HIMATIPA UGM 2020'
+          text: 'Hasil Perhitungan Suara PEMIRA FMIPA UNS 2020'
         },
         xAxis: {
           categories: ['oke', 'oke2', 'oke3'],
@@ -182,9 +182,7 @@ export default {
     },
     count() {
       setInterval(()=>{
-        var jakartaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Jakarta"});
-
-        var now = new Date(jakartaTime);
+        var now = new Date();
 
         var endCount = new Date(this.announcement);
         endCount.setHours(endCount.getHours() - 7);
@@ -231,7 +229,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://5.181.217.29:3000/api/v1/announcement")
+      .get("http://localhost:3000/api/v1/announcement")
       .then(res => {
         this.announcement = res.data.data;
         this.formatter();
@@ -239,14 +237,14 @@ export default {
       })
       .catch(err => (console.log(err)));
     axios
-      .get("http://5.181.217.29:3000/api/v1/participant/all")
+      .get("http://localhost:3000/api/v1/participant/all")
       .then(res => {
         this.participants = res.data.data;
         this.count()
       })
       .catch(err => (console.log(err)));
     axios
-      .get("http://5.181.217.29:3000/api/v1/candidate/all")
+      .get("http://localhost:3000/api/v1/candidate/all")
       .then(res => {
         this.candidates = res.data.data;
       })
@@ -257,7 +255,7 @@ export default {
 </script>
 <style>
 .countdown {
-  margin-top: 50px;
+  margin-top: 8%;
 }
 .highcharts-figure, .highcharts-data-table table {
   min-width: 310px; 

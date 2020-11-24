@@ -1,110 +1,130 @@
 <template>
   <div class="page">
-    <NavBar/>
+    <NavBar />
     <div class="sub-page" id="home">
-      <h1 class="text-white" style="padding-top:160px;">
-        PEMIRA HIMATIPA UGM 2020
-      </h1>
-      <div class="inner">
-        <span>
-          HIMATIPA JAYA!<br>
-          Sukseskan PEMIRA<br>
-          Tunjukan Kontribusi
-        </span>
-      </div>
-      <b-container class="mt-5">
-        <router-link class="mt-5" :to="{name:'Method'}">
-          <b-button class="btn mt-5">
-            <i class="fas fa-vote-yea"></i> 
-              Vote
-            </b-button>
-        </router-link>
+      <b-container
+        class="container h-100 text-white"
+      >
+        <b-row class="row h-100 justify-content-center align-items-center">
+          <b-col class="col-12">
+            <h1>PEMIRA FMIPA UNS 2020</h1>
+            <div class="inner">
+              <span>
+                #Tagline1<br />
+                #Tagline2<br />
+                #Tagline3
+              </span>
+            </div>
+            <b-container class="mt-5">
+              <router-link class="mt-5" :to="{ name: 'Method' }">
+                <b-button class="btn mt-5">
+                  <i class="fas fa-vote-yea"></i>
+                  Vote
+                </b-button>
+              </router-link>
+            </b-container>
+          </b-col>
+        </b-row>
       </b-container>
     </div>
-    <div class="sub-page" id="timeline">
-      <Timeline data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200"/> 
+    <div
+      class="sub-page"
+      id="timeline"
+    >
+      <Timeline
+        data-aos="fade-in"
+        data-aos-duration="1000"
+        data-aos-delay="200"
+      />
     </div>
     <div class="sub-page" id="announcement">
-      <Announcement data-aos="fade-in" data-aos-duration="1000" data-aos-delay="200"/> 
+      <Announcement
+        data-aos="fade-in"
+        data-aos-duration="1000"
+        data-aos-delay="200"
+      />
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
-import Timeline from '@/components/Timeline.vue'
-import Announcement from './Announcement.vue'
-import Footer from '@/components/Footer.vue'
+import NavBar from "@/components/NavBar.vue";
+import Timeline from "@/components/Timeline.vue";
+import Announcement from "./Announcement.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
-  name: 'Welcome',
+  name: "Welcome",
   components: {
     NavBar,
     Timeline,
     Announcement,
-    Footer
+    Footer,
   },
   created() {
-    document.title = 'PEMIRA HIMATIPA UGM 2020';
+    document.title = "PEMIRA FMIPA UNS 2020";
   },
-}
+};
 </script>
 <style scoped>
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 * {
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .page {
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .sub-page {
-  min-height:100%;
-  width:100%;
-  padding-top:50px;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 b-button {
   margin-top: 50px;
 }
 
-.inner{
-  position:absolute;
-  height:55px;
-  line-height:55px;
-  font-size:50px;
+.inner {
+  position: absolute;
+  height: 55px;
+  line-height: 55px;
+  font-size: 50px;
   font-weight: bold;
-  overflow:hidden;
-  display:inline-block;
+  overflow: hidden;
+  display: inline-block;
   min-width: 600px;
   left: calc(50% - 300px);
 }
-.inner span{
-  animation:animate 6s ease infinite;
-  position:relative;
-  color:white
+.inner span {
+  animation: animate 6s ease infinite;
+  position: relative;
+  color: white;
 }
-@keyframes animate{
-  0%{
+@keyframes animate {
+  0% {
     opacity: 1;
-    top:-160px;
+    top: -160px;
   }
   25% {
-    top:-105px;
+    top: -105px;
   }
   30% {
-    top:-105px;
+    top: -105px;
   }
   50% {
-    top:-55px;
+    top: -55px;
   }
   55% {
-    top:-55px;
+    top: -55px;
   }
   75% {
     top: 0px;
@@ -117,16 +137,21 @@ b-button {
     top: 50px;
   }
 }
-
-
+#timeline {
+  background: #000;
+  padding-top: 100px;
+  padding-bottom: 20px;
+}
 #announcement {
+  padding-top: 60px;
+  padding-bottom: 20px;
   background: linear-gradient(
-            to right,
-          rgba(0, 0, 0, 0.8),
-          rgba(40, 40, 40, 0.8),
-          rgba(80, 80, 80, 0.8)
-        ),
-  url('./../../assets/background-teknologi-pertanian.jpg');
+      to right,
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 1)
+    ),
+    url("");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -135,24 +160,35 @@ b-button {
 
 .btn {
   padding: 10px 30px;
-  background-color: rgba(0,0,0,0);
-  border-color: rgb(255,255,255);
+  background-color: rgba(0, 0, 0, 0);
+  border-color: rgb(255, 255, 255);
 }
 
 .btn:hover {
-  background-color: rgb(255,255,255);
-  color: rgb(0,0,0)
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1920px){
+@media only screen and (min-width: 1200px) and (max-width: 1920px) {
   h1 {
     font-size: 50px;
+  }
+  .inner {
+    font-size: 55px;
+  }
+  #home {
+    padding-top: 250px;
   }
 }
 @media only screen and (max-width: 767px) {
   h1 {
+    font-size: 30px;
+  }
+  .inner {
     font-size: 35px;
   }
+  #home {
+    padding-top: 160px;
+  }
 }
-
 </style>

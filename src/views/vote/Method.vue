@@ -50,7 +50,21 @@ h1 {
   color: rgb(0,0,0)
 }
 
-.page {
+@media only screen and (min-width: 1200px) and (max-width: 1920px){
+  h1 {
+    font-size: 50px;
+  }
+  .page {
   padding-top: 100px;
 }
+}
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: 35px;
+  }
+  .page {
+  padding-top: 20px;
+}
+}
+
 </style>

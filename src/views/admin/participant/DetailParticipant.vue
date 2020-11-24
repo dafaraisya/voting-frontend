@@ -4,7 +4,7 @@
             <b-col lg="6">
                 <div class="container bg-white mt-2 p-3 shadow-sm rounded">
                     <div id="pemira-card" class="p-3 bg-white" style="border: 2px inset #aaa">
-                        <img src="@/assets/logo himatipa.png" style="height:50px; width:50px;"/>
+                        <img src="@/assets/logo kpr.png" style="height:50px; width:50px;"/>
                         <h2 class="text-bold">Kartu Pemilihan<br/>PEMIRA 2020</h2>
                         <vue-qr v-bind:text="detail._id"></vue-qr><br/>
                         <b>Nama</b><br/> {{ detail.name }}<br/>
@@ -12,7 +12,7 @@
                         <b>Email</b><br/> {{ detail.email }}<br/>
                         <b>Sesi</b><br/> {{ detail.session.number }}<br/>
                     </div><br/>
-                    <b-button @click="send(detail.email, detail.name, detail.nim)" class="ml-2" href="" variant="primary">
+                    <b-button @click="send(detail.email, detail.name, detail.nim, detail._id)" class="ml-2" href="" variant="primary">
                         <i class="fas fa-paper-plane"></i>
                         Kirim
                     </b-button>
@@ -66,7 +66,7 @@ export default {
             }).then((result) => {
                 if (result.isConfirmed) {            
                     axios
-                        .delete("http://5.181.217.29:3000/api/v1/participant/"+this.$route.params.id)
+                        .delete("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
                         .then(() => {
                             Swal.fire({
                                 icon: 'success',
@@ -80,7 +80,7 @@ export default {
                 } 
             })
         },
-        send(to, name, nim) {
+        send(to, name, nim, id) {
             Swal.fire({
                 title: 'Loading',
                 text: 'Sedang mengirimkan email...',
@@ -96,10 +96,11 @@ export default {
                     name: name,
                     nim: nim,
                     image: image,
+                    participantId: id
                 }
                 
                 axios
-                    .post("http://5.181.217.29:3000/api/v1/mail/", data)
+                    .post("http://localhost:3000/api/v1/mail/", data)
                     .then(() => {
                         Swal.fire({
                             icon: 'success',
@@ -124,7 +125,7 @@ export default {
     },
     mounted() {
         axios
-            .get("http://5.181.217.29:3000/api/v1/participant/"+this.$route.params.id)
+            .get("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
             .then(res => (this.detail = res.data.data))
             .catch(err => console.log(err));
     }

@@ -2,7 +2,7 @@
   <div class="page"> 
     <div class="sub-page" >
       <h1 class="text-white" style="padding-top:20px;">
-        PEMIRA HIMATIPA UGM 2020
+        PEMIRA FMIPA UNS 2020
       </h1>
       <div class="home-voting"/>
       <video autoplay muted loop id="video-bg">
@@ -33,7 +33,7 @@ import Swal from 'sweetalert2'
 export default {
   name: 'Welcome',
   created() {
-    document.title = 'PEMIRA HIMATIPA UGM 2020';
+    document.title = 'PEMIRA FMIPA UNS 2020';
   },
   data() {
     return {
@@ -43,7 +43,7 @@ export default {
   methods: {
     login() {
       axios
-          .post("http://5.181.217.29:3000/api/v1/login", this.authentication)
+          .post("http://localhost:3000/api/v1/login", this.authentication)
           .then((response) => {
             if(response.data.message == 'success') {
               Swal.fire({

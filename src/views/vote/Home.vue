@@ -8,7 +8,7 @@
     <div v-else>
       <div class="home-voting"/>
       <video autoplay muted loop id="video-bg">
-        <source src="@/assets/video himatipa.mp4" type="video/mp4">
+        <source src="" type="video/mp4">
       </video>
       <div class="container-router">
         <transition name="fade" mode="out-in" >
@@ -59,7 +59,7 @@ html {
 }
 
 .home-voting {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 1);
   position: absolute;
   width: 100%;
   height: 100%;

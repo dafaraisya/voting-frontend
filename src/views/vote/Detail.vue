@@ -75,7 +75,7 @@ export default {
     },
     created() {
         axios
-            .get("http://5.181.217.29:3000/api/v1/candidate/"+this.$route.params.id)
+            .get("http://localhost:3000/api/v1/candidate/"+this.$route.params.id)
             .then(res => (this.detail = res.data.data))
             .catch(err => console.log(err));
     }, 

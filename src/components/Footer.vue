@@ -8,12 +8,12 @@
             <div class="footer-logo">
               <img
                 class="rounded-circle"
-                src="@/assets/logo himatipa.png"
+                src="@/assets/logo kpr.png"
                 alt=""
               />
             </div>
             <ul>
-              <li>HIMATIPA UGM</li>
+              <li>KPR FMIPA UNS</li>
             </ul>
           </div>
         </div>
@@ -47,8 +47,7 @@
             <h5>Tentang Kami</h5>
             <ul>
               <li>
-                Alamat : <br />Bulaksumur, Caturtunggal, Kec. Depok, Kabupaten
-                Sleman, Daerah Istimewa Yogyakarta 55281
+                Alamat : <br />Jl. Ir. Sutami No.36, Kentingan, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126
               </li>
             </ul>
           </div>
