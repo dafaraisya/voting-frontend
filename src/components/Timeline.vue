@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-white">Timeline</h1>
+    <h1 class="text-white mt-4">Timeline</h1>
     <br />
     <b-container
       class="bg-white rounded shadow-sm mt-3 p-3 pl-5 pr-5 session"
@@ -9,7 +9,7 @@
     >
       <b-row>
         <b-col lg="3">
-          <h1>{{ event.name }}</h1>
+          <b class="name">{{ event.name }}</b>
         </b-col>
         <b-col lg="9">
           <div>
@@ -125,6 +125,9 @@ export default {
 <style scoped>
 .session {
   max-width: 700px;
+}
+.session .name{
+    font-size: 32px;
 }
 @media only screen and (max-width: 767px) {
   .session {

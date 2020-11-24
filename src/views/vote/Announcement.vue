@@ -162,6 +162,7 @@ export default {
       if(distance < 0) {
         this.timeUp = true;
       } 
+      console.log(this.timeUp)
     },
     formatter() {
       const format = this.announcement.split("-");

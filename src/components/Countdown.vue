@@ -44,7 +44,7 @@ export default {
     },
     _days() {
       return this._hours * 24;
-    },
+  },
     end() {
       return new Date(
         this.year,

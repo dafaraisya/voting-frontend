@@ -179,6 +179,9 @@ b-button {
   #home {
     padding-top: 250px;
   }
+  #home h1 {
+    margin-top: 30px;
+  }
 }
 @media only screen and (max-width: 767px) {
   h1 {
@@ -189,6 +192,9 @@ b-button {
   }
   #home {
     padding-top: 160px;
+  }
+  #home h1 {
+    margin-top: 30px;
   }
 }
 </style>
