@@ -20,7 +20,7 @@
                                 <label class="ml-2" v-bind:for="index+1">{{ index+1 }}</label>
                             </div>
                         </b-form-group>
-                        <a @click="addData();" href="#" class="btn btn-primary" type="submit">
+                        <a @click="addData();" class="btn btn-primary" type="submit">
                             <i class="far fa-save text-white"></i>
                             Simpan
                         </a>
@@ -62,13 +62,13 @@ export default {
 
         axios
             .post("http://52.152.228.107:3000/api/v1/participant", data)
-            .then(() => {
+            .then((response) => {
                         Swal.fire({
                     icon: 'success',
                     title: 'Peserta berhasil ditambahkan',
                     showConfirmButton: true
                 }).then(()=>{
-                    this.$router.push({name: 'ListParticipant'});
+                    this.$router.push({name: 'DetailParticipant', params: {id: response.data.data._id}});
                 })
             })
             //eslint-disable-next-line no-console
