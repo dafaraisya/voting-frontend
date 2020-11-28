@@ -62,13 +62,13 @@ export default {
 
         axios
             .post("http://52.152.228.107:3000/api/v1/participant", data)
-            .then((response) => {
+            .then(() => {
                         Swal.fire({
                     icon: 'success',
                     title: 'Peserta berhasil ditambahkan',
                     showConfirmButton: true
                 }).then(()=>{
-                    this.$router.push({name: 'DetailParticipant', params: {id: response.data.data._id}});
+                    this.$router.push({name: 'ListParticipant', params:{page: 1}});
                 })
             })
             //eslint-disable-next-line no-console
