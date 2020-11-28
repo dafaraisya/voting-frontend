@@ -142,8 +142,8 @@ b-button {
   padding-bottom: 20px;
   background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgb(0, 0, 0, 0.85) 80%
+      rgba(0, 0, 0, 0.7) 0%,
+      rgb(0, 0, 0, 0.7) 80%
     ),
     url("https://i2.wp.com/uns.ac.id/id/wp-content/uploads/Preview.png?fit=1171%2C780&ssl=1");
   background-repeat: no-repeat;
@@ -155,8 +155,8 @@ b-button {
   padding-bottom: 20px;
   background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgb(0, 0, 0, 0.85) 80%
+      rgba(0, 0, 0, 0.7) 0%,
+      rgb(0, 0, 0, 0.7) 80%
     ),
     url("https://uns.ac.id/id/wp-content/uploads/FMIPA-1.jpg");
   background-repeat: no-repeat;

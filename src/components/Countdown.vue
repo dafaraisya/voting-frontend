@@ -3,7 +3,7 @@
     <b-row>
       <b-col lg="2"></b-col>
       <b-col lg="8">
-        <b-card title="Pengumuman Dapat Dilihat dalam">
+        <b-card>
           <b-row class="h2 mt-4">
             <b-col>{{ displayDays }}</b-col> :
             <b-col>{{ displayHours }}</b-col> :

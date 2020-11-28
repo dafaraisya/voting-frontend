@@ -61,8 +61,8 @@ html {
 .home-voting {
   background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.85) 0%,
-      rgb(0, 0, 0, 0.85) 80%
+      rgba(0, 0, 0, 0.7) 0%,
+      rgb(0, 0, 0, 0.7) 80%
     ),
     url("https://rencanamu.id/assets/file_uploaded/blog/1555921460-kjhkn.jpg");
   background-repeat: no-repeat;

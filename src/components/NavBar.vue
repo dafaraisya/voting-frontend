@@ -115,7 +115,7 @@ nav ul {
 }
 
 nav.black ul {
-  background: rgba(20, 20, 20, 0.98);
+  background: rgba(20, 20, 20, 0.7);
 }
 
 nav ul li {
@@ -161,7 +161,7 @@ nav ul li a:hover {
 }
 
 .menu-min.black ul {
-  background: rgba(20, 20, 20, 0.98);
+  background: rgba(20, 20, 20, 0.74);
 }
 
 .menu-min ul li a {
@@ -172,7 +172,7 @@ nav ul li a:hover {
 
 .menu-icon {
   width: 100%;
-  background: #000;
+  background:rgba(0,0,0,0.74);
   text-align: right;
   box-sizing: border-box;
   padding: 15px 24px;
@@ -190,11 +190,11 @@ nav ul li a:hover {
 
   nav ul {
     max-height: 0px;
-    background: #000;
+    background: rgba(0,0,0,0.74);
   }
 
   nav.black ul {
-    background: #000;
+    background:rgba(0,0,0,0.74);
   }
 
   .showing {
