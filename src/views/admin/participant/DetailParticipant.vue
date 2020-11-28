@@ -73,7 +73,7 @@ export default {
                                 title: 'Peserta berhasil dihapus',
                                 showConfirmButton: true
                             }).then(()=>{
-                                this.$router.push({name: 'ListParticipant'});
+                                this.$router.go(-1);
                             })
                         })
                         .catch( err => console.log(err));
