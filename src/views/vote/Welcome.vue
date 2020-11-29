@@ -140,7 +140,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("http://pemira.fmipauns.com/bg2.jpg");
+    url("https://drive.google.com/uc?export=download&id=1A08sfz0Ah2Vy4RgWt2L-_e2DS35Z30XD");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -153,7 +153,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("http://pemira.fmipauns.com/bg3.jpg");
+    url("https://drive.google.com/uc?export=download&id=1jSLPu9SkDrG4z4Y5liTO3GpKH_mb2pmR");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -190,7 +190,7 @@ b-button {
   }
   .inner {
     font-size: 35px;
-    left: calc(50% - 100px);
+    left: calc(50% - 190px);
   }
   #home {
     padding-top: 160px;
