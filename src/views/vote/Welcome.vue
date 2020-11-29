@@ -2,17 +2,15 @@
   <div class="page">
     <NavBar />
     <div class="sub-page" id="home">
-      <b-container
-        class="container h-100 text-white"
-      >
+      <b-container class="container h-100 text-white">
         <b-row class="row h-100 justify-content-center align-items-center">
           <b-col lg="12">
             <h1>PEMIRA FMIPA UNS 2020</h1>
             <div class="inner">
               <span>
-                #Tagline1<br />
-                #Tagline2<br />
-                #Tagline3
+                #fmipamemilih<br />
+                #suaramipa<br />
+                #suksespemira2020
               </span>
             </div>
             <b-container class="mt-5">
@@ -27,10 +25,7 @@
         </b-row>
       </b-container>
     </div>
-    <div
-      class="sub-page"
-      id="timeline"
-    >
+    <div class="sub-page" id="timeline">
       <Timeline
         data-aos="fade-in"
         data-aos-duration="1000"
@@ -101,7 +96,7 @@ b-button {
   font-weight: bold;
   overflow: hidden;
   display: inline-block;
-  left: calc(50% - 150px);
+  left: calc(50% - 290px);
 }
 .inner span {
   animation: animate 6s ease infinite;
@@ -145,7 +140,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://i2.wp.com/uns.ac.id/id/wp-content/uploads/Preview.png?fit=1171%2C780&ssl=1");
+    url("http://pemira.fmipauns.com/bg2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -158,7 +153,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://uns.ac.id/id/wp-content/uploads/FMIPA-1.jpg");
+    url("http://pemira.fmipauns.com/bg3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -203,6 +198,5 @@ b-button {
   #home h1 {
     margin-top: 30px;
   }
-  
 }
 </style>

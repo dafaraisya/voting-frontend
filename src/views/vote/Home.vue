@@ -64,7 +64,7 @@ html {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://rencanamu.id/assets/file_uploaded/blog/1555921460-kjhkn.jpg");
+    url("http://pemira.fmipauns.com/bg1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
