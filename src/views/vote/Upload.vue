@@ -6,7 +6,10 @@
       <b-row>
         <b-col lg="3" />
         <b-col lg="6">
-          <b-container class="bg-white p-3 rounded-sm shadow-sm" style="max-width: 400px;">
+          <b-container
+            class="bg-white p-3 rounded-sm shadow-sm"
+            style="max-width: 400px;"
+          >
             <input id="image" ref="image" type="file" v-on:change="decode()" />
           </b-container>
         </b-col>
@@ -40,17 +43,18 @@ export default {
       var that = this;
       reader.onload = async function(e) {
         const qr = new QrcodeDecoder();
-        that.id = await qr.decodeFromImage(e.target.result);
-        alert(that.id);
-        axios
-          .get("http://52.152.228.107:3000/api/v1/participant/" + that.id)
-          .then((res) => {
-            that.dataParticipant = res.data.data;
-            that.check();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        qr.decodeFromImage(e.target.result).then((res) => {
+          that.id = res.data;
+          axios
+            .get("http://52.152.228.107:3000/api/v1/participant/" + that.id)
+            .then((res) => {
+              that.dataParticipant = res.data.data;
+              that.check();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
       };
       reader.readAsDataURL(file);
     },
