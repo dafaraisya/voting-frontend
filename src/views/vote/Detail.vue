@@ -75,7 +75,7 @@ export default {
     },
     created() {
         axios
-            .get("http://localhost:3000/api/v1/candidate/"+this.$route.params.id)
+            .get("http://pemira.fmipauns.com:3000/api/v1/candidate/"+this.$route.params.id)
             .then(res => (this.detail = res.data.data))
             .catch(err => console.log(err));
     }, 

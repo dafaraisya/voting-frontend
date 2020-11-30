@@ -46,7 +46,7 @@ export default {
         qr.decodeFromImage(e.target.result).then((res) => {
           that.id = res.data;
           axios
-            .get("http://localhost:3000/api/v1/participant/" + that.id)
+            .get("http://pemira.fmipauns.com:3000/api/v1/participant/" + that.id)
             .then((res) => {
               that.dataParticipant = res.data.data;
               that.check();
@@ -110,7 +110,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/api/v1/participant/all")
+      .get("http://pemira.fmipauns.com:3000/api/v1/participant/all")
       .then((res) => (this.dataParticipants = res.data.data))
       .catch((error) => console.log(error));
     /*var base64 = "";

@@ -56,7 +56,7 @@ export default {
             'id_candidate' : id_candidate
           }
           axios
-            .put("http://localhost:3000/api/v1/participant/vote", data)
+            .put("http://pemira.fmipauns.com:3000/api/v1/participant/vote", data)
             .then(() => {
               Swal.fire({
                   icon: 'success',
@@ -77,12 +77,12 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/api/v1/participant/"+this.$route.params.id)
+      .get("http://pemira.fmipauns.com:3000/api/v1/participant/"+this.$route.params.id)
       .then(res => (this.participant = res.data.data))
       .catch(err => console.log(err));
       
     axios
-      .get('http://localhost:3000/api/v1/candidate/all')
+      .get('http://pemira.fmipauns.com:3000/api/v1/candidate/all')
       .then(res => (this.candidates = res.data.data))
       .catch(error => console.log(error))
   }

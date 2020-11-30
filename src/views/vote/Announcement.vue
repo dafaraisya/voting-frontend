@@ -230,7 +230,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/api/v1/announcement")
+      .get("http://pemira.fmipauns.com:3000/api/v1/announcement")
       .then(res => {
         this.announcement = res.data.data;
         this.formatter();
@@ -238,14 +238,14 @@ export default {
       })
       .catch(err => (console.log(err)));
     axios
-      .get("http://localhost:3000/api/v1/participant/all")
+      .get("http://pemira.fmipauns.com:3000/api/v1/participant/all")
       .then(res => {
         this.participants = res.data.data;
         this.count()
       })
       .catch(err => (console.log(err)));
     axios
-      .get("http://localhost:3000/api/v1/candidate/all")
+      .get("http://pemira.fmipauns.com:3000/api/v1/candidate/all")
       .then(res => {
         this.candidates = res.data.data;
       })
