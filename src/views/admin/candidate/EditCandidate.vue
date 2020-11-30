@@ -125,7 +125,7 @@ export default {
         },
         getImage(url) {
             console.log()
-            return 'http://pemira.himatipaugm.com/images/'+url;
+            return 'http://pemira.fmipauns.com/images/'+url;
         }
     },
     mounted() {

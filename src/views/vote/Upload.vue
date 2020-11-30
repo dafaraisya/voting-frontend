@@ -21,6 +21,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import QrcodeDecoder from "qrcode-decoder";
+//import moment from "moment";
 
 export default {
   name: "Scan",
@@ -45,7 +46,9 @@ export default {
         qr.decodeFromImage(e.target.result).then((res) => {
           that.id = res.data;
           axios
-            .get("http://pemira.fmipauns.com:3000/api/v1/participant/" + that.id)
+            .get(
+              "http://pemira.fmipauns.com:3000/api/v1/participant/" + that.id
+            )
             .then((res) => {
               that.dataParticipant = res.data.data;
               that.check();
@@ -77,9 +80,18 @@ export default {
         } else {
           var today = new Date();
           var start = new Date(this.dataParticipant.session.min);
-          start.setHours(start.getHours() - 7);
           var end = new Date(this.dataParticipant.session.max);
-          end.setHours(end.getHours() - 7);
+          
+          start = new Date(
+            start.getTime() + today.getTimezoneOffset() * 60 * 1000
+          );
+          end = new Date(
+            end.getTime() + today.getTimezoneOffset() * 60 * 1000
+          );
+          today = new Date(
+            today.getTime() + (today.getTimezoneOffset() + 420) * 60 * 1000
+          );
+          
           if (start < today && end > today) {
             Swal.fire({
               icon: "success",

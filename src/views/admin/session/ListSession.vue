@@ -15,7 +15,6 @@
         <b style="font-size:26px;">Sesi {{ session.number }}</b
         ><br />
         <i class="far fa-clock"></i>
-        {{ new Date(session.start) }}
         {{ getDateTime(new Date(session.start)) }} -
         {{ getDateTime(new Date(session.end)) }}
       </div>
@@ -47,7 +46,8 @@ export default {
   },
   methods: {
     getDateTime(date) {
-      date.setHours(date.getHours() - 7);
+      var today = new Date();
+      date = new Date(date.getTime() + today.getTimezoneOffset() * 60 * 1000);
 
       var tahun = date.getFullYear();
       var month = date.getMonth();

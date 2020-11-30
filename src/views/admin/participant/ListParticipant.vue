@@ -202,7 +202,8 @@ export default {
         .catch((error) => console.log(error));
     },
     getDateTime(date) {
-      date.setHours(date.getHours() - 7);
+      var today = new Date();
+      date = new Date(date.getTime() + (today.getTimezoneOffset()+420) * 60 * 1000);
 
       var tahun = date.getFullYear();
       var month = date.getMonth();

@@ -16,7 +16,7 @@
                             <b-col lg="9" class="text-left pt-4 pl-5">
                                 <h3>{{ detail.name }}</h3>
                                 <b>Nomor urut  {{ detail.number }} </b><br/>
-                                <a class="mt-3" style="display:block;" target="_blank" v-bind:href="'http://pemira.himatipaugm.com/'+this.$route.params.id+'.pdf'">
+                                <a class="mt-3" style="display:block;" target="_blank" v-bind:href="'http://pemira.fmipauns.com/'+this.$route.params.id+'.pdf'">
                                     <b-button href="" variant="success">
                                         <i class="far fa-file-alt text-white"></i>
                                         CV
@@ -117,5 +117,14 @@ export default {
     text-align:center;
     background: rgba(200,200,200,0.8);
     color: black;
+}
+.detail {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgb(0, 0, 0, 0.7) 80%
+    ),
+    url("https://drive.google.com/uc?export=download&id=1COIP91BUDc2z0l_Bl2OFYQIFNnGXuS83");
+    background-size: cover;
 }
 </style>

@@ -14,11 +14,11 @@
         <b-col lg="9">
           <div>
             <b>Pembukaan: </b><br />
-            {{ getTime(event.start) + ", " + getDay(event.start) }}
+            {{ getTime(new Date(event.start)) + ", " + getDay(new Date(event.start)) }}
           </div>
           <div>
             <b>Penutupan: </b><br />
-            {{ getTime(event.end) + ", " + getDay(event.end) }}
+            {{ getTime(new Date(event.end)) + ", " + getDay(new Date(event.end)) }}
           </div>
           <div>
             <b>Jumlah peserta: </b><br />
@@ -41,7 +41,8 @@ export default {
   },
   methods: {
     getDay(date) {
-      date.setHours(date.getHours() - 7);
+      var today = new Date();
+      date = new Date(date.getTime() + today.getTimezoneOffset() * 60 * 1000);
 
       var tahun = date.getFullYear();
       var month = date.getMonth();
@@ -91,7 +92,8 @@ export default {
       return day;
     },
     getTime(date) {
-      date.setHours(date.getHours() - 7);
+      var today = new Date();
+      date = new Date(date.getTime() + today.getTimezoneOffset() * 60 * 1000);
 
       var hour = date.getHours();
       var minute = date.getMinutes();
@@ -112,8 +114,8 @@ export default {
         res.data.data.forEach((event) => {
           this.timeline.push({
             name: "Sesi " + event.number,
-            start: new Date(event.start),
-            end: new Date(event.end),
+            start: event.start,
+            end: event.end,
             participant: event.total_participant,
           });
         });

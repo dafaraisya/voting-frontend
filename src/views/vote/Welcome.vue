@@ -189,8 +189,8 @@ b-button {
     font-size: 30px;
   }
   .inner {
-    font-size: 35px;
-    left: calc(50% - 190px);
+    font-size: 30px;
+    left: calc(50% - 155px);
   }
   #home {
     padding-top: 160px;
