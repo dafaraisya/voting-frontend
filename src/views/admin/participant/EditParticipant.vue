@@ -19,7 +19,7 @@
                                 <label class="ml-2" v-bind:for="index+1">{{ index+1 }}</label>
                             </div>
                         </b-form-group>
-                        <a @click="editData();" href="#" class="btn btn-primary" type="submit">
+                        <a @click="editData();" class="btn btn-primary" type="submit">
                             <i class="far fa-save text-white"></i>
                             Simpan
                         </a>
@@ -76,7 +76,7 @@ export default {
                                     title: 'Data peserta berhasil diperbarui',
                                     showConfirmButton: true
                                 }).then(()=>{
-                                    this.$router.push({name: 'ListParticipant'});
+                                    this.$router.go(-1);
                                 })
                             })
                             //eslint-disable-next-line no-console

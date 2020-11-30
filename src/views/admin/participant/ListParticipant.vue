@@ -1,63 +1,164 @@
 <template>
   <div class="container text-left">
+    <label>Cari peserta</label>
+    <b-form-input
+      @change="search()"
+      v-model="keyword"
+      class="p-3 mb-3"
+      placeholder="Ketika nama"
+    ></b-form-input>
     <router-link :to="{ name: 'CreateParticipant' }">
       <b-button variant="primary" class="mb-2">
         <i class="far fa-plus-square text-white"></i>
         Tambah peserta
       </b-button>
     </router-link>
-    <div
-      class="bg-white mt-2 p-3 shadow-sm rounded"
-      v-for="participant in participants"
-      :key="participant._id"
-    >
-      <div>
-        <h3>
-          {{ participant.name }}
-          <i
-            v-if="participant.voting != null"
-            class="fas fa-circle text-success dot"
-          ></i>
-          <i
-            v-if="participant.voting == null"
-            class="fas fa-circle text-danger dot"
-          ></i>
-        </h3>
-      </div>
-      <div>NIM : {{ participant.nim }}</div>
-      <div>Email : {{ participant.email }}</div>
-      <div>Sesi : {{ participant.session.number }}</div>
-      <div v-if="participant.email_at != null">
-        Email telah dikirim pada :
-        {{ getDateTime(new Date(participant.email_at)) }}
-      </div>
-      <div v-if="participant.voting != null">
-        Telah memilih pada :
-        {{ getDateTime(new Date(participant.voting.time)) }}
-      </div>
-      <div class="mt-3">
-        <router-link
-          :to="{ name: 'DetailParticipant', params: { id: participant._id } }"
-        >
-          <b-button href="" variant="primary">
-            <i class="fas fa-info-circle text-white"></i>
-            Detail
-          </b-button>
-        </router-link>
+    <div v-if="keyword != ''">
+      <b-container
+        v-if="searchParticipants.length == 0 && searchLoading == 0"
+        class="w-100 p-3 text-center"
+      >
+        <b-spinner label="Spinning"></b-spinner>
+      </b-container>
+      <div
+        class="bg-white mt-2 p-3 shadow-sm rounded"
+        v-for="participant in searchParticipants"
+        :key="participant._id"
+      >
+        <div>
+          <h3>
+            {{ participant.name }}
+            <i
+              v-if="participant.voting != null"
+              class="fas fa-circle text-success dot"
+            ></i>
+            <i
+              v-if="participant.voting == null"
+              class="fas fa-circle text-danger dot"
+            ></i>
+          </h3>
+        </div>
+        <div>NIM : {{ participant.nim }}</div>
+        <div>Email : {{ participant.email }}</div>
+        <div>Sesi : {{ participant.session.number }}</div>
+        <div v-if="participant.email_at != null">
+          Email telah dikirim pada :
+          {{ getDateTime(new Date(participant.email_at)) }}
+        </div>
+        <div v-if="participant.voting != null">
+          Telah memilih pada :
+          {{ getDateTime(new Date(participant.voting.time)) }}
+        </div>
+        <div class="mt-3">
+          <router-link
+            :to="{ name: 'DetailParticipant', params: { id: participant._id } }"
+          >
+            <b-button href="" variant="primary">
+              <i class="fas fa-info-circle text-white"></i>
+              Detail
+            </b-button>
+          </router-link>
+        </div>
       </div>
     </div>
-    <b-row class="mt-3 mb-3">
-      <b-col lg="1" md="1" v-for="page in totalPage" :key="page">
-        <a v-bind:href="page">
-          <b-container class="bg-primary shadow-sm text-white text-center p-2" v-if="page == $route.params.page">
-            {{ page }}
-          </b-container>
-          <b-container class="bg-white shadow-sm text-center p-2" v-else>
-            {{ page }}
-          </b-container>
-        </a>
-      </b-col>
-    </b-row>
+    <div v-else>
+      <div
+        class="bg-white mt-2 p-3 shadow-sm rounded"
+        v-for="participant in participants"
+        :key="participant._id"
+      >
+        <div>
+          <h3>
+            {{ participant.name }}
+            <i
+              v-if="participant.voting != null"
+              class="fas fa-circle text-success dot"
+            ></i>
+            <i
+              v-if="participant.voting == null"
+              class="fas fa-circle text-danger dot"
+            ></i>
+          </h3>
+        </div>
+        <div>NIM : {{ participant.nim }}</div>
+        <div>Email : {{ participant.email }}</div>
+        <div>Sesi : {{ participant.session.number }}</div>
+        <div v-if="participant.email_at != null">
+          Email telah dikirim pada :
+          {{ getDateTime(new Date(participant.email_at)) }}
+        </div>
+        <div v-if="participant.voting != null">
+          Telah memilih pada :
+          {{ getDateTime(new Date(participant.voting.time)) }}
+        </div>
+        <div class="mt-3">
+          <router-link
+            :to="{ name: 'DetailParticipant', params: { id: participant._id } }"
+          >
+            <b-button href="" variant="primary">
+              <i class="fas fa-info-circle text-white"></i>
+              Detail
+            </b-button>
+          </router-link>
+        </div>
+      </div>
+      <div
+        class="bg-white mt-2 p-3 shadow-sm rounded"
+        v-for="participant in participants"
+        :key="participant._id"
+      >
+        <div>
+          <h3>
+            {{ participant.name }}
+            <i
+              v-if="participant.voting != null"
+              class="fas fa-circle text-success dot"
+            ></i>
+            <i
+              v-if="participant.voting == null"
+              class="fas fa-circle text-danger dot"
+            ></i>
+          </h3>
+        </div>
+        <div>NIM : {{ participant.nim }}</div>
+        <div>Email : {{ participant.email }}</div>
+        <div>Sesi : {{ participant.session.number }}</div>
+        <div v-if="participant.email_at != null">
+          Email telah dikirim pada :
+          {{ getDateTime(new Date(participant.email_at)) }}
+        </div>
+        <div v-if="participant.voting != null">
+          Telah memilih pada :
+          {{ getDateTime(new Date(participant.voting.time)) }}
+        </div>
+        <div class="mt-3">
+          <router-link
+            :to="{ name: 'DetailParticipant', params: { id: participant._id } }"
+          >
+            <b-button href="" variant="primary">
+              <i class="fas fa-info-circle text-white"></i>
+              Detail
+            </b-button>
+          </router-link>
+        </div>
+      </div>
+      
+    </div>
+    <b-row class="mt-3 mb-3" v-if="keyword.length == 0">
+        <b-col lg="1" md="1" v-for="page in totalPage" :key="page">
+          <a v-bind:href="page">
+            <b-container
+              class="bg-primary shadow-sm text-white text-center p-2"
+              v-if="page == $route.params.page"
+            >
+              {{ page }}
+            </b-container>
+            <b-container class="bg-white shadow-sm text-center p-2" v-else>
+              {{ page }}
+            </b-container>
+          </a>
+        </b-col>
+      </b-row>
   </div>
 </template>
 
@@ -70,11 +171,14 @@ export default {
   data() {
     return {
       participants: [],
+      searchParticipants: [],
+      searchLoading: 0,
+      keyword: "",
       totalPage: 0,
     };
   },
   methods: {
-    moment: function (date) {
+    moment: function(date) {
       return moment(date);
     },
     del(id) {
@@ -82,6 +186,20 @@ export default {
         .delete("http://pemira.fmipauns.com:3000/api/v1/participant/" + id)
         .then(() => location.reload())
         .catch((err) => console.log(err));
+    },
+    search() {
+      this.searchLoading = 1;
+      axios
+        .get(
+          "http://pemira.fmipauns.com:3000/api/v1/participant/search/" +
+            this.keyword
+        )
+        .then((res) => {
+          this.searchLoading = 0;
+
+          this.searchParticipants = res.data.data;
+        })
+        .catch((error) => console.log(error));
     },
     getDateTime(date) {
       date.setHours(date.getHours() - 7);
