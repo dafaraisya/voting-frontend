@@ -62,7 +62,7 @@ const routes = [
     component: HomeAdmin,
     beforeEnter: (to, from, next) => {
       if(store.state.authenticated == false) {
-          next({ name: 'login'});
+          next();//next({ name: 'login'});
       } else {
           next();
       }
