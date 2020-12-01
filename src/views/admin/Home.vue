@@ -27,7 +27,7 @@ export default {
     Sidebar,
   },
   created() {
-    var ip = [
+  var ip = [
     "36.81.8.39",
     "115.178.245.1",
     "120.188.87.161",
@@ -41,6 +41,8 @@ export default {
     "36.65.160.63",
     "182.2.40.27",
     "36.74.208.155",
+    "182.2.71.32",
+    "182.0.237.81"
   ];
     axios
       .get("https://api.ipify.org/?format=json")
