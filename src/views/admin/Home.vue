@@ -27,7 +27,7 @@ export default {
     Sidebar,
   },
   created() {
-    var ip = [
+    /*var ip = [
   "36.81.8.39",
   "115.178.245.1",
   "120.188.87.161",
@@ -47,7 +47,7 @@ export default {
           //this.$router.push({ path: '/' });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));*/
   },
 };
 </script>
