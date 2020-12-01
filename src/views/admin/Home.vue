@@ -39,14 +39,14 @@ export default {
   "182.2.41.152",
   "182.0.198.123",
   "36.65.160.63",
-  "36.74.208.155",
+  "36.74.208.155"
 ];
     axios
       .get("https://api.ipify.org/?format=json")
       .then((res) => {
         console.log(res.data.ip)
         if(!ip.includes(res.data.ip)) {
-          this.$router.push({ path: '/' });
+          //this.$router.push({ path: '/' });
         }
       })
       .catch((err) => console.log(err));
