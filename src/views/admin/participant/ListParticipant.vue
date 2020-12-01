@@ -102,47 +102,6 @@
           </router-link>
         </div>
       </div>
-      <div
-        class="bg-white mt-2 p-3 shadow-sm rounded"
-        v-for="participant in participants"
-        :key="participant._id"
-      >
-        <div>
-          <h3>
-            {{ participant.name }}
-            <i
-              v-if="participant.voting != null"
-              class="fas fa-circle text-success dot"
-            ></i>
-            <i
-              v-if="participant.voting == null"
-              class="fas fa-circle text-danger dot"
-            ></i>
-          </h3>
-        </div>
-        <div>NIM : {{ participant.nim }}</div>
-        <div>Email : {{ participant.email }}</div>
-        <div>Sesi : {{ participant.session.number }}</div>
-        <div v-if="participant.email_at != null">
-          Email telah dikirim pada :
-          {{ getDateTime(new Date(participant.email_at)) }}
-        </div>
-        <div v-if="participant.voting != null">
-          Telah memilih pada :
-          {{ getDateTime(new Date(participant.voting.time)) }}
-        </div>
-        <div class="mt-3">
-          <router-link
-            :to="{ name: 'DetailParticipant', params: { id: participant._id } }"
-          >
-            <b-button href="" variant="primary">
-              <i class="fas fa-info-circle text-white"></i>
-              Detail
-            </b-button>
-          </router-link>
-        </div>
-      </div>
-      
     </div>
     <b-row class="mt-3 mb-3" v-if="keyword.length == 0">
         <b-col lg="1" md="1" v-for="page in totalPage" :key="page">
