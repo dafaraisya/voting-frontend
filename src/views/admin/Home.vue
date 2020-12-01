@@ -27,7 +27,7 @@ export default {
     Sidebar,
   },
   created() {
-    /*var ip = [
+    var ip = [
   "36.81.8.39",
   "115.178.245.1",
   "120.188.87.161",
@@ -37,7 +37,8 @@ export default {
   "36.72.212.123",
   "180.242.214.231",
   "182.2.41.152",
-  "182.0.198.123"
+  "182.0.198.123",
+  "36.65.160.63",
 ];
     axios
       .get("https://api.ipify.org/?format=json")
@@ -47,7 +48,7 @@ export default {
           //this.$router.push({ path: '/' });
         }
       })
-      .catch((err) => console.log(err));*/
+      .catch((err) => console.log(err));
   },
 };
 </script>
