@@ -81,6 +81,7 @@ const routes = [
           "114.5.109.44",
           "182.2.37.131",
           "120.188.74.160",
+          "182.2.39.180"
         ];
         axios
           .get("https://api.ipify.org/?format=json")
