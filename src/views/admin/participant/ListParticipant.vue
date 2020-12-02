@@ -1,25 +1,38 @@
 <template>
   <div class="container text-left">
     <label>Cari peserta</label>
-    <b-form-input
-      @change="search()"
-      v-model="keyword"
-      class="p-3 mb-3"
-      placeholder="Ketika nama"
-    ></b-form-input>
+    <b-row>
+      <b-col lg="10">
+        <b-form-input
+          v-model="keyword"
+          class="p-3 mb-3"
+          placeholder="Ketikan nama"
+        ></b-form-input>
+      </b-col>
+      <b-col lg="2">
+        <button
+          class="btn btn-primary w-100"
+          @click="search()"
+          v-if="mode != 'search'"
+        >
+          Cari
+        </button>
+        <button
+          class="btn btn-primary w-100"
+          @click="clean()"
+          v-if="mode == 'search'"
+        >
+          Bersihkan
+        </button>
+      </b-col>
+    </b-row>
     <router-link :to="{ name: 'CreateParticipant' }">
       <b-button variant="primary" class="mb-2">
         <i class="far fa-plus-square text-white"></i>
         Tambah peserta
       </b-button>
     </router-link>
-    <div v-if="keyword != ''">
-      <b-container
-        v-if="searchParticipants.length == 0 && searchLoading == 0"
-        class="w-100 p-3 text-center"
-      >
-        <b-spinner label="Spinning"></b-spinner>
-      </b-container>
+    <div v-if="mode == 'search'">
       <div
         class="bg-white mt-2 p-3 shadow-sm rounded"
         v-for="participant in searchParticipants"
@@ -103,21 +116,21 @@
         </div>
       </div>
     </div>
-    <b-row class="mt-3 mb-3" v-if="keyword.length == 0">
-        <b-col lg="1" md="1" v-for="page in totalPage" :key="page">
-          <a v-bind:href="page">
-            <b-container
-              class="bg-primary shadow-sm text-white text-center p-2"
-              v-if="page == $route.params.page"
-            >
-              {{ page }}
-            </b-container>
-            <b-container class="bg-white shadow-sm text-center p-2" v-else>
-              {{ page }}
-            </b-container>
-          </a>
-        </b-col>
-      </b-row>
+    <b-row class="mt-3 mb-3" v-if="mode == 'page'">
+      <b-col lg="1" md="1" v-for="page in totalPage" :key="page">
+        <a v-bind:href="page">
+          <b-container
+            class="bg-primary shadow-sm text-white text-center p-2"
+            v-if="page == $route.params.page"
+          >
+            {{ page }}
+          </b-container>
+          <b-container class="bg-white shadow-sm text-center p-2" v-else>
+            {{ page }}
+          </b-container>
+        </a>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -131,10 +144,16 @@ export default {
     return {
       participants: [],
       searchParticipants: [],
-      searchLoading: 0,
+      mode: "page",
       keyword: "",
       totalPage: 0,
     };
+  },
+  watch: {
+    keyword: function(newVal) {
+      if(newVal.length == 0)
+        this.mode = 'page';
+    }
   },
   methods: {
     moment: function(date) {
@@ -146,23 +165,31 @@ export default {
         .then(() => location.reload())
         .catch((err) => console.log(err));
     },
+    clean() {
+      this.mode = "page";
+      this.searchParticipants = [];
+      this.keyword = "";
+    },
     search() {
-      this.searchLoading = 1;
+      this.mode = 'search';
       axios
         .get(
           "http://pemira.fmipauns.com:3000/api/v1/participant/search/" +
             this.keyword
         )
         .then((res) => {
-          this.searchLoading = 0;
-
           this.searchParticipants = res.data.data;
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log("oops");
+          console.log(error);
+        });
     },
     getDateTime(date) {
       var today = new Date();
-      date = new Date(date.getTime() + (today.getTimezoneOffset()+420) * 60 * 1000);
+      date = new Date(
+        date.getTime() + (today.getTimezoneOffset() + 420) * 60 * 1000
+      );
 
       var tahun = date.getFullYear();
       var month = date.getMonth();
