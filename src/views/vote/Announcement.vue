@@ -246,7 +246,7 @@ export default {
         this.barOptions.series[0].data = vote;
         this.barOptions.yAxis.title.text =
           maxCount + "/" + this.participants.length + " suara";
-      }, 1000);
+      }, 250);
     },
   },
   mounted() {
