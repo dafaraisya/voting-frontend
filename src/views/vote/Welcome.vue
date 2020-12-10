@@ -58,7 +58,7 @@ export default {
     Footer,
   },
   created() {
-    document.title = "PEMIRA HIMATEK ITS 2020";
+    document.title = "PEMILU HIMATEKKITS 2020";
   },
 };
 </script>

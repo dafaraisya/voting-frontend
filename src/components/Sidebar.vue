@@ -2,7 +2,7 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>PEMILU HIMATEK ITS 2020 </h3>
+                <h3>PEMILU HIMATEKKITS 2020 </h3>
             </div>
 
             <ul class="list-unstyled components text-white">

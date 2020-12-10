@@ -8,7 +8,7 @@
         <b-col lg="6">
           <b-container class="name">
             <h4 class="title text-white">
-              PEMILU HIMATEK <br />
+              PEMILU HIMATEKK<br />
               ITS 2020
             </h4>
             <div class="loader"></div>

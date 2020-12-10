@@ -6,7 +6,7 @@
           style="margin-top: 50px;margin-bottom: 30px;"
           class="text-center text-white"
         >
-          Pengumuman Hasil Voting PEMIRA 2020
+          Pengumuman Hasil Voting PEMILU 2020
         </h1>
       </div>
     </div>
@@ -70,7 +70,7 @@ export default {
           type: "bar",
         },
         title: {
-          text: "Hasil Perhitungan Suara PEMIRA FMIPA UNS 2020",
+          text: "Hasil Perhitungan Suara PEMILU HIMATEKK ITS 2020",
         },
         xAxis: {
           categories: ["oke", "oke2", "oke3"],
