@@ -47,7 +47,7 @@ export default {
           that.id = res.data;
           axios
             .get(
-              "http://pemira.fmipauns.com:3000/api/v1/participant/" + that.id
+              "http://pemilu.himatekkits.com:3000/api/v1/participant/" + that.id
             )
             .then((res) => {
               that.dataParticipant = res.data.data;

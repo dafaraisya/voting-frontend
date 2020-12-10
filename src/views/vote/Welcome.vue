@@ -8,9 +8,9 @@
             <h1>PEMILU HIMATEKK ITS 2020</h1>
             <div class="inner">
               <span>
-                #himatekkmemilih<br />
-                #suarahimatekk<br />
-                #suksespemilu2020
+                #DerapLangkahPembaruan<br />
+                #HIMATEKKMemilih<br />
+                #SuaraHIMATEKK
               </span>
             </div>
             <b-container class="mt-5">

@@ -59,7 +59,7 @@ export default {
         };
 
         axios
-            .post("http://pemira.fmipauns.com:3000/api/v1/candidate", data)
+            .post("http://pemilu.himatekkits.com:3000/api/v1/candidate", data)
             .then(() => {
                 Swal.fire({
                     icon: 'success',
