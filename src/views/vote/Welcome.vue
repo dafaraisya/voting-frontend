@@ -8,9 +8,9 @@
             <h1>PEMILU HIMATEKK ITS 2020</h1>
             <div class="inner">
               <span>
-                #DerapLangkahPembaruan<br />
                 #HIMATEKKMemilih<br />
-                #SuaraHIMATEKK
+                #SuaraHIMATEKK<br />
+                #DerapLangkahPembaruan
               </span>
             </div>
             <b-container class="mt-5">
@@ -92,11 +92,11 @@ b-button {
   position: absolute;
   height: 55px;
   line-height: 55px;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   overflow: hidden;
   display: inline-block;
-  left: calc(50% - 290px);
+  left: calc(50% - 400px);
 }
 .inner span {
   animation: animate 6s ease infinite;
@@ -190,7 +190,7 @@ b-button {
   }
   .inner {
     font-size: 30px;
-    left: calc(50% - 155px);
+    left: calc(50% - 220px);
   }
   #home {
     padding-top: 160px;
