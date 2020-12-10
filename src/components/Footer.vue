@@ -13,7 +13,7 @@
               />
             </div>
             <ul>
-              <li>KPR FMIPA UNS</li>
+              <li>HIMATEKK ITS</li>
             </ul>
           </div>
         </div>
@@ -47,7 +47,7 @@
             <h5>Tentang Kami</h5>
             <ul>
               <li>
-                Alamat : <br />Jl. Ir. Sutami No.36, Kentingan, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126
+                Alamat : <br />Jl. Teknik Kimia, Keputih, Kec. Sukolilo, Kota SBY, Jawa Timur 60111
               </li>
             </ul>
           </div>
