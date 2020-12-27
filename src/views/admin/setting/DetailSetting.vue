@@ -20,7 +20,7 @@
           <br />
           <h3>Prosedur</h3>
           <a
-            v-bind:href="'http://pemilu.himatekkits.com/procedure.pdf'"
+            v-bind:href="'http://52.152.228.107/procedure.pdf'"
             class="btn btn-primary"
           >
             <i class="far fa-file-alt text-white"></i>
@@ -143,7 +143,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://pemilu.himatekkits.com:3000/api/v1/setting/all")
+      .get("http://52.152.228.107:3000/api/v1/setting/all")
       .then((res) => (this.detail = res.data.data[0]))
       .catch((err) => console.log(err));
   },

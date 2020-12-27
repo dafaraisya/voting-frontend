@@ -112,7 +112,7 @@ export default {
                 }).then((result) => {
                     if (result.isConfirmed) {            
                         axios
-                            .put("http://pemilu.himatekkits.com:3000/api/v1/setting/upload-procedure", formData,
+                            .put("http://52.152.228.107:3000/api/v1/setting/upload-procedure", formData,
                             {
                                 headers: {
                                     'Content-Type': 'multipart/form-data'
