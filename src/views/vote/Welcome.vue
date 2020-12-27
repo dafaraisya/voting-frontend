@@ -58,7 +58,7 @@ export default {
     Footer,
   },
   created() {
-    document.title = "PEMIRA FIBITS 2020";
+    document.title = "PEMIRA FIB UNS 2020";
   },
 };
 </script>
