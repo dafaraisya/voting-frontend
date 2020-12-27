@@ -9,7 +9,7 @@
           <b-container class="name">
             <h4 class="title text-white">
               PEMIRA FIB<br />
-              ITS 2020
+              UNS 2020
             </h4>
             <div class="loader"></div>
           </b-container>
