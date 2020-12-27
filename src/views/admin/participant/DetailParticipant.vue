@@ -9,7 +9,6 @@
                         <vue-qr v-bind:text="detail._id"></vue-qr><br/>
                         <b>Nama</b><br/> {{ detail.name }}<br/>
                         <b>NIM</b><br/> {{ detail.nim }}<br/>
-                        <b>Email</b><br/> {{ detail.email }}<br/>
                         <b>Sesi</b><br/> {{ detail.session.number }}<br/>
                     </div><br/>
                     <b-button @click="send(detail.email, detail.name, detail.nim, detail._id)" class="ml-2" href="" variant="primary">
