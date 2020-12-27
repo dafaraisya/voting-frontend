@@ -47,7 +47,7 @@
             <h5>Tentang Kami</h5>
             <ul>
               <li>
-                Alamat : <br />Jl. Teknik Kimia, Keputih, Kec. Sukolilo, Kota SBY, Jawa Timur 60111
+                Alamat : <br />Jl. Ir. Sutami No.36, Kentingan, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126
               </li>
             </ul>
           </div>
