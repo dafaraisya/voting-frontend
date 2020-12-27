@@ -5,12 +5,12 @@
       <b-container class="container h-100 text-white">
         <b-row class="row h-100 justify-content-center align-items-center">
           <b-col lg="12">
-            <h1>PEMILU HIMATEKK ITS 2020</h1>
+            <h1>PEMIRA FIB UNS 2020</h1>
             <div class="inner">
               <span>
-                #HIMATEKKMemilih<br />
-                #SuaraHIMATEKK<br />
-                #DerapLangkahPembaruan
+                #FIBMemilih<br />
+                #SuaraFIB<br />
+                #SukseskanPEMIRA
               </span>
             </div>
             <b-container class="mt-5">
@@ -58,7 +58,7 @@ export default {
     Footer,
   },
   created() {
-    document.title = "PEMILU HIMATEKKITS 2020";
+    document.title = "PEMIRA FIBITS 2020";
   },
 };
 </script>
@@ -140,7 +140,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://drive.google.com/uc?export=download&id=1m9Dnw6FsVomujZebvW96GyJht68B5sCU");
+    url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -153,7 +153,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://drive.google.com/uc?export=download&id=17w0yDNstd6DeQ9x06p_xMrc6Vt7RbLXt");
+    url("");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

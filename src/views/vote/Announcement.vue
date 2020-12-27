@@ -6,7 +6,7 @@
           style="margin-top: 50px;margin-bottom: 30px;"
           class="text-center text-white"
         >
-          Pengumuman Hasil Voting PEMILU 2020
+          Pengumuman Hasil Voting PEMIRA 2020
         </h1>
       </div>
     </div>
@@ -70,7 +70,7 @@ export default {
           type: "bar",
         },
         title: {
-          text: "Hasil Perhitungan Suara PEMILU HIMATEKK ITS 2020",
+          text: "Hasil Perhitungan Suara PEMIRA FIB UNS 2020",
         },
         xAxis: {
           categories: ["oke", "oke2", "oke3"],
@@ -229,6 +229,7 @@ export default {
               this.participants[n].voting.id_candidate
             );
             total[index].total++;
+            console.log(this.participants[n].voting.id_candidate)
           }
         }
 
@@ -251,7 +252,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://52.152.228.107:3000/api/v1/announcement")
+      .get("http://localhost:3000/api/v1/announcement")
       .then((res) => {
         this.announcement = res.data.data;
         this.formatter();

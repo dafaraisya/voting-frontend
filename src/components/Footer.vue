@@ -13,7 +13,7 @@
               />
             </div>
             <ul>
-              <li>HIMATEKK ITS</li>
+              <li>FIB UNS</li>
             </ul>
           </div>
         </div>
