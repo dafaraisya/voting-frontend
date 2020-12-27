@@ -96,7 +96,7 @@ b-button {
   font-weight: bold;
   overflow: hidden;
   display: inline-block;
-  left: calc(50% - 400px);
+  left: calc(50% - 300px);
 }
 .inner span {
   animation: animate 6s ease infinite;
@@ -190,7 +190,7 @@ b-button {
   }
   .inner {
     font-size: 30px;
-    left: calc(50% - 220px);
+    left: calc(50% - 180px);
   }
   #home {
     padding-top: 160px;
