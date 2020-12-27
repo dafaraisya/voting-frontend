@@ -252,7 +252,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/api/v1/announcement")
+      .get("http://52.152.228.107:3000/api/v1/announcement")
       .then((res) => {
         this.announcement = res.data.data;
         this.formatter();
