@@ -76,7 +76,7 @@ export default {
           };
           axios
             .put(
-              "http://pemira.svuns.com:3000/api/v1/participant/vote",
+              "http://52.152.228.107:3000/api/v1/participant/vote",
               data
             )
             .then(() => {
@@ -103,14 +103,14 @@ export default {
   mounted() {
     axios
       .get(
-        "http://pemira.svuns.com:3000/api/v1/participant/" +
+        "http://52.152.228.107:3000/api/v1/participant/" +
           this.$route.params.id
       )
       .then((res) => (this.participant = res.data.data))
       .catch((err) => console.log(err));
 
     axios
-      .get("http://pemira.svuns.com:3000/api/v1/candidate/all")
+      .get("http://52.152.228.107:3000/api/v1/candidate/all")
       .then((res) => (this.candidates = res.data.data))
       .catch((error) => console.log(error));
   },
