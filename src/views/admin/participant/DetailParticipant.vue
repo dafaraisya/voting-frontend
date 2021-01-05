@@ -4,18 +4,20 @@
             <b-col lg="6">
                 <div class="container bg-white mt-2 p-3 shadow-sm rounded">
                     <div id="pemira-card" class="p-3 bg-white" style="border: 2px inset #aaa">
-                        <img src="@/assets/logo kpr.png" style="height:50px; width:50px;"/>
-                        <h2 class="text-bold">Kartu Pemilihan<br/>PEMIRA 2020</h2>
+                        <img src="@/assets/LOGO KPU FIX.png" style="height:50px; width:50px;"/>
+                        <h2 class="text-bold">Kartu Pemilihan<br/>PEMILU 2021</h2>
                         <vue-qr v-bind:text="detail._id"></vue-qr><br/>
                         <b>Nama</b><br/> {{ detail.name }}<br/>
                         <b>NIM</b><br/> {{ detail.nim }}<br/>
+                        <b>Jurusan</b><br/> {{ detail.jurusan }}<br/>
+                        <b>Email</b><br/> {{ detail.email }}<br/>
                         <b>Sesi</b><br/> {{ detail.session.number }}<br/>
                     </div><br/>
                     <b-button @click="send(detail.email, detail.name, detail.nim, detail._id)" class="ml-2" href="" variant="primary">
                         <i class="fas fa-paper-plane"></i>
                         Kirim
                     </b-button>
-                    <b-button @click="download('Kartu Pemilihan Pemira 2020_'+detail.name+'_'+detail.nim)" class="ml-2" href="" variant="primary">
+                    <b-button @click="download('Kartu Pemilihan Pemira 2021_'+detail.name+'_'+detail.nim)" class="ml-2" href="" variant="primary">
                         <i class="fas fa-file-download"></i>
                         Unduh
                     </b-button>
@@ -75,7 +77,16 @@ export default {
                                 this.$router.go(-1);
                             })
                         })
-                        .catch( err => console.log(err));
+                        .catch( () => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: "Gagal menghapus peserta",
+                                showConfirmButton: true
+                            }).then(()=>{
+                                
+                            })
+                        });
                 } 
             })
         },

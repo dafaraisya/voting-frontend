@@ -2,16 +2,16 @@
   <div class="voting">
     <div class="container text-left">
       <img src="" alt="" />
-      <h1 class="text-white tittle">PEMIRA FMIPA UNS 2020</h1>
+      <h1 class="text-white tittle">PEMIRA SV UNS 2021</h1>
       <h4 class="text-white mt-1 mb-5">
         Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar
-        calon dibawah ini
+        Calon Dewan Mahasiswa dibawah ini
       </h4>
       <b-row>
         <b-col
           lg="4"
           class="mb-5 text-center"
-          v-for="candidate in candidates"
+          v-for="candidate in LegislatifCandidates"
           :key="candidate._id"
         >
           <b-container class="bg-white p-0 rounded-sm shadow">
@@ -55,15 +55,16 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default {
-  name: "Voting",
+  name: "VotingLegislatif",
   data() {
     return {
       participant: [],
       candidates: [],
+      id_candidate_bem: "",
     };
   },
   methods: {
-    vote(id_candidate, name_candidate) {
+    vote(id_candidate_legislatif, name_candidate) {
       new Swal({
         title: "Anda Yakin Memilih " + name_candidate + " ?",
         showDenyButton: true,
@@ -72,13 +73,11 @@ export default {
         if (result.isConfirmed) {
           let data = {
             id_participant: this.participant._id,
-            id_candidate: id_candidate,
+            id_candidate_bem: this.id_candidate_bem,
+            id_candidate_legislatif: id_candidate_legislatif,
           };
           axios
-            .put(
-              "http://pemira.fppundip.com:3000/api/v1/participant/vote",
-              data
-            )
+            .put("http://52.152.228.107:3000/api/v1/participant/vote", data)
             .then(() => {
               Swal.fire({
                 icon: "success",
@@ -102,17 +101,32 @@ export default {
   },
   mounted() {
     axios
-      .get(
-        "http://pemira.fppundip.com:3000/api/v1/participant/" +
-          this.$route.params.id
-      )
+      .get("http://52.152.228.107:3000/api/v1/participant/" + this.$route.params.id)
       .then((res) => (this.participant = res.data.data))
       .catch((err) => console.log(err));
 
     axios
-      .get("http://pemira.fppundip.com:3000/api/v1/candidate/all")
-      .then((res) => (this.candidates = res.data.data))
+      .get("http://52.152.228.107:3000/api/v1/candidate/all")
+      .then((res) => {
+        var candidates = res.data.data;
+        candidates.forEach((candidate) => {
+          if (candidate.jurusan == this.participant.jurusan)
+            this.candidates.push(candidate);
+        });
+      })
       .catch((error) => console.log(error));
+  },
+  created() {
+    if (this.$route.query.id_candidate_bem) {
+      this.id_candidate_bem = this.$route.query.id_candidate_bem;
+    }
+  },
+  computed: {
+    LegislatifCandidates: function() {
+      return this.candidates.filter(function(candidate) {
+        return candidate.type == "legislatif";
+      });
+    },
   },
 };
 </script>
@@ -129,6 +143,6 @@ h1 {
       rgb(0, 0, 0, 0.7) 80%
     ),
     url("https://drive.google.com/uc?export=download&id=1COIP91BUDc2z0l_Bl2OFYQIFNnGXuS83");
-    background-size: cover;
+  background-size: cover;
 }
 </style>

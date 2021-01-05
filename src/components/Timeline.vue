@@ -109,7 +109,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://52.152.228.107:3000/api/v1/session/all")
+      .get("http://pemira.ftuns.net:3000/api/v1/session/all")
       .then((res) => {
         res.data.data.forEach((event) => {
           this.timeline.push({

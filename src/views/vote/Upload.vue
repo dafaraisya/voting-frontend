@@ -101,7 +101,7 @@ export default {
             }).then(() => {
               this.$store.commit("setAuthentication", true);
               this.$router.replace({
-                name: "Voting",
+                name: "VotingBEM",
                 params: { id: this.dataParticipant._id },
                 query: { success: true },
               });

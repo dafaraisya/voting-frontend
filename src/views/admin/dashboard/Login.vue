@@ -2,7 +2,7 @@
   <div class="page">
     <div class="sub-page">
       <h1 class="text-white" style="padding-top:20px;">
-        PEMIRA FIB UNS 2020
+        PEMIRA SV UNS 2021
       </h1>
       <div class="home-voting" />
       <b-container class="text-white mt-5 shadow-sm form-login p-3 rounded">
@@ -40,7 +40,7 @@ import Swal from "sweetalert2";
 export default {
   name: "Welcome",
   created() {
-    document.title = "PEMIRA FIB UNS 2020";
+    document.title = "PEMIRA SV UNS 2021";
   },
   data() {
     return {
@@ -92,7 +92,7 @@ html {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://drive.google.com/uc?export=download&id=12_2YVnbexCfJXLTHfrXhq-QEoNoeT6YX");
+    url("https://drive.google.com/uc?export=download&id=1Dtn41mV4kFHiQAQ6q8Tq4qVPP-ybElKZ");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

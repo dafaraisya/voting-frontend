@@ -17,6 +17,9 @@
                 <b-container class="mt-2 pb-2">
                   <b> {{ candidate.name }} </b> <br/>
                   {{ candidate.number }} <br/>
+                  <p v-if="candidate.type == 'bem'">BEM</p>
+                  <p v-if="candidate.type == 'legislatif'">Dewan Mahasiswa
+                  <small v-if="candidate.type == 'legislatif'"><br/>{{ candidate.jurusan }}</small></p>
                   <router-link :to="{name:'DetailCandidate', params: {id: candidate._id}}">
                     <b-button class="mt-2" variant="primary">
                       <i class="fas fa-info-circle text-white"></i>

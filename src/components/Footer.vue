@@ -8,12 +8,12 @@
             <div class="footer-logo">
               <img
                 class="rounded-circle"
-                src="@/assets/logo kpr.png"
+                src="@/assets/LOGO KPU FIX.png"
                 alt=""
               />
             </div>
             <ul>
-              <li>FIB UNS</li>
+              <li>KPR SV UNS</li>
             </ul>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="copyright-text">
-              Copyright &copy; 2020 All rights reserved
+              Copyright &copy; 2021 All rights reserved
             </div>
           </div>
         </div>

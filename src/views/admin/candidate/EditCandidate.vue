@@ -59,6 +59,7 @@ export default {
                 shortDescription:this.dataCandidate.description.short,
                 visionDescription:this.dataCandidate.description.vision,
                 missionDescription:this.dataCandidate.description.mission,
+                type:this.dataCandidate.type,
             };
 
             Swal.fire({
@@ -125,7 +126,7 @@ export default {
         },
         getImage(url) {
             console.log()
-            return 'http://52.152.228.107/images/'+url;
+            return 'http://52.163.218.138/images/'+url;
         }
     },
     mounted() {

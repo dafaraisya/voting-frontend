@@ -5,16 +5,16 @@
       <b-container class="container h-100 text-white">
         <b-row class="row h-100 justify-content-center align-items-center">
           <b-col lg="12">
-            <h1>PEMIRA FIB UNS 2020</h1>
+            <h1>PEMIRA SV UNS 2021</h1>
             <div class="inner">
               <span>
-                #FIBMemilih<br />
-                #SuaraFIB<br />
-                #SukseskanPEMIRA
+                #svmemilih<br />
+                #suarasv<br />
+                #suksespemira2021
               </span>
             </div>
             <b-container class="mt-5">
-              <router-link class="mt-5" :to="{ name: 'Method' }">
+              <router-link class="mt-5" :to="{ name: 'Upload' }">
                 <b-button class="btn mt-5">
                   <i class="fas fa-vote-yea"></i>
                   Vote
@@ -58,7 +58,7 @@ export default {
     Footer,
   },
   created() {
-    document.title = "PEMIRA FIB UNS 2020";
+    document.title = "PEMIRA SV UNS 2021";
   },
 };
 </script>
@@ -92,11 +92,11 @@ b-button {
   position: absolute;
   height: 55px;
   line-height: 55px;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: bold;
   overflow: hidden;
   display: inline-block;
-  left: calc(50% - 300px);
+  left: calc(50% - 290px);
 }
 .inner span {
   animation: animate 6s ease infinite;
@@ -140,7 +140,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://drive.google.com/uc?export=download&id=1-1Hv9L2cpJPLQfTxLGiCdxrNcbU2eVdg");
+    url("https://drive.google.com/uc?export=download&id=11MCi-MZ2tlEdp_yoDrVvoqLrLsK5oa_d");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -153,7 +153,7 @@ b-button {
       rgba(0, 0, 0, 0.7) 0%,
       rgb(0, 0, 0, 0.7) 80%
     ),
-    url("https://drive.google.com/uc?export=download&id=1cAOAMeraMyguJfWGQj99fjtXoANebxg6");
+    url("https://drive.google.com/uc?export=download&id=1Z0ssVJ9BdNIfeOQl2QwSkJ_yB_cTorEU");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -190,7 +190,7 @@ b-button {
   }
   .inner {
     font-size: 30px;
-    left: calc(50% - 180px);
+    left: calc(50% - 155px);
   }
   #home {
     padding-top: 160px;
