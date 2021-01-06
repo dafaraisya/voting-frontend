@@ -13,7 +13,7 @@
               />
             </div>
             <ul>
-              <li>KPR SV UNS</li>
+              <li>KPU SV UNS</li>
             </ul>
           </div>
         </div>
@@ -22,13 +22,24 @@
             <h5>Hubungi kami</h5>
             <ul>
               <li>
-                <a href="https://www.instagram.com/kpusv.uns/">
+                <a target="_blank" href="https://www.youtube.com/channel/UCG8OR4xW-m60Pl9Qrq1PyXA">
+                  <i class="fab fa-youtube"></i>
+                  Youtube
+                </a>
+              </li><li>
+                <a target="_blank" href="https://twitter.com/kpusvuns">
+                  <i class="fab fa-twitter"></i>
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a target="_blank" href="https://www.instagram.com/kpusv.uns/">
                   <i class="fab fa-instagram"></i>
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="mailto:kpusvuns2020@gmail.com">
+                <a target="_blank" href="mailto:kpusvuns2020@gmail.com">
                   <i class="far fa-envelope"></i>
                   Email
                 </a>
