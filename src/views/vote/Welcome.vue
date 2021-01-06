@@ -8,9 +8,8 @@
             <h1>PEMIRA SV UNS 2021</h1>
             <div class="inner">
               <span>
-                #svmemilih<br />
-                #suarasv<br />
-                #suksespemira2021
+                Sekolah Vokasi Kuat<br />
+                Pemilih Berdaulat<br />
               </span>
             </div>
             <b-container class="mt-5">
@@ -137,8 +136,8 @@ b-button {
   padding-bottom: 20px;
   background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgb(0, 0, 0, 0.7) 80%
+      rgba(0, 0, 0, 0.85) 0%,
+      rgb(0, 0, 0, 0.85) 80%
     ),
     url("https://drive.google.com/uc?export=download&id=11MCi-MZ2tlEdp_yoDrVvoqLrLsK5oa_d");
   background-repeat: no-repeat;
@@ -150,8 +149,8 @@ b-button {
   padding-bottom: 20px;
   background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgb(0, 0, 0, 0.7) 80%
+      rgba(0, 0, 0, 0.85) 0%,
+      rgb(0, 0, 0, 0.85) 80%
     ),
     url("https://drive.google.com/uc?export=download&id=1Z0ssVJ9BdNIfeOQl2QwSkJ_yB_cTorEU");
   background-repeat: no-repeat;

@@ -61,8 +61,8 @@ html {
 .home-voting {
   background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgb(0, 0, 0, 0.7) 80%
+      rgba(0, 0, 0, 0.85) 0%,
+      rgb(0, 0, 0, 0.85) 80%
     ),
     url("https://drive.google.com/uc?export=download&id=1Dtn41mV4kFHiQAQ6q8Tq4qVPP-ybElKZ");
   background-repeat: no-repeat;
