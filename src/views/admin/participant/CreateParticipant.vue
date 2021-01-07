@@ -33,7 +33,10 @@
               ></b-form-input>
             </b-form-group>
             <b-form-group label="Jurusan :" label-for="jurusan">
-              <div v-for="(jurusan, index) in listJurusan" :key="'jurusan' + index">
+              <div
+                v-for="(jurusan, index) in listJurusan"
+                :key="'jurusan' + index"
+              >
                 <input
                   type="radio"
                   v-bind:id="'jurusan' + index"
@@ -90,16 +93,34 @@ export default {
       },
       sessions: [],
       listJurusan: [
-        "D-4 Kebidanan",
+        "D-3 dan D-4 Kebidanan",
         "D-4 Keselamatan dan Kesehatan Kerja",
-        "D-4 Studi Demografi dan Pencatatan Sipil",
+        "D-3 Agribisnis",
+        "D-3 Teknologi Hasil Pertanian",
+        "D-3 Budidaya Ternak",
+        "D-3 Teknik Informatika",
+        "D-3 Farmasi",
+        "D-3 Teknik Mesin",
+        "D-3 Teknik Sipil",
+        "D-2 Teknik Mesin Madiun",
+        "D-3 Teknik Kimia",
+        "D-3 Komunikasi Terapan",
+        "D-3 Manajemen Administrasi",
+        "D-3 Ilmu Perpustakaan",
+        "D-4 Demografi dan Pencatatan Sipil",
         "D-3 Akuntansi",
+        "D-3 Keuangan Perbankan",
         "D-3 Manajemen Bisnis",
         "D-3 Manajemen Pemasaran",
         "D-3 Manajemen Perdagangan",
         "D-3 Perpajakan",
-        "D-3 Keuangan dan Perbankan",
-        "D-3 Komunikasi Terapan",
+        "D-3 Bahasa Mandarin",
+        "D-3 Bahasa Inggris",
+        "D-3 Usaha Perjalanan Wisata",
+        "D-3 Desain Komunikai Visual",
+        "D-3 Akuntansi PSDKU",
+        "D-3 Teknologi Informasi PSDKU",
+        "D-3 Teknologi Hasil Pertanian PSDKU",
       ],
     };
   },
