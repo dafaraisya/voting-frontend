@@ -22,11 +22,15 @@
             <h5>Hubungi kami</h5>
             <ul>
               <li>
-                <a target="_blank" href="https://www.youtube.com/channel/UCG8OR4xW-m60Pl9Qrq1PyXA">
+                <a
+                  target="_blank"
+                  href="https://www.youtube.com/channel/UCG8OR4xW-m60Pl9Qrq1PyXA"
+                >
                   <i class="fab fa-youtube"></i>
                   Youtube
                 </a>
-              </li><li>
+              </li>
+              <li>
                 <a target="_blank" href="https://twitter.com/kpusvuns">
                   <i class="fab fa-twitter"></i>
                   Twitter
@@ -52,7 +56,8 @@
             <h5>Tentang Kami</h5>
             <ul>
               <li>
-                Alamat : <br />Jl. Ir. Sutami No.36, Kentingan, Kec. Jebres, Kota Surakarta, Jawa Tengah 57126
+                Alamat : <br />Sekolah Vokasi<br/> Universitas Sebelas Maret<br/> Jl
+                Kolonel Sutarto 150 K, Jebres Surakarta 0271-664126
               </li>
             </ul>
           </div>
