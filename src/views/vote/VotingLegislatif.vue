@@ -147,9 +147,7 @@ export default {
           this.dapil = "Dapil 2";
         else if (this.dapil3.includes(this.participant.jurusan))
           this.dapil = "Dapil 3";
-
-        alert(this.dapil);
-        alert(JSON.stringify(this.participant));
+          
         axios
           .get("http://52.152.228.107:3000/api/v1/candidate/all")
           .then((res) => {
