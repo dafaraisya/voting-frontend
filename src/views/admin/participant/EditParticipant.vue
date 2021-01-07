@@ -32,7 +32,10 @@
               ></b-form-input>
             </b-form-group>
             <b-form-group label="Jurusan :" label-for="jurusan">
-              <div v-for="(jurusan, index) in listJurusan" :key="'jurusan' + index">
+              <div
+                v-for="(jurusan, index) in listJurusan"
+                :key="'jurusan' + index"
+              >
                 <input
                   type="radio"
                   v-bind:id="'jurusan' + index"
@@ -90,35 +93,34 @@ export default {
         },
       },
       listJurusan: [
-        "D-3 dan D-4 Kebidanan",
-        "D-4 Keselamatan dan Kesehatan Kerja",
-        "D-3 Agribisnis",
-        "D-3 Teknologi Hasil Pertanian",
-        "D-3 Budidaya Ternak",
-        "D-3 Teknik Informatika",
-        "D-3 Farmasi",
-        "D-3 Teknik Mesin",
-        "D-3 Teknik Sipil",
-        "D-2 Teknik Mesin Madiun",
-        "D-3 Teknik Kimia",
-        "D-3 Komunikasi Terapan",
-        "D-3 Manajemen Administrasi",
-        "D-3 Ilmu Perpustakaan",
-        "D-4 Demografi dan Pencatatan Sipil",
-        "D-3 Akuntansi",
-        "D-3 Keuangan Perbankan",
-        "D-3 Manajemen Bisnis",
-        "D-3 Manajemen Pemasaran",
-        "D-3 Manajemen Perdagangan",
-        "D-3 Perpajakan",
-        "D-3 Bahasa Mandarin",
-        "D-3 Bahasa Inggris",
-        "D-3 Usaha Perjalanan Wisata",
-        "D-3 Desain Komunikai Visual",
-        "D-3 Akuntansi PSDKU",
-        "D-3 Teknologi Informasi PSDKU",
-        "D-3 Teknologi Hasil Pertanian PSDKU",
+        "D3-Akuntansi",
+        "D3-Keuangan dan Perbankan",
+        "D3-Manajemen Pemasaran",
+        "D3-Manajemen Bisnis",
+        "D3-Manajemen Perdagangan",
+        "D3-Perpajakan",
+        "D3-Desain Komunikasi Visual",
+        "D3-Bahasa Inggris",
+        "D3-Bahasa Mandarin",
+        "D3-Usaha Perjalanan Wisata",
+        "D3-Komunikasi Terapan",
+        "D3-Manajemen Administrasi",
+        "D3-Perpustakaan",
+        "D4 Demografi dan Pencatatan Sipil",
+        "D3-Teknik Kimia",
+        "D3-Teknik Mesin",
+        "D3-Teknik Sipil",
+        "D2-Teknik Mesin",
+        "D3-Agribisnis",
+        "D3-Teknologi Hasil Pertanian",
+        "D3-Budidaya Peternakan",
+        "D3-Kebidanan",
+        "D4-Kebidanan Sarjana Terapan",
+        "D4-Keselamatan dan Kesehatan Kerja",
+        "D3-Farmasi",
+        "D3-Teknik Informatika",
       ],
+
       sessions: [],
     };
   },
@@ -171,7 +173,9 @@ export default {
       .catch((error) => console.log(error));
 
     axios
-      .get("http://52.152.228.107:3000/api/v1/participant/" + this.$route.params.id)
+      .get(
+        "http://52.152.228.107:3000/api/v1/participant/" + this.$route.params.id
+      )
       .then((res) => (this.dataParticipant = res.data.data))
       .catch((error) => console.log(error));
   },

@@ -67,22 +67,21 @@ export default {
       new Swal({
         title: "Anda Yakin Memilih " + name_candidate + " ?",
         showDenyButton: true,
-        buttons: true,
       }).then((result) => {
         if (result.isConfirmed) {
-            this.$router.push({
+          this.$router
+            .push({
               name: "VotingLegislatif",
               params: { id: this.participant._id },
               query: { id_candidate_bem: id_candidate },
             })
             .then(() => {
-              Swal.fire({
+              new Swal({
                 icon: "success",
                 title: "Pilihan anda berhasil dikirim",
-                showConfirmButton: true
-            })
-            .catch((err) => console.log(err));
-            })
+                showConfirmButton: true,
+              });
+            });
         }
       });
     },
@@ -92,10 +91,7 @@ export default {
   },
   mounted() {
     axios
-      .get(
-        "http://52.152.228.107:3000/api/v1/participant/" +
-          this.$route.params.id
-      )
+      .get("http://52.152.228.107:3000/api/v1/participant/" + this.$route.params.id)
       .then((res) => (this.participant = res.data.data))
       .catch((err) => console.log(err));
 
@@ -106,11 +102,11 @@ export default {
   },
   computed: {
     BEMCandidates: function() {
-      return this.candidates.filter(function (candidate) {
-        return candidate.type == 'bem';
-      })
-    }
-  }
+      return this.candidates.filter(function(candidate) {
+        return candidate.type == "bem";
+      });
+    },
+  },
 };
 </script>
 <style scoped>
@@ -126,6 +122,6 @@ h1 {
       rgb(0, 0, 0, 0.7) 80%
     ),
     url("https://drive.google.com/uc?export=download&id=1COIP91BUDc2z0l_Bl2OFYQIFNnGXuS83");
-    background-size: cover;
+  background-size: cover;
 }
 </style>

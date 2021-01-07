@@ -61,6 +61,40 @@ export default {
       participant: [],
       candidates: [],
       id_candidate_bem: "",
+      dapil: "oo",
+
+      dapil1: [
+        "D3-Keuangan dan Perbankan",
+        "D3-Manajemen Pemasaran",
+        "D3-Manajemen Bisnis",
+        "D3-Manajemen Perdagangan",
+        "D3-Perpajakan",
+        "D3-Desain Komunikasi Visual",
+        "D3-Bahasa Inggris",
+        "D3-Bahasa Mandarin",
+        "D3-Usaha Perjalanan Wisata",
+      ],
+
+      dapil2: [
+        "D3-Komunikasi Terapan",
+        "D3-Manajemen Administrasi",
+        "D3-Perpustakaan",
+        "D4 Demografi dan Pencatatan Sipil",
+        "D3-Teknik Kimia",
+        "D3-Teknik Mesin",
+        "D3-Teknik Sipil",
+        "D2-Teknik Mesin",
+      ],
+      dapil3: [
+        "D3-Agribisnis",
+        "D3-Teknologi Hasil Pertanian",
+        "D3-Budidaya Peternakan",
+        "D3-Kebidanan",
+        "D4-Kebidanan Sarjana Terapan",
+        "D4-Keselamatan dan Kesehatan Kerja",
+        "D3-Farmasi",
+        "D3-Teknik Informatika",
+      ],
     };
   },
   methods: {
@@ -79,7 +113,7 @@ export default {
           axios
             .put("http://52.152.228.107:3000/api/v1/participant/vote", data)
             .then(() => {
-              Swal.fire({
+              new Swal({
                 icon: "success",
                 title: "Pilihan anda berhasil dikirim",
                 showConfirmButton: true,
@@ -101,20 +135,33 @@ export default {
   },
   mounted() {
     axios
-      .get("http://52.152.228.107:3000/api/v1/participant/" + this.$route.params.id)
-      .then((res) => (this.participant = res.data.data))
-      .catch((err) => console.log(err));
-
-    axios
-      .get("http://52.152.228.107:3000/api/v1/candidate/all")
+      .get(
+        "http://52.152.228.107:3000/api/v1/participant/" + this.$route.params.id
+      )
       .then((res) => {
-        var candidates = res.data.data;
-        candidates.forEach((candidate) => {
-          if (candidate.jurusan == this.participant.jurusan)
-            this.candidates.push(candidate);
-        });
+        this.participant = res.data.data;
+
+        if (this.dapil1.includes(this.participant.jurusan))
+          this.dapil = "Dapil 1";
+        else if (this.dapil2.includes(this.participant.jurusan))
+          this.dapil = "Dapil 2";
+        else if (this.dapil3.includes(this.participant.jurusan))
+          this.dapil = "Dapil 3";
+
+        alert(this.dapil);
+        alert(JSON.stringify(this.participant));
+        axios
+          .get("http://52.152.228.107:3000/api/v1/candidate/all")
+          .then((res) => {
+            var candidates = res.data.data;
+            candidates.forEach((candidate) => {
+              if (candidate.jurusan == this.dapil)
+                this.candidates.push(candidate);
+            });
+          })
+          .catch((error) => console.log(error));
       })
-      .catch((error) => console.log(error));
+      .catch((err) => console.log(err));
   },
   created() {
     if (this.$route.query.id_candidate_bem) {
