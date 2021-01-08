@@ -14,7 +14,7 @@
 			</h5> 
 			</b-card-text>
 			<b-button @click="back=true" class="btn">Beranda</b-button>
-			<router-link v-if="back" :to="{name: 'Welcome'}">
+			<router-link v-if="back" :to="this.$router.go(-2)">
 			</router-link>
 		</b-card>
 	</div>
