@@ -45,9 +45,7 @@ export default {
         console.log(res.data.ip);
         if (!ip.includes(res.data.ip)) {
           window.location.href = "/login";
-        } else {
-          
-        }
+        } 
       })
       .catch((err) => console.log(err));
   },
