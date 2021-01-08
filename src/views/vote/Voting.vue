@@ -2,7 +2,7 @@
   <div class="voting">
     <div class="container text-left">
       <img src="" alt="" />
-      <h1 class="text-white tittle">PEMIRA FMIPA UNS 2020</h1>
+      <h1 class="text-white tittle">PEMIRA SV UNS 2021</h1>
       <h4 class="text-white mt-1 mb-5">
         Halo {{ participant.name }}, Silakan Ketuk Pilih untuk memilih daftar
         calon dibawah ini

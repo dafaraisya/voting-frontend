@@ -23,6 +23,7 @@ import DetailCandidate from "../views/admin/candidate/DetailCandidate.vue";
 import IndexSetting from "../views/admin/setting/IndexSetting.vue";
 import EditSetting from "../views/admin/setting/EditSetting.vue";
 import DetailSetting from "../views/admin/setting/DetailSetting.vue";
+
 // Voting
 import HomeVote from "../views/vote/Home.vue";
 import Scan from "../views/vote/Scan.vue";
@@ -34,8 +35,11 @@ import VotingLegislatif from "../views/vote/VotingLegislatif.vue";
 import DetailCandidateVoting from "../views/vote/Detail.vue";
 import Announcement from "../views/vote/Announcement.vue";
 import Error from "../views/vote/Error.vue";
+
 Vue.use(VueRouter);
 Vue.use(Vuex);
+
+import axios from "axios";
 
 export const store = new Vuex.Store({
   state: {
@@ -59,11 +63,18 @@ const routes = [
     name: "admin",
     component: HomeAdmin,
     beforeEnter: (to, from, next) => {
-      if (store.state.authenticated == false) {
-        next();
-      } else {
-        next();
-      }
+      var ip = ["36.81.8.10"];
+      axios
+        .get("https://api.ipify.org/?format=json")
+        .then((res) => {
+          console.log(res.data.ip);
+          if (!ip.includes(res.data.ip)) {
+            window.location.href = "/login";
+          } else {
+            next();
+          }
+        })
+        .catch((err) => console.log(err));
     },
     children: [
       {

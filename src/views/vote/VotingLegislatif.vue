@@ -44,6 +44,17 @@
             </b-container>
           </b-container>
         </b-col>
+        <b-col class="text-center" v-if="dapil == 'Dapil 3'">
+          <h2>Tidak ada Calon Dewan Mahasiswa di Dapil ini</h2>
+          <b-button
+            @click="vote('candidate._id', 'candidate.name')"
+            class="mt-2 ml-2"
+            variant="success"
+          >
+            <i class="fas fa-check-circle text-white"></i>
+            Selanjutnya
+          </b-button>
+        </b-col>
       </b-row>
     </div>
   </div>
@@ -147,7 +158,7 @@ export default {
           this.dapil = "Dapil 2";
         else if (this.dapil3.includes(this.participant.jurusan))
           this.dapil = "Dapil 3";
-          
+
         axios
           .get("http://52.152.228.107:3000/api/v1/candidate/all")
           .then((res) => {
