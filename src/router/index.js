@@ -82,7 +82,8 @@ const routes = [
         .then((res) => {
           console.log(res.data.ip);
           if (!ip.includes(res.data.ip)) {
-            window.location.href = "/login";
+            //window.location.href = "/login";
+            next();
           } else {
             next();
           }

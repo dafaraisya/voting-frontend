@@ -46,7 +46,7 @@ export default {
       .then((res) => {
         console.log(res.data.ip);
         if (!ip.includes(res.data.ip)) {
-          window.location.href = "/login";
+          //window.location.href = "/login";
         } 
       })
       .catch((err) => console.log(err));
