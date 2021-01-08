@@ -45,7 +45,9 @@
           </b-container>
         </b-col>
         <b-col class="text-center" v-if="dapil == 'Dapil 3'">
-          <h2>Tidak ada Calon Dewan Mahasiswa di Dapil ini</h2>
+          <h2 class="text-white">
+            Tidak ada Calon Dewan Mahasiswa di Dapil ini
+          </h2>
           <b-button
             @click="vote('candidate._id', 'candidate.name')"
             class="mt-2 ml-2"
@@ -110,35 +112,53 @@ export default {
   },
   methods: {
     vote(id_candidate_legislatif, name_candidate) {
-      new Swal({
-        title: "Anda Yakin Memilih " + name_candidate + " ?",
-        showDenyButton: true,
-        buttons: true,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          let data = {
-            id_participant: this.participant._id,
-            id_candidate_bem: this.id_candidate_bem,
-            id_candidate_legislatif: id_candidate_legislatif,
-          };
-          axios
-            .put("http://52.152.228.107:3000/api/v1/participant/vote", data)
-            .then(() => {
-              new Swal({
-                icon: "success",
-                title: "Pilihan anda berhasil dikirim",
-                showConfirmButton: true,
-              }).then(() => {
-                this.$store.commit("setAuthentication", false);
-                this.$router.push({
-                  name: "Announcement",
-                  query: { success: true },
+      if (name_candidate != "candidate.name") {
+        new Swal({
+          title: "Anda Yakin Memilih " + name_candidate + " ?",
+          showDenyButton: true,
+          buttons: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let data = {
+              id_participant: this.participant._id,
+              id_candidate_bem: this.id_candidate_bem,
+              id_candidate_legislatif: id_candidate_legislatif,
+            };
+            axios
+              .put("http://52.152.228.107:3000/api/v1/participant/vote", data)
+              .then(() => {
+                new Swal({
+                  icon: "success",
+                  title: "Pilihan anda berhasil dikirim",
+                  showConfirmButton: true,
+                }).then(() => {
+                  this.$store.commit("setAuthentication", false);
+                  this.$router.push({
+                    name: "Announcement",
+                    query: { success: true },
+                  });
                 });
-              });
-            })
-            .catch((err) => console.log(err));
-        }
-      });
+              })
+              .catch((err) => console.log(err));
+          }
+        });
+      } else {
+        let data = {
+          id_participant: this.participant._id,
+          id_candidate_bem: this.id_candidate_bem,
+          id_candidate_legislatif: id_candidate_legislatif,
+        };
+        axios
+          .put("http://52.152.228.107:3000/api/v1/participant/vote", data)
+          .then(() => {
+            this.$store.commit("setAuthentication", false);
+            this.$router.push({
+              name: "Announcement",
+              query: { success: true },
+            });
+          })
+          .catch((err) => console.log(err));
+      }
     },
     getImage(url) {
       return "../../" + url;
