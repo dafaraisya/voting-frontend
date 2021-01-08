@@ -63,7 +63,16 @@ const routes = [
     name: "admin",
     component: HomeAdmin,
     beforeEnter: (to, from, next) => {
-      var ip = ["36.81.8.10"];
+      var ip = [
+        "36.81.8.10",
+        "103.23.224.177",
+        "114.125.125.183",
+        "125.166.133.76",
+        "139.194.193.99",
+        "198.16.66.155",
+        "139.194.193.99",
+        "139.194.193.99",
+      ];
       axios
         .get("https://api.ipify.org/?format=json")
         .then((res) => {
