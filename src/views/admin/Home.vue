@@ -18,7 +18,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import Sidebar from "@/components/Sidebar.vue";
-// import axios from "axios";
+import axios from "axios";
 
 export default {
   name: "Home",
@@ -46,7 +46,7 @@ export default {
         if (!ip.includes(res.data.ip)) {
           window.location.href = "/login";
         } else {
-          next();
+          
         }
       })
       .catch((err) => console.log(err));
