@@ -121,6 +121,7 @@ export default {
         "D-3 Komunikasi Terapan",
         "D-3 Manajemen Administrasi",
         "D-3 Perpustakaan",
+        "D-3 Ilmu Perpustakaan",
         "D-4 Demografi dan Pencatatan Sipil",
         "D-3 Teknik Kimia",
         "D-3 Teknik Mesin",
@@ -129,6 +130,7 @@ export default {
         /* */
         "D3 Komunikasi Terapan",
         "D3 Manajemen Administrasi",
+        "D3 Ilmu Perpustakaan",
         "D3 Perpustakaan",
         "D4 Demografi dan Pencatatan Sipil",
         "D3 Teknik Kimia",
@@ -139,6 +141,7 @@ export default {
         "D3-Komunikasi Terapan",
         "D3-Manajemen Administrasi",
         "D3-Perpustakaan",
+        "D3-Ilmu Perpustakaan",
         "D4-Demografi dan Pencatatan Sipil",
         "D3-Teknik Kimia",
         "D3-Teknik Mesin",
