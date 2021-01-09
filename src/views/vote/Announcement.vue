@@ -297,12 +297,15 @@ export default {
             index = this.findCandidateByIdLegislatif(
               this.participants[n].voting.id_candidate_legislatif
             );
-            totalCandidateLegislatif[index].total++;
+            if (totalCandidateLegislatif[index] != null) {
+              totalCandidateLegislatif[index].total++;
+            } else {
+              console.log(this.participants[n]);
+            }
           }
         }
 
         this.arrCandidateLegislatif = totalCandidateLegislatif;
-        
 
         var name = [];
         var vote = [];

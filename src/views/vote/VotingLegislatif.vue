@@ -134,7 +134,7 @@ export default {
         /* */
         "D3 Komunikasi Terapan",
         "D3 Manajemen Administrasi",
-        "D3 Ilmu Perpustakaan",
+        "D3 Ilmu Perpustakaan",        
         "D3 Perpustakaan",
         "D4 Demografi dan Pencatatan Sipil",
         "D3 Teknik Kimia",
