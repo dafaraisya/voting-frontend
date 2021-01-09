@@ -75,7 +75,6 @@ export default {
       candidates: [],
       id_candidate_bem: "",
       dapil: "oo",
-
       dapil1: [
         "D-3 Keuangan dan Perbankan",
         "D-3 Manajemen Pemasaran",
@@ -107,6 +106,14 @@ export default {
         "D-4 Keselamatan dan Kesehatan Kerja",
         "D-3 Farmasi",
         "D-3 Teknik Informatika",
+        "D3 Agribisnis",
+        "D3 Teknologi Hasil Pertanian",
+        "D3 Budidaya Peternakan",
+        "D3 Kebidanan",
+        "D4 Kebidanan Sarjana Terapan",
+        "D4 Keselamatan dan Kesehatan Kerja",
+        "D3 Farmasi",
+        "D3 Teknik Informatika",
       ],
     };
   },
