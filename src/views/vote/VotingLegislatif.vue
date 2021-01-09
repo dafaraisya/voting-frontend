@@ -124,6 +124,7 @@ export default {
         "D-3 Manajemen Administrasi",
         "D-3 Perpustakaan",
         "D-3 Ilmu Perpustakaan",
+        "D-3 Ilmu Perpustakaan",
         "D-4 Demografi dan Pencatatan Sipil",
         "D-3 Teknik Kimia",
         "D-3 Teknik Mesin",
