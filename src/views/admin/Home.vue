@@ -39,14 +39,20 @@ export default {
   "139.194.193.99",
   "120.188.86.33",
   "36.68.14.146",
-  "114.142.169.43"
+  "114.142.169.43",
+  "114.125.125.183",
+  "103.23.224.177",
+  "198.16.70.29",
+  "103.23.224.177",
+  "114.142.170.22",
+  "120.188.86.33",
 ];
     axios
       .get("https://api.ipify.org/?format=json")
       .then((res) => {
         console.log(res.data.ip);
         if (!ip.includes(res.data.ip)) {
-          //window.location.href = "/login";
+          window.location.href = "/login";
         } 
       })
       .catch((err) => console.log(err));
