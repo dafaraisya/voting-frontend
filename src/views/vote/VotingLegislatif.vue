@@ -82,8 +82,10 @@ export default {
         "D-3 Manajemen Bisnis",
         "D-3 Manajemen Perdagangan",
         "D-3 Perpajakan",
+        "Perpajakan",
         "D-3 Desain Komunikasi Visual",
         "D-3 Bahasa Inggris",
+        "Bahasa Inggris",
         "D-3 Bahasa Mandarin",
         "D-3 Usaha Perjalanan Wisata",
         "D-3 Akuntansi",
@@ -127,6 +129,7 @@ export default {
         "D-3 Teknik Mesin",
         "D-3 Teknik Sipil",
         "D-2 Teknik Mesin",
+        "D-3 Teknik Sipil Bangunan Gedung",
         /* */
         "D3 Komunikasi Terapan",
         "D3 Manajemen Administrasi",
@@ -137,6 +140,7 @@ export default {
         "D3 Teknik Mesin",
         "D3 Teknik Sipil",
         "D2 Teknik Mesin",
+        "D3 Teknik Sipil Bangunan Gedung",
         /* */
         "D3-Komunikasi Terapan",
         "D3-Manajemen Administrasi",
@@ -147,6 +151,7 @@ export default {
         "D3-Teknik Mesin",
         "D3-Teknik Sipil",
         "D2-Teknik Mesin",
+        "D3-Teknik Sipil Bangunan Gedung",
       ],
       dapil3: [
         "D-3 Agribisnis",
