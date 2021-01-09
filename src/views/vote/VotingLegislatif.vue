@@ -77,6 +77,7 @@ export default {
       dapil: "oo",
       dapil1: [
         "D-3 Keuangan dan Perbankan",
+        "D-3 Keuangan Perbankan",
         "D-3 Manajemen Pemasaran",
         "D-3 Manajemen Bisnis",
         "D-3 Manajemen Perdagangan",
@@ -89,6 +90,7 @@ export default {
         "D-3 Akuntansi PSDKU",
         /* */
         "D3 Keuangan dan Perbankan",
+        "D3 Keuangan Perbankan",
         "D3 Manajemen Pemasaran",
         "D3 Manajemen Bisnis",
         "D3 Manajemen Perdagangan",
@@ -101,6 +103,7 @@ export default {
         "D3 Akuntansi PSDKU",
         /* */
         "D3-Keuangan dan Perbankan",
+        "D3-Keuangan Perbankan",
         "D3-Manajemen Pemasaran",
         "D3-Manajemen Bisnis",
         "D3-Manajemen Perdagangan",
