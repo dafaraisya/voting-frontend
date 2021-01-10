@@ -119,7 +119,6 @@ export default {
         "D3-Usaha Perjalanan Wisata",
         "D3-Akuntansi",
         "D3-Akuntansi PSDKU",
-        
       ],
 
       dapil2: [
