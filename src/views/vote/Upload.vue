@@ -107,9 +107,18 @@ export default {
               });
             });
           } else {
-            this.$router.push({
-              name: "Error",
-              params: { error: "failed-not-your-session" },
+            Swal.fire({
+              icon: "success",
+              title: "Autentikasi berhasil",
+              text: "Selamat datang " + this.dataParticipant.name,
+              showConfirmButton: true,
+            }).then(() => {
+              this.$store.commit("setAuthentication", true);
+              this.$router.replace({
+                name: "VotingBEM",
+                params: { id: this.dataParticipant._id },
+                query: { success: true },
+              });
             });
           }
         }
