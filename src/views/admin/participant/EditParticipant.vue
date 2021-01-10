@@ -32,6 +32,13 @@
               ></b-form-input>
             </b-form-group>
             <b-form-group label="Jurusan :" label-for="jurusan">
+              <b-form-input
+                type="text"
+                id="jurusan"
+                aria-describedby="namaHelp"
+                placeholder="Masukan Jurusan"
+                v-model="dataParticipant.jurusan"
+              ></b-form-input>
               <div
                 v-for="(jurusan, index) in listJurusan"
                 :key="'jurusan' + index"
