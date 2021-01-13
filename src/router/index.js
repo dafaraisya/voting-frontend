@@ -39,7 +39,6 @@ import Error from "../views/vote/Error.vue";
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-import axios from "axios";
 
 export const store = new Vuex.Store({
   state: {
@@ -63,39 +62,8 @@ const routes = [
     name: "admin",
     component: HomeAdmin,
     beforeEnter: (to, from, next) => {
-      var ip = [
-        "36.81.8.10",
-        "36.81.8.106",
-        "103.23.224.177",
-        "114.125.125.183",
-        "125.166.133.76",
-        "139.194.193.99",
-        "198.16.66.155",
-        "139.194.193.99",
-        "139.194.193.99",
-        "120.188.86.33",
-        "36.68.14.146",
-        "114.142.169.43",
-        "114.125.125.183",
-        "103.23.224.177",
-        "198.16.70.29",
-        "103.23.224.177",
-        "114.142.170.22",
-        "120.188.86.33",
-        "36.81.15.60",
-        "114.124.246.51"
-      ];
-      axios
-        .get("https://api.ipify.org/?format=json")
-        .then((res) => {
-          console.log(res.data.ip);
-          if (!ip.includes(res.data.ip)) {
-            window.location.href = "/login";
-          } else {
+      
             next();
-          }
-        })
-        .catch((err) => console.log(err));
     },
     children: [
       {
